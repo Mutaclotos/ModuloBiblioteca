@@ -86,8 +86,7 @@ public class DBConnector
 	        		query += column + " from " + tableName;
 	        	}
 		    }
-            
-            
+              
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next())
