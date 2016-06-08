@@ -9,6 +9,7 @@ import java.sql.Statement;
 public class DBConnector 
 {
 	Connection conn;
+	
 	public DBConnector()
 	{
 		try
@@ -71,7 +72,22 @@ public class DBConnector
 	{
 		try
         {
-            String query = "Select * from " + tableName;
+            String query = "Select ";
+            
+            for (int i = 0; i < columns.length; ++i) 
+			{
+		        String column = columns[i];
+		        if(i < columns.length-1)
+	        	{
+	        		query += column + ", ";
+	        	}
+	        	else
+	        	{
+	        		query += column + " from " + tableName;
+	        	}
+		    }
+            
+            
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while(resultSet.next())
@@ -89,5 +105,10 @@ public class DBConnector
         	System.err.println(e.getMessage());
             e.printStackTrace();
         }
+	}
+	
+	public void update()
+	{
+		
 	}
 }
