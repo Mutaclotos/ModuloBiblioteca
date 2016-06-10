@@ -106,8 +106,31 @@ public class DBConnector
         }
 	}
 	
-	public void update()
+	public void update(String tableName, String columnsToUpdate, String... conditions)
 	{
-		
+		try
+        {
+            String query = "Update "+ tableName + " set " + columnsToUpdate + " where ";
+            for (int i = 0; i < conditions.length; ++i) 
+			{
+		        String column = conditions[i];
+		        if(i < conditions.length-1)
+	        	{
+	        		query += column + " and ";
+	        	}
+	        	else
+	        	{
+	        		query += column;
+	        	}
+		    }
+            Statement statement = conn.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            
+        }
+        catch(Exception e)
+        {
+        	System.err.println(e.getMessage());
+            e.printStackTrace();
+        }
 	}
 }
