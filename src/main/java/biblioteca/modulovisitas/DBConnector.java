@@ -14,7 +14,7 @@ public class DBConnector
 	{
 		try
 		{
-			Connection conn = DriverManager.getConnection("jdbc:mysql://10.1.129.60:3306", "matias", "a1b2c3d4e5");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://10.1.129.29:3306", "geo", "a1b2c3d4e5");
 			System.out.println("Connection successful");
 
             conn.close();
@@ -124,7 +124,7 @@ public class DBConnector
 	        	}
 		    }
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
+            statement.executeQuery(query);
             
         }
         catch(Exception e)
