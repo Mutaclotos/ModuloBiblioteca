@@ -11,7 +11,7 @@ public class IsCedula implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("([0-9]{9}|[0-9]-[0-9]{4}-[0-9]{4})");
+		Pattern p = Pattern.compile("[0-9]{9}");
 		Matcher m = p.matcher(value.toString());
 		if(!m.matches()){
 			throw new InvalidValueException("No es una cedula valida");
