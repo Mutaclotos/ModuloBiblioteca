@@ -100,7 +100,7 @@ public class formularioentrada extends CustomComponent {
 	public static final long serialVersionUID = 1202;
 	/*- VaadinEditorProperties={"grid":"RegularGrid,20","showGrid":true,"snapToGrid":true,"snapToObject":true,"movingGuides":false,"snappingDistance":10} */
 
-	private DBConnector dbc;
+	private final DBConnector dbc;
 	
 	/**
 	 * The constructor should first build the main layout, set the
@@ -119,15 +119,7 @@ public class formularioentrada extends CustomComponent {
 		String timeStamp = new SimpleDateFormat("dd/MM/YYYY HH:mm").format(Calendar.getInstance().getTime());
 		labelFechaHora.setValue(timeStamp);
 		
-		inputApellidos.addValidator(new IsApellido());
-		inputCarne.addValidator(new IsCarne());
-		inputCedula.addValidator(new IsCedula());
-		inputEmail.addValidator(new IsEmail());
-		inputHEntrada.addValidator(new IsHora());
-		inputHSalida.addValidator(new IsHora());
-		inputInstitucion.addValidator(new IsInstitucion());
-		inputNombre.addValidator(new IsNombre());
-		
+	
 		FocusListener fl = new FocusListener(){
 			@Override
 			public void focus(FocusEvent event) {
@@ -152,14 +144,24 @@ public class formularioentrada extends CustomComponent {
 		inputNombre.addFocusListener(fl);
 		botonGuardar.addFocusListener(fl);
 		
-		inputSoy.addItem("Estudiante");
-		inputSoy.addItem("Funcionario");
-		inputSoy.addItem("Asociado");
-		inputSoy.addItem("Publico");
+		
+		inputSoy.setContainerDataSource(Contenedor.obtenerContenedor("tipoSoy"));
+		
 		botonGuardar.addClickListener(new ClickListener(){
 			private static final long serialVersionUID = 47254532L;
 			@Override
 			public void buttonClick(ClickEvent event) {
+				
+				inputApellidos.addValidator(new IsApellido());
+				inputCarne.addValidator(new IsCarne());
+				inputCedula.addValidator(new IsCedula());
+				inputEmail.addValidator(new IsEmail());
+				inputHEntrada.addValidator(new IsHora());
+				inputHSalida.addValidator(new IsHora());
+				inputInstitucion.addValidator(new IsInstitucion());
+				inputNombre.addValidator(new IsNombre());
+				
+				
 				String apellidos;
 				String carne;
 				String cedula;
