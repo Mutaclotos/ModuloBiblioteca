@@ -26,7 +26,7 @@ public class TestVisita
 	   @After
 	   public void tearDown() throws Exception 
 	   {
-	       //getDriver().quit();
+	       //getDriver().quit(); 
 	   }
 
 }
