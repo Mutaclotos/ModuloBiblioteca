@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\validadores\IsApellido.java
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\Contenedor.java
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\validadores\IsCedula.java
@@ -9,3 +10,17 @@ C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\jav
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\validadores\IsHora.java
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\validadores\IsCarne.java
 C:\Users\B05954\Documents\workspace-sts-3.7.3.RELEASE\modulovisitas\src\main\java\biblioteca\modulovisitas\validadores\IsInstitucion.java
+=======
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsEmail.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\testModuloVisitas\TestVisitas.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsApellido.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsCedula.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\DBConnector.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\testModuloVisitas\TestVisita.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsHora.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\MyUI.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsCarne.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsNombre.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\formularioentrada.java
+C:\Users\USUARIO\Documents\git\BiblioVisitas\src\main\java\biblioteca\modulovisitas\validadores\IsInstitucion.java
+>>>>>>> 80daa6a0b245bad0a6d49174b92f86c5e0b715a3
