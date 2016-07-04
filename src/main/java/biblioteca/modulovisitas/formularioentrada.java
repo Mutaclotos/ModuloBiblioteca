@@ -117,7 +117,7 @@ public class formularioentrada extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("10.1.128.4","geo","a1b2c3d4e5");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		
 		String timeStamp = new SimpleDateFormat("dd/MM/YYYY HH:mm").format(Calendar.getInstance().getTime());
 		labelFechaHora.setValue(timeStamp);
@@ -405,7 +405,7 @@ public class formularioentrada extends CustomComponent {
 		// button_reporte
 		button_reporte = new Button();
 		button_reporte.setCaption("Genera Reporte");
-		button_reporte.setImmediate(false);
+		button_reporte.setImmediate(true);
 		button_reporte.setWidth("-1px");
 		button_reporte.setHeight("-1px");
 		mainLayout.addComponent(button_reporte, "top:18.0px;left:590.0px;");

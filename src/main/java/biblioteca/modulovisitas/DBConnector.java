@@ -24,7 +24,7 @@ public class DBConnector {
 	public DBConnector(String ip, String usuario, String pass) {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			conn = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/Proyecto", usuario, pass);
+			conn = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/proyecto", usuario, pass);
 
 			System.out.println("Connection successful");
 		} catch (Exception e) {
@@ -91,20 +91,20 @@ public class DBConnector {
 	}
 
 	public void reporte() {
-		String sql = "select nombre,cedula,carne,institucion,email,tema,horaLlegada,horaSalida from Usuario u,Visitas v where u.cedula=v.usuario";
+		String sql = "select nombre,cedula,carne,institucion,email,tema,fechaEmision,fechaEntrega,observaciones,tipo from Usuario u,Consulta c where u.cedula=c.usuario";
 		Statement statement;
 		try {
 			statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
-			JasperDesign design = JRXmlLoader.load("C:/Users/B05954/JaspersoftWorkspace/MyReports/Visita.jrxml");
+			JasperDesign design = JRXmlLoader.load("C:/Users/USUARIO/Documents/workspace-sts/moduloConsultas/Consulta.jrxml");
 			JasperReport reporte = JasperCompileManager.compileReport(design);
 			JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
 			Map<String, Object> parametros = new HashMap<String, Object>();
 			parametros.put("Titulo", "Colegio de Abogados y Abogadas");
-			parametros.put("Subtitulo", "Reporte de Visitas!");
+			parametros.put("Subtitulo", "Reporte de Consultas");
 			JasperReport jasperReport;
-			String ruta = "C:/Users/B05954/Documents/workspace-sts-3.7.3.RELEASE/modulovisitas/generado2.pdf";
-			jasperReport = JasperCompileManager.compileReport("C:/Users/B05954/JaspersoftWorkspace/MyReports/Visita.jrxml");
+			String ruta = "C:/Users/USUARIO/Documents/workspace-sts/moduloConsultas/generado2.pdf";
+			jasperReport = JasperCompileManager.compileReport("C:/Users/USUARIO/Documents/workspace-sts/moduloConsultas/Consulta.jrxml");
 			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametros, jrRS);
 			JasperExportManager.exportReportToPdfFile(jasperPrint, ruta);
 		} catch (Exception e) {
