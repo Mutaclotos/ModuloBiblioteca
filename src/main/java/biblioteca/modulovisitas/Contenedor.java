@@ -25,9 +25,9 @@ public class Contenedor {
 	public static Container obtenerContenedor3(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusqueda", String.class, "");
-		c.addItem("Usuario");
-		c.addItem("Tema");
-		c.addItem("Fecha emisión");
+		c.addItem("Nombre de usuario");
+		c.addItem("Tema de consulta");
+		c.addItem("Fecha de emisión");
 		return c;
 	}
 }
