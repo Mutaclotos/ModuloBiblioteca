@@ -60,6 +60,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 	{
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
+		inputTipoBusqueda.setNullSelectionAllowed(false);
 		
 		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		inputBusqueda.focus();
@@ -147,6 +148,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, u.institucion, u.tipo as tipoUsuario,"
 				+ " c.tema, c.tipo, c.fechaEmision, c.observaciones FROM consulta c, usuario u WHERE c.fechaEntrega IS NULL AND c.usuario = u.cedula ");
 		try{
+			//TODO: datasource de resultSet, tableQuery
 			while(rs.next())
 			{
 				Integer itemId = new Integer(i);
@@ -173,11 +175,11 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		// common part: create layout
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setImmediate(false);
-		mainLayout.setWidth("1855px");
+		mainLayout.setWidth("100%");
 		mainLayout.setHeight("440px");
 		
 		// top-level component properties
-		setWidth("1855px");
+		setWidth("100.0%");
 		setHeight("440px");
 		
 		// labelTitulo
@@ -223,7 +225,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		// tablaConsultas
 		tablaConsultas = new Table();
 		tablaConsultas.setImmediate(false);
-		tablaConsultas.setWidth("-1px");
+		tablaConsultas.setWidth("90.0%");
 		tablaConsultas.setHeight("280px");
 		mainLayout.addComponent(tablaConsultas, "top:100.0px;left:40.0px;");
 		
@@ -240,7 +242,6 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		inputTipoBusqueda.setImmediate(false);
 		inputTipoBusqueda.setWidth("240px");
 		inputTipoBusqueda.setHeight("-1px");
-		inputTipoBusqueda.setNullSelectionAllowed(false);
 		mainLayout.addComponent(inputTipoBusqueda, "top:40.0px;left:40.0px;");
 		
 		// inputBusqueda
