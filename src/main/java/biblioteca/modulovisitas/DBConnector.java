@@ -62,7 +62,7 @@ public class DBConnector {
 		try {
 			statement = conn.createStatement();
 			statement.executeQuery(query);
-			rs = statement.getResultSet();
+			rs = statement.getResultSet();	
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

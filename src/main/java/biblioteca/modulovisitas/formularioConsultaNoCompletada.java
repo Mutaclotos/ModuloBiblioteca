@@ -74,7 +74,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 			{
 				if(inputTipoBusqueda.getValue().toString().equals("Nombre de usuario"))
 				{
-					tablaConsultas.setVisibleColumns("Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Tema", "Tipo consulta", "Fecha emisión", "Observaciones");
+					tablaConsultas.setVisibleColumns("Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Tema", "Tipo consulta", "Fecha emisión", "Observaciones","Bases de datos");
 					
 					filterable = (Container.Filterable) tablaConsultas.getContainerDataSource();
 					
@@ -89,7 +89,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 				}
 				else if(inputTipoBusqueda.getValue().toString().equals("Tema de consulta"))
 				{
-					tablaConsultas.setVisibleColumns("Tema","Tipo consulta","Observaciones","Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Fecha emisión");
+					tablaConsultas.setVisibleColumns("Tema","Tipo consulta","Observaciones","Bases de datos","Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Fecha emisión");
 					
 					filterable = (Container.Filterable) tablaConsultas.getContainerDataSource();
 					
@@ -104,7 +104,7 @@ public class formularioConsultaNoCompletada extends CustomComponent
 				}
 				else if(inputTipoBusqueda.getValue().toString().equals("Fecha de emisión"))
 				{
-					tablaConsultas.setVisibleColumns("Fecha emisión", "Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Tema", "Tipo consulta", "Observaciones");
+					tablaConsultas.setVisibleColumns("Fecha emisión", "Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Institución", "Tipo usuario", "Tema", "Tipo consulta", "Observaciones", "Bases de datos");
 					
 					filterable = (Container.Filterable) tablaConsultas.getContainerDataSource();
 					
@@ -141,12 +141,20 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		tablaConsultas.addContainerProperty("Tipo consulta", String.class, null);
 		tablaConsultas.addContainerProperty("Fecha emisión", String.class, null);
 		tablaConsultas.addContainerProperty("Observaciones", String.class, null);
+		tablaConsultas.addContainerProperty("Bases de datos", String.class, null);
 		
 		tablaConsultas.setSelectable(true);
 		tablaConsultas.setImmediate(true);
 		
-		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, u.institucion, u.tipo as tipoUsuario,"
-				+ " c.tema, c.tipo, c.fechaEmision, c.observaciones FROM consulta c, usuario u WHERE c.fechaEntrega IS NULL AND c.usuario = u.cedula ");
+		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, u.institucion, u.tipo as tipoUsuario, "
+				+ "c.tema, c.tipo, c.fechaEmision, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "
+				+ "FROM consultabase cb, basesdatos b "
+				+ "WHERE cb.Consulta = c.id "
+				+ "AND b.id = cb.basedatos), 'N/A') AS basesDatos "
+				+ "FROM consulta c, usuario u "
+				+ "WHERE c.fechaEntrega IS NULL "
+				+ "AND c.usuario = u.cedula "
+				+ "GROUP BY c.id");
 		try{
 			//TODO: datasource de resultSet, tableQuery
 			while(rs.next())
@@ -163,7 +171,8 @@ public class formularioConsultaNoCompletada extends CustomComponent
 				String tipoConsulta = rs.getString("tipo");
 				String fechaEmision = rs.getString("fechaEmision");
 				String observaciones = rs.getString("observaciones");
-				tablaConsultas.addItem(new Object[]{nombre,apellidos,cedula,carne,email,institucion,tipoUsuario,tema,tipoConsulta,fechaEmision,observaciones}, itemId);
+				String basesDatos = rs.getString("basesDatos");
+				tablaConsultas.addItem(new Object[]{nombre,apellidos,cedula,carne,email,institucion,tipoUsuario,tema,tipoConsulta,fechaEmision,observaciones,basesDatos}, itemId);
 				i++;
 			}
 		}catch(Exception sqe){
