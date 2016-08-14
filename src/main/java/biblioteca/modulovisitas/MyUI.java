@@ -29,7 +29,9 @@ public class MyUI extends UI {
         //layout.addComponent(fme);
         //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
         //layout.addComponent(fmnc);
-        formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
+        //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
+        //layout.addComponent(fmcnc);
+        formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
         layout.addComponent(fmcnc);
 
     }

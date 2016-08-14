@@ -30,4 +30,14 @@ public class Contenedor {
 		c.addItem("Fecha de emisión");
 		return c;
 	}
+	
+	public static Container obtenerContenedor4(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoBusqueda", String.class, "");
+		c.addItem("Nombre de usuario");
+		c.addItem("Tema de consulta");
+		c.addItem("Fecha de emisión");
+		c.addItem("Fecha de entrega");
+		return c;
+	}
 }
