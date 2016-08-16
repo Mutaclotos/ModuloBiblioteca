@@ -61,9 +61,6 @@ public class formularioConsultaCompletada extends CustomComponent
 		
 		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		
-		//No funciona
-		inputTipoBusqueda.setValue(Contenedor.obtenerContenedor4("tipoBusqueda").getItem("Nombre de usuario"));
-		
 		inputBusqueda.focus();
 		
 		
@@ -142,9 +139,7 @@ public class formularioConsultaCompletada extends CustomComponent
 		
 		inputTipoBusqueda.setContainerDataSource(Contenedor.obtenerContenedor4("tipoBusqueda"));
 		
-		//Integer itemId = new Integer(0);
-		//inputTipoBusqueda.setValue(Contenedor.obtenerContenedor3("tipoBusqueda").getItem("Nombre de usuario"));
-		
+		inputTipoBusqueda.select("Nombre de usuario");
 		int i = 0;
 		
 		tablaConsultas.addContainerProperty("Nombre", String.class, null);

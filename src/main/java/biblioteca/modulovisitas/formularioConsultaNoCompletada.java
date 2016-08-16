@@ -125,8 +125,8 @@ public class formularioConsultaNoCompletada extends CustomComponent
 		
 		inputTipoBusqueda.setContainerDataSource(Contenedor.obtenerContenedor3("tipoBusqueda"));
 		
-		//Integer itemId = new Integer(0);
-		//inputTipoBusqueda.setValue(Contenedor.obtenerContenedor3("tipoBusqueda").getItem("Nombre de usuario"));
+		inputTipoBusqueda.select("Nombre de usuario");
+		
 		
 		int i = 0;
 		
