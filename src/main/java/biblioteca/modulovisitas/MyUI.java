@@ -31,9 +31,10 @@ public class MyUI extends UI {
         //layout.addComponent(fmnc);
         //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
         //layout.addComponent(fmcnc);
-        formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
-        layout.addComponent(fmcnc);
-
+        //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
+        //layout.addComponent(fmcnc);
+        formularioEditarConsulta fmnc = new formularioEditarConsulta();
+        layout.addComponent(fmnc);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
