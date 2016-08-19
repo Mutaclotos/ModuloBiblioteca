@@ -25,14 +25,14 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         setContent(layout);
-        //formularioentrada fme = new formularioentrada();
+        formularioentrada fme = new formularioentrada();
         //layout.addComponent(fme);
         //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
         //layout.addComponent(fmnc);
         //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
         //layout.addComponent(fmcnc);
-        formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
-        layout.addComponent(fmcnc);
+        //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
+        layout.addComponent(fme);
 
     }
 
