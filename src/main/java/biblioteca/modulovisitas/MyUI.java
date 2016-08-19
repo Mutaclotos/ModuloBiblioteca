@@ -33,7 +33,6 @@ public class MyUI extends UI {
         //layout.addComponent(fmcnc);
         //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
         layout.addComponent(fme);
-
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
