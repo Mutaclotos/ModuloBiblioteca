@@ -30,7 +30,7 @@ public class MyUI extends UI
         
         layout.setMargin(true);
         setContent(layout);
-        //formularioentrada fme = new formularioentrada();
+        formularioentrada fme = new formularioentrada();
         //layout.addComponent(fme);
         //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
         //layout.addComponent(fmnc);

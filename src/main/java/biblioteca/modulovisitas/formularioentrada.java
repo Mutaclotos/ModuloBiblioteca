@@ -117,7 +117,7 @@ public class formularioentrada extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("192.168.56.101","root","GESAVA954");
 		
 		String timeStamp = new SimpleDateFormat("dd/MM/YYYY HH:mm").format(Calendar.getInstance().getTime());
 		labelFechaHora.setValue(timeStamp);
