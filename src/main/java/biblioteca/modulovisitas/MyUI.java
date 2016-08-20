@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -24,29 +25,37 @@ public class MyUI extends UI
 	
 	final VerticalLayout layout = new VerticalLayout();
 	
+	
+	
     @Override
     protected void init(VaadinRequest vaadinRequest) 
     {
         
-        layout.setMargin(true);
-        setContent(layout);
-        formularioentrada fme = new formularioentrada();
+        //layout.setMargin(true);
+        //setContent(layout);
+        setContent(new formularioConsultaNoCompletada());
+        //formularioentrada fme = new formularioentrada();
         //layout.addComponent(fme);
         //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
         //layout.addComponent(fmnc);
-        formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
-        layout.addComponent(fmcnc);
-        int i = layout.getComponentIndex(fmcnc);
-        System.out.println("Index: " + i);
+        //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
+        //layout.addComponent(fmcnc);
+        
+        //int i = layout.getComponentIndex(fmcnc);
+        //System.out.println("Index: " + i);
+        
         //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
         //layout.addComponent(fmcnc);
         //formularioEditarConsulta fmnc = new formularioEditarConsulta();
         //layout.addComponent(fmnc);
+        
+       
     }
     
     public void changeLayout(CustomComponent c)
     {
-    	layout.replaceComponent(layout.getComponent(0), c);
+    	
+    	layout.replaceComponent(layout.getComponent(1), c);
     	//layout.removeComponent();
     	//layout.addComponent(c);
     }
