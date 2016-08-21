@@ -14,6 +14,7 @@ public class Contenedor {
 		return c;
 	}
 	
+	
 	public static Container obtenerContenedor2(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoConsulta", String.class, "");
