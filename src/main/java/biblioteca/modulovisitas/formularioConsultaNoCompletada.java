@@ -217,7 +217,6 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					String tipoUsuario = (String)tablaConsultas.getContainerProperty(rowId,"Tipo usuario").getValue();
 					String tema = (String)tablaConsultas.getContainerProperty(rowId,"Tema").getValue();
 					String tipoConsulta = (String)tablaConsultas.getContainerProperty(rowId,"Tipo consulta").getValue();
-					String fechaEmision = (String)tablaConsultas.getContainerProperty(rowId,"Fecha emisión").getValue();
 					String observaciones = (String)tablaConsultas.getContainerProperty(rowId,"Observaciones").getValue();
 					String basesDatos = (String)tablaConsultas.getContainerProperty(rowId,"Bases de datos").getValue();
 					
@@ -225,7 +224,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					//ui.changeLayout(fec);
 					//navigator.navigateTo(formularioEditarConsulta.EDITVIEW);
 					//setContent(new formularioConsultaNoCompletada());
-					UI.getCurrent().setContent(new formularioEditarConsulta());
+					UI.getCurrent().setContent(new formularioEditarConsulta(nombre, apellidos, cedula, carne, email, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
 					
 				}
 				else
