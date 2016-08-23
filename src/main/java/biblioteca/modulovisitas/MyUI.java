@@ -9,6 +9,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
@@ -25,14 +26,8 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         layout.setMargin(true);
         setContent(layout);
-        formularioentrada fme = new formularioentrada();
-        //layout.addComponent(fme);
-        //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
-        //layout.addComponent(fmnc);
-        //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
-        //layout.addComponent(fmcnc);
-        //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
-        layout.addComponent(fme);
+        CustomComponent cc = new graficosVisitas(); 
+        layout.addComponent(cc);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

@@ -1,6 +1,8 @@
 biblioteca/modulovisitas/validadores/IsTelefono.class
 biblioteca/modulovisitas/formularioConsultaNoCompletada.class
 biblioteca/modulovisitas/formularioConsultaCompletada$1.class
+biblioteca/modulovisitas/graficosVisitas.class
+biblioteca/modulovisitas/graficosVisitas$1.class
 biblioteca/modulovisitas/formularioNuevaConsulta$2.class
 biblioteca/modulovisitas/formularioNuevaConsulta.class
 biblioteca/modulovisitas/formularioConsultaNoCompletada$1.class
