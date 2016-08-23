@@ -10,7 +10,7 @@
 	<name>modulovisitas</name>
 
 	<properties>
-		<vaadin.version>7.5.3</vaadin.version>
+		<vaadin.version>7.6.2</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 		<jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
 		<project.source.version>1.7</project.source.version>
@@ -49,12 +49,26 @@
 	</dependencyManagement>
 
 	<dependencies>
-	
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.0.1</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.8.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.8.1</version>
+		</dependency>
+		<dependency>
+		   <groupId>com.vaadin.addon</groupId>
+		   <artifactId>vaadin-charts</artifactId>
+		   <version>3.2.0-rc1</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -80,6 +94,7 @@
 			no need for an explicit dependency. -->
 		 <dependency> <groupId>com.vaadin</groupId> <artifactId>vaadin-client-compiler</artifactId> 
 			<scope>provided</scope> </dependency>
+			
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
@@ -94,12 +109,6 @@
 			<artifactId>jasperreports</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<dependency>
-		   <groupId>com.vaadin.addon</groupId>
-		   <artifactId>vaadin-charts</artifactId>
-		   <version>3.0.0</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>

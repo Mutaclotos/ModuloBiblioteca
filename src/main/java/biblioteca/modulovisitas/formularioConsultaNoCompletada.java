@@ -74,7 +74,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		setCompositionRoot(mainLayout);
 		inputTipoBusqueda.setNullSelectionAllowed(false);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("192.168.56.101","root","GESAVA954");
 		inputBusqueda.focus();
 		ui = new MyUI();
 		
@@ -167,10 +167,10 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		
 		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, u.institucion, u.tipo as tipoUsuario, "
 				+ "c.tema, c.tipo, c.fechaEmision, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "
-				+ "FROM consultabase cb, basesdatos b "
+				+ "FROM ConsultaBase cb, BasesDatos b "
 				+ "WHERE cb.Consulta = c.id "
 				+ "AND b.id = cb.basedatos), 'N/A') AS basesDatos "
-				+ "FROM consulta c, usuario u "
+				+ "FROM Consulta c, Usuario u "
 				+ "WHERE c.fechaEntrega IS NULL "
 				+ "AND c.usuario = u.cedula "
 				+ "GROUP BY c.id");

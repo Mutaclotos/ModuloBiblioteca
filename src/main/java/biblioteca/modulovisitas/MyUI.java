@@ -1,7 +1,26 @@
 package biblioteca.modulovisitas;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.annotation.WebServlet;
 
+import com.vaadin.addon.charts.Chart;
+import com.vaadin.addon.charts.model.AxisTitle;
+import com.vaadin.addon.charts.model.ChartType;
+import com.vaadin.addon.charts.model.Configuration;
+import com.vaadin.addon.charts.model.DataLabels;
+import com.vaadin.addon.charts.model.HorizontalAlign;
+import com.vaadin.addon.charts.model.LayoutDirection;
+import com.vaadin.addon.charts.model.Legend;
+import com.vaadin.addon.charts.model.ListSeries;
+import com.vaadin.addon.charts.model.PlotOptionsBar;
+import com.vaadin.addon.charts.model.Series;
+import com.vaadin.addon.charts.model.Tooltip;
+import com.vaadin.addon.charts.model.VerticalAlign;
+import com.vaadin.addon.charts.model.XAxis;
+import com.vaadin.addon.charts.model.YAxis;
+import com.vaadin.addon.charts.model.style.SolidColor;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
@@ -29,11 +48,14 @@ public class MyUI extends UI
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
-        layout.setMargin(true);
-        setContent(layout);
-        CustomComponent cc = new graficosVisitas(); 
-        layout.addComponent(cc);
+        //final VerticalLayout layout = new VerticalLayout();
+        //layout.setMargin(true);
+        //setContent(layout);
+        //CustomComponent cc = new graficosVisitas(); 
+        //layout.addComponent(cc);
+   
+
+        	
         setContent(new formularioConsultaNoCompletada());
         //formularioentrada fme = new formularioentrada();
         //layout.addComponent(fme);
