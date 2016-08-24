@@ -137,7 +137,7 @@ public class formularioConsultaCompletada extends CustomComponent
 		
 		this.button_buscar.addClickListener(click);
 		
-		inputTipoBusqueda.setContainerDataSource(Contenedor.obtenerContenedor4("tipoBusqueda"));
+		inputTipoBusqueda.setContainerDataSource(Contenedor.obtenerContenedorTipoBusqueda2("tipoBusqueda"));
 		
 		inputTipoBusqueda.select("Nombre de usuario");
 		int i = 0;

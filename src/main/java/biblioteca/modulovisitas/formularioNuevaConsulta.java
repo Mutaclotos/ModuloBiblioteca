@@ -191,9 +191,9 @@ public class formularioNuevaConsulta extends CustomComponent {
 			}
 		});*/
 		
-		inputSoy.setContainerDataSource(Contenedor.obtenerContenedor("tipoSoy"));
+		inputSoy.setContainerDataSource(Contenedor.obtenerContenedorTipoUsuario("tipoSoy"));
 		
-		inputTipoConsulta.setContainerDataSource(Contenedor.obtenerContenedor2("tipoConsulta"));
+		inputTipoConsulta.setContainerDataSource(Contenedor.obtenerContenedorTipoConsulta("tipoConsulta"));
 		
 		
 		botonGuardar.addClickListener(new ClickListener(){

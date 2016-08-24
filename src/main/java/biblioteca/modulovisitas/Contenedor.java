@@ -4,7 +4,7 @@ import com.vaadin.data.Container;
 import com.vaadin.data.util.IndexedContainer;
 
 public class Contenedor {
-	public static Container obtenerContenedor(String datos){
+	public static Container obtenerContenedorTipoUsuario(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoUsuario", String.class, "");
 		c.addItem("Estudiante");
@@ -15,7 +15,7 @@ public class Contenedor {
 	}
 	
 	
-	public static Container obtenerContenedor2(String datos){
+	public static Container obtenerContenedorTipoConsulta(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoConsulta", String.class, "");
 		c.addItem("Telefonica");
@@ -23,7 +23,7 @@ public class Contenedor {
 		return c;
 	}
 	
-	public static Container obtenerContenedor3(String datos){
+	public static Container obtenerContenedorTipoBusqueda(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusqueda", String.class, "");
 		c.addItem("Nombre de usuario");
@@ -32,7 +32,7 @@ public class Contenedor {
 		return c;
 	}
 	
-	public static Container obtenerContenedor4(String datos){
+	public static Container obtenerContenedorTipoBusqueda2(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusqueda", String.class, "");
 		c.addItem("Nombre de usuario");
