@@ -149,6 +149,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		
 		int i = 0;
 		
+		tablaConsultas.addContainerProperty("ID", String.class, null);
 		tablaConsultas.addContainerProperty("Nombre", String.class, null);
 		tablaConsultas.addContainerProperty("Apellidos", String.class, null);
 		tablaConsultas.addContainerProperty("Cédula", String.class, null);
@@ -166,7 +167,8 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		tablaConsultas.setSelectable(true);
 		tablaConsultas.setImmediate(true);
 		
-		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, t.numero, u.institucion, u.tipo as tipoUsuario, "
+		
+		ResultSet rs = dbc.query("SELECT c.id, u.nombre, u.apellidos, u.cedula, u.carne, u.email, t.numero, u.institucion, u.tipo as tipoUsuario, "
 				+ "c.tema, c.tipo, c.fechaEmision, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "
 				+ "FROM ConsultaBase cb, BasesDatos b "
 				+ "WHERE cb.Consulta = c.id "
@@ -181,6 +183,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 			while(rs.next())
 			{
 				Integer itemId = new Integer(i);
+				String consultaID = rs.getString("id"); 
 				String nombre = rs.getString("nombre");
 				String apellidos = rs.getString("apellidos");
 				String cedula = rs.getString("cedula");
@@ -194,11 +197,14 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 				String fechaEmision = rs.getString("fechaEmision");
 				String observaciones = rs.getString("observaciones");
 				String basesDatos = rs.getString("basesDatos");
-				tablaConsultas.addItem(new Object[]{nombre,apellidos,cedula,carne,email,telefono,institucion,tipoUsuario,tema,tipoConsulta,fechaEmision,observaciones,basesDatos}, itemId);
+				tablaConsultas.addItem(new Object[]{consultaID,nombre,apellidos,cedula,carne,email,telefono,institucion,tipoUsuario,tema,tipoConsulta,fechaEmision,observaciones,basesDatos}, itemId);
 				i++;
 			}
 		}catch(Exception sqe){
 		}
+		
+		tablaConsultas.setVisibleColumns("Nombre", "Apellidos", "Cédula", "Carné", "Correo", "Teléfono", "Institución", "Tipo usuario", "Tema", "Tipo consulta", "Fecha emisión", "Observaciones","Bases de datos");
+		
 		
 		ClickListener clickEditarConsulta = new ClickListener(){
 			
@@ -210,7 +216,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 				if(rowId != null)
 				{
 					//System.out.println(rowId.toString());
-
+					String idConsulta = (String)tablaConsultas.getContainerProperty(rowId,"ID").getValue();
 					String nombre = (String)tablaConsultas.getContainerProperty(rowId,"Nombre").getValue();
 					String apellidos = (String)tablaConsultas.getContainerProperty(rowId,"Apellidos").getValue();
 					String cedula = (String)tablaConsultas.getContainerProperty(rowId,"Cédula").getValue();
@@ -228,7 +234,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					//ui.changeLayout(fec);
 					//navigator.navigateTo(formularioEditarConsulta.EDITVIEW);
 					//setContent(new formularioConsultaNoCompletada());
-					UI.getCurrent().setContent(new formularioEditarConsulta(nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
+					UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
 					
 				}
 				else
