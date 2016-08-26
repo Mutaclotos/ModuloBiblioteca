@@ -70,7 +70,7 @@ public class DBConnector {
 		return rs;
 	}
 
-	public void update(String tableName, String columnsToUpdate, String... conditions) {
+	/*public void update(String tableName, String columnsToUpdate, String... conditions) {
 		try {
 			String query = "Update " + tableName + " set " + columnsToUpdate + " where ";
 			for (int i = 0; i < conditions.length; ++i) {
@@ -83,6 +83,19 @@ public class DBConnector {
 			}
 			Statement statement = conn.createStatement();
 			statement.executeQuery(query);
+
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			e.printStackTrace();
+		}
+	}*/
+	
+	public void update(String tableName, String columnsToUpdate, String conditions) {
+		try {
+			String query = "Update " + tableName + " set " + columnsToUpdate + " where " + conditions;
+			
+			PreparedStatement statement = conn.prepareStatement(query);
+			statement.execute();
 
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

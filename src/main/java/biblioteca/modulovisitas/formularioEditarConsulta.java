@@ -22,6 +22,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
+import com.vaadin.data.Container;
 
 import biblioteca.modulovisitas.validadores.IsApellido;
 import biblioteca.modulovisitas.validadores.IsCarne;
@@ -212,38 +213,45 @@ public class formularioEditarConsulta extends CustomComponent implements View
 			{
 				case "CRIJA":
 					checkBoxCRIJA.setValue(true);
+					checkBoxCRIJA.setEnabled(false);
 					break;
 				case "CIJUL":
 					checkBoxCIJUL.setValue(true);
+					checkBoxCIJUL.setEnabled(false);
 					break;
 				case "MASTERLEX":
 					checkBoxMASTERLEX.setValue(true);
+					checkBoxMASTERLEX.setEnabled(false);
 					break;
 				case "OPAC":
 					checkBoxOPAC.setValue(true);
+					checkBoxOPAC.setEnabled(false);
 					break;
 				case "SCIJ":
 					checkBoxSCIJ.setValue(true);
+					checkBoxSCIJ.setEnabled(false);
 					break;
 				case "DIALNET":
 					checkBoxDIALNET.setValue(true);
+					checkBoxDIALNET.setEnabled(false);
 					break;
 				case "OTRAS":
 					checkBoxOTRAS.setValue(true);
+					checkBoxOTRAS.setEnabled(false);
 					break;
 				
 			}
 		}
 		
-		inputNombre.setReadOnly(true);
-		inputApellidos.setReadOnly(true);
-		inputCarne.setReadOnly(true);
-		inputCedula.setReadOnly(true);
-		inputEmail.setReadOnly(true);
-		inputTelefono.setReadOnly(true);
-		inputInstitucion.setReadOnly(true);
-		inputSoy.setReadOnly(true);
-		
+		inputNombre.setEnabled(false);
+		inputApellidos.setEnabled(false);
+		inputCarne.setEnabled(false);
+		inputCedula.setEnabled(false);
+		inputEmail.setEnabled(false);
+		inputTelefono.setEnabled(false);
+		inputInstitucion.setEnabled(false);
+		inputSoy.setEnabled(false);
+		System.out.println("ID: " + IDConsulta);
 		
 		botonGuardar.addClickListener(new ClickListener()
 		{
@@ -276,48 +284,58 @@ public class formularioEditarConsulta extends CustomComponent implements View
 				{
 					
 					try{
-						dbc.update("Consulta","tema='"+tema+"', fechaEntrega='"+fechaEntrega+"', observaciones='"+observaciones+"', tipo='"+tipoConsulta+"'","id='"+IDConsulta+"'");
-					}catch(Exception sqe){
-					}
-					
+						if(fechaEntrega != null)
+						{
+							dbc.update("Consulta","tema='"+tema+"', fechaEntrega='"+fechaEntrega+"', observaciones='"+observaciones+"', tipo='"+tipoConsulta+"'","id='"+IDConsulta+"'");
+							
+						}
+						else
+						{
+							dbc.update("Consulta","tema='"+tema+"', observaciones='"+observaciones+"', tipo='"+tipoConsulta+"'","id='"+IDConsulta+"'");
+							
+						}
+						
 						//System.out.println("Consulta modificada: " + Integer.toString(idConsulta) +" " + tema +" " + fechaEntrega+" " + observaciones+" " + cedula+" " + tipoConsulta);
-						if(checkBoxCRIJA.getValue())
+						if(checkBoxCRIJA.getValue() && checkBoxCRIJA.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(1) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(1),IDConsulta);
 						}
-						if(checkBoxCIJUL.getValue())
+						if(checkBoxCIJUL.getValue() && checkBoxCIJUL.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(2) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(2),IDConsulta);
 						}
-						if(checkBoxMASTERLEX.getValue())
+						if(checkBoxMASTERLEX.getValue() && checkBoxMASTERLEX.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(3) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(3),IDConsulta);
 						}
-						if(checkBoxOPAC.getValue())
+						if(checkBoxOPAC.getValue() && checkBoxOPAC.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(4) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(4),IDConsulta);
 						}
-						if(checkBoxSCIJ.getValue())
+						if(checkBoxSCIJ.getValue() && checkBoxSCIJ.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(5) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(5),IDConsulta);
 						}
-						if(checkBoxDIALNET.getValue())
+						if(checkBoxDIALNET.getValue() && checkBoxDIALNET.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(6) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(6),IDConsulta);
 						}
-						if(checkBoxOTRAS.getValue())
+						if(checkBoxOTRAS.getValue() && checkBoxOTRAS.isEnabled())
 						{
 							//System.out.println("Id Base de datos: " + Integer.toString(7) + " Id Consulta: " + Integer.toString(idConsulta));
 							dbc.insert("Consultabase",Integer.toString(7),IDConsulta);
 						}
+					}catch(Exception sqe){
+					}
 					
-						UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+					System.out.println("Fila modificada.");
+					UI.getCurrent().setContent(new formularioConsultaNoCompletada());
 				}
 			}
 		});
@@ -335,6 +353,18 @@ public class formularioEditarConsulta extends CustomComponent implements View
 		
 		return bases;
 	}
+	
+	/*private boolean[] checkSelectedDataBases(int numDB)
+	{
+		boolean[] selectedDB = new boolean[numDB];
+		
+		for()
+		{
+			
+		}
+		
+		return selectedDB;
+	}*/
 
 	@AutoGenerated
 	private AbsoluteLayout buildMainLayout() {
