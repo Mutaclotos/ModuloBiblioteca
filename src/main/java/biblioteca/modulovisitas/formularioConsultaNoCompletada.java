@@ -74,7 +74,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		setCompositionRoot(mainLayout);
 		inputTipoBusqueda.setNullSelectionAllowed(false);
 		
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		inputBusqueda.focus();
 		ui = new MyUI();
 		
