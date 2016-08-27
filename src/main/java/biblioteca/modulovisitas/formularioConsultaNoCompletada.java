@@ -74,7 +74,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		setCompositionRoot(mainLayout);
 		inputTipoBusqueda.setNullSelectionAllowed(false);
 		
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		inputBusqueda.focus();
 		ui = new MyUI();
 		
@@ -217,6 +217,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 				{
 					//System.out.println(rowId.toString());
 					String idConsulta = (String)tablaConsultas.getContainerProperty(rowId,"ID").getValue();
+					String fechaEmision = (String)tablaConsultas.getContainerProperty(rowId,"Fecha emisión").getValue();
 					String nombre = (String)tablaConsultas.getContainerProperty(rowId,"Nombre").getValue();
 					String apellidos = (String)tablaConsultas.getContainerProperty(rowId,"Apellidos").getValue();
 					String cedula = (String)tablaConsultas.getContainerProperty(rowId,"Cédula").getValue();
@@ -234,7 +235,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					//ui.changeLayout(fec);
 					//navigator.navigateTo(formularioEditarConsulta.EDITVIEW);
 					//setContent(new formularioConsultaNoCompletada());
-					UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
+					UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
 					
 				}
 				else
