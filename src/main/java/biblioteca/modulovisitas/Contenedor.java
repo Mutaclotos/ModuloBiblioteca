@@ -41,4 +41,13 @@ public class Contenedor {
 		c.addItem("Fecha de entrega");
 		return c;
 	}
+	
+	public static Container obtenerContenedorTipoDocumento(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoDocumento", String.class, "");
+		c.addItem("Libro");
+		c.addItem("Revista");
+		c.addItem("Tesis");
+		return c;
+	}
 }
