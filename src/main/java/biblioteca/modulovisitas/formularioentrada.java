@@ -153,7 +153,7 @@ public class formularioentrada extends CustomComponent {
 				dbc.reporte();
 			}
 		});
-		inputSoy.setContainerDataSource(Contenedor.obtenerContenedor("tipoSoy"));
+		inputSoy.setContainerDataSource(Contenedor.obtenerContenedorTipoUsuario("tipoSoy"));
 		
 		botonGuardar.addClickListener(new ClickListener(){
 			private static final long serialVersionUID = 47254532L;

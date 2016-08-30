@@ -9,7 +9,7 @@ import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
 
 public class Contenedor {
-	public static Container obtenerContenedor(String datos){
+	public static Container obtenerContenedorTipoUsuario(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoUsuario", String.class, "");
 		c.addItem("Estudiante");
@@ -20,7 +20,7 @@ public class Contenedor {
 	}
 	
 	
-	public static Container obtenerContenedor2(String datos){
+	public static Container obtenerContenedorTipoConsulta(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoConsulta", String.class, "");
 		c.addItem("Telefonica");
@@ -28,7 +28,7 @@ public class Contenedor {
 		return c;
 	}
 	
-	public static Container obtenerContenedor3(String datos){
+	public static Container obtenerContenedorTipoBusqueda(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusqueda", String.class, "");
 		c.addItem("Nombre de usuario");
@@ -37,7 +37,7 @@ public class Contenedor {
 		return c;
 	}
 	
-	public static Container obtenerContenedor4(String datos){
+	public static Container obtenerContenedorTipoBusqueda2(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusqueda", String.class, "");
 		c.addItem("Nombre de usuario");
@@ -46,7 +46,6 @@ public class Contenedor {
 		c.addItem("Fecha de entrega");
 		return c;
 	}
-	
 	public static Container obtenerContenedorGraficoPor(){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("values", String.class, null);
@@ -106,20 +105,14 @@ public class Contenedor {
 				}
 			} catch (SQLException e) {}
         }
-        
-        
-        
-       /* 
-        String[] names = new String[] { "MSIE", "Firefox", "Chrome", "Safari",
-                "Opera" };
-        Number[] values = new Number[] { 55.11, 21.63, 11.94, 7.15, 2.14 };
-     
-        for (int i = 0; i < names.length; i++) {
-            Item ie = vaadinContainer.addItem(i);
-            ie.getItemProperty("name").setValue(names[i]);
-            ie.getItemProperty("y").setValue(values[i]);
-        }*/
-		
 		return vaadinContainer;
+	}
+	public static Container obtenerContenedorTipoDocumento(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoDocumento", String.class, "");
+		c.addItem("Libro");
+		c.addItem("Revista");
+		c.addItem("Tesis");
+		return c;
 	}
 }

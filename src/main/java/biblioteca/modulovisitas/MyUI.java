@@ -48,28 +48,15 @@ public class MyUI extends UI
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        //final VerticalLayout layout = new VerticalLayout();
-        //layout.setMargin(true);
-        //setContent(layout);
-        setContent( new graficosVisitas() ); 
         
-
-        	
+    	
+    	setContent(new graficosConsultas());
+    	//setContent( new graficosVisitas() ); 
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
-        //layout.addComponent(fme);
-        //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
-        //layout.addComponent(fmnc);
-        //formularioConsultaNoCompletada fmcnc = new formularioConsultaNoCompletada();
-        //layout.addComponent(fmcnc);
-        
-        //int i = layout.getComponentIndex(fmcnc);
-        //System.out.println("Index: " + i);
-        
-        //formularioConsultaCompletada fmcnc = new formularioConsultaCompletada();
-        //layout.addComponent(fmcnc);
-        //formularioEditarConsulta fmnc = new formularioEditarConsulta();
-        //layout.addComponent(fmnc);
+        //setContent(new formularioNuevaConsulta());
+        //setContent(new formularioConsultaNoCompletada());
+        //setContent(new formularioConsultaCompletada());
         
        
     }
