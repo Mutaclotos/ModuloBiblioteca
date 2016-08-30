@@ -70,7 +70,7 @@ public class graficosConsultas extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("192.168.56.101","root","GESAVA954");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		
 		this.input_tipoConsulta.setNullSelectionAllowed(false);
 		this.input_tipoConsulta.setContainerDataSource(Contenedor.obtenerContenedorTipoConsulta(null));
