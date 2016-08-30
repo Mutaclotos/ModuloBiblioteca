@@ -104,7 +104,7 @@ public class graficosVisitas extends CustomComponent {
         		new ContainerDataSeries(
         				Contenedor.obtenerContenedorGraficoVisita(this.input_tipo.getValue().toString(),this.input_fecha.getValue().toString(),this.input_por.getValue().toString(),dbc)
         				);
-        //container.setName("Browser share");
+        container.setName("Cantidad");
 
         container.setYPropertyId("y");
         container.setNamePropertyId("name");

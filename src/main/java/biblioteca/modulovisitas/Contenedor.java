@@ -55,12 +55,38 @@ public class Contenedor {
 		return c;
 	}
 	
+	public static Container obtenerContenedorGraficoConsultasPor(){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("values", String.class, null);
+		c.addItem("Tipo Usuario");
+		c.addItem("Institucion");
+		c.addItem("Tema");
+		c.addItem("Base de datos");
+		return c;
+	}
+	
 	public static Container obtenerContenedorGraficoTipo(){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("values", String.class, null);
 		c.addItem("Mensual");
 		c.addItem("Anual");
 		return c;
+	}
+	
+	public static Container obtenerContenedorGraficoConsultasFecha(String tipo, DBConnector dbc){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("values", String.class,null);
+		ResultSet rs = null;
+		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(fechaEmision),'/',month(fechaEmision)) as value FROM `Consulta` group by year(fechaEmision),month(fechaEmision)");
+		else rs = dbc.query("SELECT year(fechaEmision) as value FROM `Consulta` group by year(fechaEmision)");
+		try {
+			while(rs.next()){
+				c.addItem(rs.getString("value"));
+				System.out.println(rs.getString("value"));
+			}
+		} catch (Exception e) {}
+		return c;
+		
 	}
 	
 	public static Container obtenerContenedorGraficoVisitaFecha(String tipo, DBConnector dbc){
@@ -78,6 +104,33 @@ public class Contenedor {
 		return c;
 		
 	}
+	
+	public static Container obtenerContenedorGraficoConsultas(String tipoConsulta, String tipo, String fecha, String por,DBConnector dbc){
+		IndexedContainer vaadinContainer = new IndexedContainer();
+        vaadinContainer.addContainerProperty("name", String.class, null);
+        vaadinContainer.addContainerProperty("y", Number.class, null);
+        if(tipo=="Mensual") fecha = fecha+"/00' and '"+fecha+"/31";
+        else fecha = fecha+"/00/00' and '"+fecha+"/12/31";
+        ResultSet rs = null;
+        if(por=="Tema") rs = dbc.query("SELECT count(c.tema) as value, c.tema as name FROM Consulta c WHERE c.tipo = '"+tipoConsulta+"' and fechaEmision between '"+fecha+"' GROUP BY c.tema"); 
+      	if(por=="Tipo Usuario") rs = dbc.query("SELECT count(u.tipo) as value, u.tipo as name FROM Consulta c, Usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.tipo"); 
+      	if(por=="Institucion")rs = dbc.query("SELECT count(u.institucion) as value, u.institucion as name FROM Consulta c, Usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.institucion");
+      	if(por=="Base de datos") rs = dbc.query("SELECT count(bd.nombre) as value, bd.nombre as name FROM Consulta c,BasesDatos bd, ConsultaBase cb WHERE c.tipo = '"+tipoConsulta+"' and c.id = cb.consulta and cb.basedatos = bd.id and fechaEmision between '"+fecha+"' GROUP BY bd.nombre ");
+        if(rs!=null){
+	        try {
+	        	int i=0;
+				while (rs.next()) {
+				    String name = rs.getString("name");
+				    int value = rs.getInt("value");
+				    Item ie = vaadinContainer.addItem(i++);
+		            ie.getItemProperty("name").setValue(name);
+		            ie.getItemProperty("y").setValue(value);
+				}
+			} catch (SQLException e) {}
+        }
+		return vaadinContainer;
+	}
+	
 	public static Container obtenerContenedorGraficoVisita(String tipo,String fecha,String por, DBConnector dbc){
 		IndexedContainer vaadinContainer = new IndexedContainer();
         vaadinContainer.addContainerProperty("name", String.class, null);
