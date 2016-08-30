@@ -158,6 +158,7 @@ public class formularioConsultaCompletada extends CustomComponent
 		
 		tablaConsultas.setSelectable(true);
 		tablaConsultas.setImmediate(true);
+		tablaConsultas.setColumnCollapsingAllowed(true);
 		
 		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos, u.cedula, u.carne, u.email, u.institucion, u.tipo as tipoUsuario, "
 				+ "c.tema, c.tipo, c.fechaEmision, c.fechaEntrega, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "

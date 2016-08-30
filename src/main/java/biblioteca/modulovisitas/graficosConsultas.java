@@ -117,7 +117,7 @@ public class graficosConsultas extends CustomComponent {
         container.setNamePropertyId("name");
         configuration.setSeries(container);
         chart.drawChart(configuration);
-	    espacioGrafico.addComponent(chart);	   
+        espacioGrafico.addComponent(chart);	   
 
 	}
 	
