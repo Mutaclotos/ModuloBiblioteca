@@ -1,6 +1,11 @@
 package biblioteca.modulovisitas;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.vaadin.addon.charts.model.ContainerDataSeries;
 import com.vaadin.data.Container;
+import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
 
 public class Contenedor {
@@ -40,5 +45,81 @@ public class Contenedor {
 		c.addItem("Fecha de emisión");
 		c.addItem("Fecha de entrega");
 		return c;
+	}
+	
+	public static Container obtenerContenedorGraficoPor(){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("values", String.class, null);
+		c.addItem("Tipo Usuario");
+		c.addItem("Institucion");
+		c.addItem("Tema");
+		return c;
+	}
+	
+	public static Container obtenerContenedorGraficoTipo(){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("values", String.class, null);
+		c.addItem("Mensual");
+		c.addItem("Anual");
+		return c;
+	}
+	
+	public static Container obtenerContenedorGraficoVisitaFecha(String tipo, DBConnector dbc){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("values", String.class,null);
+		ResultSet rs = null;
+		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(horaLlegada),'/',month(horaLlegada)) as value FROM `Visitas` group by year(horaLlegada),month(horaLlegada)");
+		else rs = dbc.query("SELECT year(horaLlegada) as value FROM `Visitas` group by year(horaLlegada)");
+		try {
+			while(rs.next()){
+				c.addItem(rs.getString("value"));
+				System.out.println(rs.getString("value"));
+			}
+		} catch (Exception e) {}
+		return c;
+		
+	}
+	public static Container obtenerContenedorGraficoVisita(String tipo,String fecha,String por, DBConnector dbc){
+		IndexedContainer vaadinContainer = new IndexedContainer();
+        vaadinContainer.addContainerProperty("name", String.class, null);
+        vaadinContainer.addContainerProperty("y", Number.class, null);
+        
+        ResultSet rs = null;
+        if(tipo=="Mensual"){
+        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.tipo");
+        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.institucion");
+        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by v.tema");
+        }else{
+        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.tipo");
+        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.institucion");
+        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by v.tema");
+        }
+        if(rs!=null){
+	        try {
+	        	int i=0;
+				while (rs.next()) {
+				    String name = rs.getString("name");
+				    int value = rs.getInt("value");
+				    Item ie = vaadinContainer.addItem(i++);
+		            ie.getItemProperty("name").setValue(name);
+		            ie.getItemProperty("y").setValue(value);
+				}
+			} catch (SQLException e) {}
+        }
+        
+        
+        
+       /* 
+        String[] names = new String[] { "MSIE", "Firefox", "Chrome", "Safari",
+                "Opera" };
+        Number[] values = new Number[] { 55.11, 21.63, 11.94, 7.15, 2.14 };
+     
+        for (int i = 0; i < names.length; i++) {
+            Item ie = vaadinContainer.addItem(i);
+            ie.getItemProperty("name").setValue(names[i]);
+            ie.getItemProperty("y").setValue(values[i]);
+        }*/
+		
+		return vaadinContainer;
 	}
 }

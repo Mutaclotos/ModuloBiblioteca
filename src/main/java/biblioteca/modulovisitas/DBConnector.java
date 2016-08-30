@@ -57,6 +57,7 @@ public class DBConnector {
 	}
 
 	public ResultSet query(String query) {
+		System.out.println(query);
 		Statement statement;
 		ResultSet rs = null;
 		try {

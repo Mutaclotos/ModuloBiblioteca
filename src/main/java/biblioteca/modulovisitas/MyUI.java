@@ -51,13 +51,12 @@ public class MyUI extends UI
         //final VerticalLayout layout = new VerticalLayout();
         //layout.setMargin(true);
         //setContent(layout);
-        //CustomComponent cc = new graficosVisitas(); 
-        //layout.addComponent(cc);
-   
+        setContent( new graficosVisitas() ); 
+        
 
         	
-        setContent(new formularioConsultaNoCompletada());
-        //formularioentrada fme = new formularioentrada();
+        //setContent(new formularioConsultaNoCompletada());
+        //setContent(new formularioentrada());
         //layout.addComponent(fme);
         //formularioNuevaConsulta fmnc = new formularioNuevaConsulta();
         //layout.addComponent(fmnc);
