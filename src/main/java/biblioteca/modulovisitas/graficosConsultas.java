@@ -127,11 +127,11 @@ public class graficosConsultas extends CustomComponent {
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setImmediate(false);
 		mainLayout.setWidth("100%");
-		mainLayout.setHeight("460px");
+		mainLayout.setHeight("800px");
 		
 		// top-level component properties
 		setWidth("100.0%");
-		setHeight("460px");
+		setHeight("800px");
 		
 		// labelTitulo
 		labelTitulo = new Label();
@@ -166,7 +166,7 @@ public class graficosConsultas extends CustomComponent {
 		espacioGrafico = new AbsoluteLayout();
 		espacioGrafico.setImmediate(false);
 		espacioGrafico.setWidth("500px");
-		espacioGrafico.setHeight("600px");
+		espacioGrafico.setHeight("500px");
 		mainLayout.addComponent(espacioGrafico, "top:220.0px;left:40.0px;");
 		
 		// label_tipo
