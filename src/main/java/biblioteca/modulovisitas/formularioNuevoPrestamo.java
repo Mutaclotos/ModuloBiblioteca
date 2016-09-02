@@ -193,6 +193,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						labelVolumen.setVisible(false);
 						labelNumero.setVisible(false);
 						labelAnio.setVisible(false);
+						labelAdvertencia.setVisible(false);
 						
 					}
 					else if(inputTipoDocumento.getValue().toString().equals("Revista"))
@@ -224,6 +225,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						labelVolumen.setVisible(true);
 						labelNumero.setVisible(true);
 						labelAnio.setVisible(true);
+						labelAdvertencia.setVisible(false);
 					}
 					else if(inputTipoDocumento.getValue().toString().equals("Tesis"))
 					{
@@ -254,6 +256,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						labelVolumen.setVisible(false);
 						labelNumero.setVisible(false);
 						labelAnio.setVisible(true);
+						labelAdvertencia.setVisible(false);
 					}
 			 }
 		});
@@ -267,11 +270,11 @@ public class formularioNuevoPrestamo extends CustomComponent {
 				String signatura = inputSignatura.getValue();
 				String tipoDocumento = inputTipoDocumento.getValue().toString();
 
-				//TODO: modificar tabla para tener columna tipoDocumento
-				ResultSet rs = dbc.query("SELECT 1 FROM Documento WHERE signatura='"+signatura+"'");
+				
+				ResultSet rs = dbc.query("SELECT 1 FROM Documento WHERE signatura='"+signatura+"' AND tipoDocumento='"+tipoDocumento+"'");
 				
 				try{
-					if(!rs.next()){//Si no exiten regitros con esta signatura
+					if(!rs.next()){//Si no exiten regitros con esta signatura y tipoDocumento
 						System.out.println("Documento no encontrado en la base de datos.");
 						labelAdvertencia.setVisible(true);
 					}
@@ -280,6 +283,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						labelAdvertencia.setVisible(false);
 						if(tipoDocumento.equals("Libro"))
 						{
+							String titulo = rs.getString(2);
 							
 						}
 						else if(tipoDocumento.equals("Revista"))
