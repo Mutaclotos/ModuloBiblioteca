@@ -52,11 +52,12 @@ public class MyUI extends UI
     	
     	//setContent(new graficosConsultas());
     	//setContent( new graficosVisitas() ); 
-        setContent(new formularioConsultaNoCompletada());
+        //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
         //setContent(new formularioNuevaConsulta());
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioConsultaCompletada());
+    	setContent(new prestamosActuales());
         
        
     }
