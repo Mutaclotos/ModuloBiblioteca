@@ -128,7 +128,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		
 		inputTipoDocumento.setContainerDataSource(Contenedor.obtenerContenedorTipoDocumento("tipoDocumento"));
 		inputSignatura.setEnabled(true);
-		inputAutor.setReadOnly(false);
+		inputAutor.setReadOnly(true);
 		inputTitulo.setReadOnly(true);
 		inputInstitucion.setReadOnly(true);
 		inputVolumen.setReadOnly(true);
@@ -158,22 +158,30 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		
 		inputTipoDocumento.setImmediate(true);
 		inputSignatura.setImmediate(true);
+		inputAutor.setImmediate(true);
+		inputTitulo.setImmediate(true);
+		inputInstitucion.setImmediate(true);
+		inputVolumen.setImmediate(true);
+		inputNumero.setImmediate(true);
+		inputAnio.setImmediate(true);
 		
 		inputTipoDocumento.addValueChangeListener(new ValueChangeListener(){
 			
 			 @Override 
 			 public void valueChange(ValueChangeEvent vcEvent)
 			 {
+				 
+					setValue(inputTitulo,"");
+					setValue(inputSignatura,"");
+					setValue(inputAutor,"");
+					setValue(inputNumero,"");
+					setValue(inputVolumen,"");
+					setValue(inputAnio,"");
+					setValue(inputInstitucion,"");
+					setValue(inputEditorial,"");
+				 
 				 if(inputTipoDocumento.getValue().toString().equals("Libro"))
 					{
-					    inputTitulo.setValue("");
-						inputSignatura.setValue("");
-						inputAutor.setValue("");
-						inputNumero.setValue("");
-						inputVolumen.setValue("");
-						inputAnio.setValue("");
-						inputInstitucion.setValue("");
-						inputEditorial.setValue("");
 					 
 						inputSignatura.setVisible(true);
 						inputAutor.setVisible(true);
@@ -198,14 +206,6 @@ public class formularioNuevoPrestamo extends CustomComponent {
 					}
 					else if(inputTipoDocumento.getValue().toString().equals("Revista"))
 					{
-						inputTitulo.setValue("");
-						inputSignatura.setValue("");
-						inputAutor.setValue("");
-						inputNumero.setValue("");
-						inputVolumen.setValue("");
-						inputAnio.setValue("");
-						inputInstitucion.setValue("");
-						inputEditorial.setValue("");
 						
 						inputSignatura.setVisible(true);
 						inputAutor.setVisible(true);
@@ -229,14 +229,6 @@ public class formularioNuevoPrestamo extends CustomComponent {
 					}
 					else if(inputTipoDocumento.getValue().toString().equals("Tesis"))
 					{
-						inputTitulo.setValue("");
-						inputSignatura.setValue("");
-						inputAutor.setValue("");
-						inputNumero.setValue("");
-						inputVolumen.setValue("");
-						inputAnio.setValue("");
-						inputInstitucion.setValue("");
-						inputEditorial.setValue("");
 						
 						inputSignatura.setVisible(true);
 						inputAutor.setVisible(true);
@@ -292,31 +284,34 @@ public class formularioNuevoPrestamo extends CustomComponent {
 									+ "WHERE d.signatura = da.documento AND da.autor = a.id ) AS autor FROM documento d "
 									+ "WHERE d.signatura = '"+ signatura +"' GROUP BY d.signatura ");
 							
-							titulo = rs2.getString("titulo");
-							autor = rs2.getString("autor");
-							System.out.println("Titulo: "+titulo);
-							System.out.println("Autor: "+autor);
-							setValue(inputTitulo,titulo);
-							setValue(inputAutor,autor);
+							if(rs2.next())
+							{	
+								titulo = rs2.getString("titulo");
+								autor = rs2.getString("autor");
+								setValue(inputTitulo,titulo);
+								setValue(inputAutor,autor);
+							}
 						}
 						else if(tipoDocumento.equals("Revista"))
 						{
 							rs2 = dbc.query("SELECT d.titulo, (SELECT GROUP_CONCAT(a.nombre) FROM autor a, documentoautor da "
 									+ "WHERE d.signatura = da.documento AND da.autor = a.id ) AS autor, d.volumen, d.numero, d.anio FROM documento d "
 									+ "WHERE d.signatura = '"+ signatura +"' GROUP BY d.signatura ");
-									
-							titulo = rs2.getString(1);
-							autor = rs2.getString(2);
-							volumen = rs2.getString(3);
-							numero = rs2.getString(4);
-							anio = rs2.getString(5);
-									
-							setValue(inputTitulo,titulo);
-							setValue(inputAutor,autor);
-							setValue(inputVolumen,volumen);
-							setValue(inputNumero,numero);
-							setValue(inputAnio,anio);
 							
+							if(rs2.next())
+							{	
+								titulo = rs2.getString(1);
+								autor = rs2.getString(2);
+								volumen = rs2.getString(3);
+								numero = rs2.getString(4);
+								anio = rs2.getString(5);
+										
+								setValue(inputTitulo,titulo);
+								setValue(inputAutor,autor);
+								setValue(inputVolumen,volumen);
+								setValue(inputNumero,numero);
+								setValue(inputAnio,anio);
+							}
 						}
 						else if(tipoDocumento.equals("Tesis"))
 						{
@@ -324,16 +319,20 @@ public class formularioNuevoPrestamo extends CustomComponent {
 									+ "WHERE d.signatura = da.documento AND da.autor = a.id ) AS autor,d.anio FROM documento d "
 									+ "WHERE d.signatura = '"+ signatura +"' GROUP BY d.signatura ");
 							
-							titulo = rs2.getString(1);
-							autor = rs2.getString(2);
-							anio = rs2.getString(3);
-									
-							setValue(inputTitulo,titulo);
-							setValue(inputAutor,autor);
-							setValue(inputAnio,anio);
+							if(rs2.next())
+							{
+								titulo = rs2.getString(1);
+								autor = rs2.getString(2);
+								anio = rs2.getString(3);
+										
+								setValue(inputTitulo,titulo);
+								setValue(inputAutor,autor);
+								setValue(inputAnio,anio);
+							}
 						}
 					}
 				}catch(Exception sqe){
+					sqe.printStackTrace();
 				}
 			 }
 		});
@@ -364,16 +363,17 @@ public class formularioNuevoPrestamo extends CustomComponent {
 							dbc.insert("Prestamo",null,signatura,null,null,null,null);
 						}
 					}catch(Exception sqe){
+						sqe.printStackTrace();
 					}
 					
-					inputTitulo.setValue("");
-					inputSignatura.setValue("");
-					inputAutor.setValue("");
-					inputNumero.setValue("");
-					inputVolumen.setValue("");
-					inputAnio.setValue("");
-					inputInstitucion.setValue("");
-					inputEditorial.setValue("");	
+					setValue(inputTitulo,"");
+					setValue(inputSignatura,"");
+					setValue(inputAutor,"");
+					setValue(inputNumero,"");
+					setValue(inputVolumen,"");
+					setValue(inputAnio,"");
+					setValue(inputInstitucion,"");
+					setValue(inputEditorial,"");
 				}
 			}
 		});
