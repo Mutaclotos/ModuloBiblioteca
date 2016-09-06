@@ -57,8 +57,8 @@ public class MyUI extends UI
         //setContent(new formularioNuevaConsulta());
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioConsultaCompletada());
-
-    	setContent(new prestamosActuales());
+    	setContent(new formularioNuevoPrestamo());
+    	//setContent(new prestamosActuales());
 
 
        
