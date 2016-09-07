@@ -98,6 +98,8 @@ public class formularioNuevoPrestamo extends CustomComponent {
 	private String timeStamp;
 
 	private final DBConnector dbc;
+	
+	public static String usuario = "395476844";
 	/**
 	 * The constructor should first build the main layout, set the
 	 * composition root and then do any custom initialization.
@@ -360,7 +362,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						else
 						{
 							//TODO: insertar usuario en Prestamo
-							dbc.insert("Prestamo",null,signatura,null,null,null,null);
+							dbc.insert("Prestamo",null,signatura,usuario,null,null,null);
 						}
 					}catch(Exception sqe){
 						sqe.printStackTrace();
