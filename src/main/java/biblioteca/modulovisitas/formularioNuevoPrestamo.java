@@ -348,6 +348,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 				inputSignatura.addValidator(new IsCarne());
 				
 				String signatura;
+				String fechaSolicitud = (new SimpleDateFormat("YYYY-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
 
 				if(inputSignatura.isValid()){
 					
@@ -362,7 +363,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						else
 						{
 							//TODO: insertar usuario en Prestamo
-							dbc.insert("Prestamo",null,signatura,usuario,null,null,null);
+							dbc.insert("Prestamo",null,signatura,usuario,null,null,null,fechaSolicitud);
 						}
 					}catch(Exception sqe){
 						sqe.printStackTrace();

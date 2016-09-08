@@ -77,7 +77,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 			{
 				if(inputTipoBusqueda.getValue().toString().equals("Signatura"))
 				{
-					tablaSolicitudes.setVisibleColumns("Signatura", "Título", "Autor", "Fecha de solicitud", "Solicitante");
+					tablaSolicitudes.setVisibleColumns("Signatura", "Título", "Autor", "Fecha de solicitud", "Cédula de solicitante", "Nombre", "Apellidos", "Estado de solicitud");
 					
 					filterable = (Container.Filterable) tablaSolicitudes.getContainerDataSource();
 					
@@ -92,7 +92,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 				}
 				else if(inputTipoBusqueda.getValue().toString().equals("Título"))
 				{
-					tablaSolicitudes.setVisibleColumns("Título", "Signatura",  "Autor", "Fecha de solicitud", "Solicitante");
+					tablaSolicitudes.setVisibleColumns("Título", "Signatura",  "Autor", "Fecha de solicitud", "Cédula de solicitante", "Nombre", "Apellidos", "Estado de solicitud");
 					
 					filterable = (Container.Filterable) tablaSolicitudes.getContainerDataSource();
 					
@@ -105,9 +105,9 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 					filter = new SimpleStringFilter("Título", inputBusqueda.getValue(),true,false);
 					filterable.addContainerFilter(filter);
 				}
-				else if(inputTipoBusqueda.getValue().toString().equals("Solicitante"))
+				else if(inputTipoBusqueda.getValue().toString().equals("Cédula de solicitante"))
 				{
-					tablaSolicitudes.setVisibleColumns("Solicitante", "Fecha de solicitud", "Signatura", "Título", "Autor" );
+					tablaSolicitudes.setVisibleColumns("Cédula de solicitante", "Nombre", "Apellidos", "Fecha de solicitud", "Signatura", "Título", "Autor", "Estado de solicitud" );
 					
 					filterable = (Container.Filterable) tablaSolicitudes.getContainerDataSource();
 					
@@ -117,12 +117,12 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 						filterable.removeContainerFilter(filter);
 					}
 					//Nuevo filtro es creado para la columna "Fecha emisión"
-					filter = new SimpleStringFilter("Solicitante", inputBusqueda.getValue(),true,false);
+					filter = new SimpleStringFilter("Cédula de solicitante", inputBusqueda.getValue(),true,false);
 					filterable.addContainerFilter(filter);
 				}
 				else if(inputTipoBusqueda.getValue().toString().equals("Fecha de solicitud"))
 				{
-					tablaSolicitudes.setVisibleColumns("Fecha de solicitud", "Signatura", "Título", "Autor", "Solicitante");
+					tablaSolicitudes.setVisibleColumns("Fecha de solicitud", "Signatura", "Título", "Autor", "Cédula de solicitante", "Nombre", "Apellidos", "Estado de solicitud");
 					
 					filterable = (Container.Filterable) tablaSolicitudes.getContainerDataSource();
 					
@@ -152,7 +152,9 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		tablaSolicitudes.addContainerProperty("Signatura", String.class, null);
 		tablaSolicitudes.addContainerProperty("Título", String.class, null);
 		tablaSolicitudes.addContainerProperty("Autor", String.class, null);
-		tablaSolicitudes.addContainerProperty("Solicitante", String.class, null);
+		tablaSolicitudes.addContainerProperty("Cédula de solicitante", String.class, null);
+		tablaSolicitudes.addContainerProperty("Nombre", String.class, null);
+		tablaSolicitudes.addContainerProperty("Apellidos", String.class, null);
 		tablaSolicitudes.addContainerProperty("Fecha de solicitud", String.class, null);
 		tablaSolicitudes.addContainerProperty("Estado de solicitud", String.class, null);
 		
@@ -161,16 +163,17 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		tablaSolicitudes.setColumnCollapsingAllowed(true);
 		
 		//TODO: modify query
-		ResultSet rs = dbc.query("SELECT c.id, u.nombre, u.apellidos, u.cedula, u.carne, u.email, t.numero, u.institucion, u.tipo as tipoUsuario, "
-				+ "c.tema, c.tipo, c.fechaEmision, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "
-				+ "FROM ConsultaBase cb, BasesDatos b "
-				+ "WHERE cb.Consulta = c.id "
-				+ "AND b.id = cb.basedatos), 'N/A') AS basesDatos "
-				+ "FROM Consulta c, Usuario u, Telefono t "
-				+ "WHERE c.fechaEntrega IS NULL "
-				+ "AND c.usuario = u.cedula "
-				+ "AND t.cedula = u.cedula "
-				+ "GROUP BY c.id");
+		
+		
+		ResultSet rs = dbc.query("SELECT p.id, p.documento as signatura, d.titulo, "
+																				+ "(SELECT GROUP_CONCAT(a.nombre) "
+																				+ "FROM autor a, documentoautor da "
+																				+ "WHERE d.signatura = da.documento "
+																				+ "AND da.autor = a.id ) AS autor, "
+																				+ "p.usuario, u.nombre, u.apellidos, p.fechaSolicitud, IFNULL(p.aprobado, 'PENDIENTE') as aprobado "
+							   + "FROM prestamo p, usuario u, documento d "
+							   + "WHERE p.documento = d.signatura "
+							   + "AND p.usuario = u.cedula");
 		try{
 			
 			while(rs.next())
@@ -181,16 +184,18 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 				String titulo = rs.getString("titulo");
 				String autor = rs.getString("autor");
 				String usuario = rs.getString("usuario");
+				String nombre = rs.getString("nombre");
+				String apellidos = rs.getString("apellidos");
 				String fecha = rs.getString("fechaSolicitud");
 				String aprobado = rs.getString("aprobado");
 				
-				tablaSolicitudes.addItem(new Object[]{solicitudID,signatura,titulo,autor,usuario,fecha,aprobado}, itemId);
+				tablaSolicitudes.addItem(new Object[]{solicitudID,signatura,titulo,autor,usuario,nombre,apellidos,fecha,aprobado}, itemId);
 				i++;
 			}
 		}catch(Exception sqe){
 		}
 		
-		tablaSolicitudes.setVisibleColumns("Signatura", "Título", "Autor", "Solicitante", "Fecha de solicitud", "Estado de solicitud");
+		tablaSolicitudes.setVisibleColumns("Signatura", "Título", "Autor", "Cédula de solicitante", "Nombre", "Apellidos", "Fecha de solicitud", "Estado de solicitud");
 		
 		
 		ClickListener clickEditarSolicitud = new ClickListener(){
@@ -207,7 +212,9 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 					String signatura = (String)tablaSolicitudes.getContainerProperty(rowId,"Signatura").getValue();
 					String titulo = (String)tablaSolicitudes.getContainerProperty(rowId,"Título").getValue();
 					String autor = (String)tablaSolicitudes.getContainerProperty(rowId,"Autor").getValue();
-					String usuario = (String)tablaSolicitudes.getContainerProperty(rowId,"Solicitante").getValue();
+					String usuario = (String)tablaSolicitudes.getContainerProperty(rowId,"Cédula de solicitante").getValue();
+					String nombre = (String)tablaSolicitudes.getContainerProperty(rowId,"Nombre").getValue();
+					String apellidos = (String)tablaSolicitudes.getContainerProperty(rowId,"Apellidos").getValue();
 					String fecha = (String)tablaSolicitudes.getContainerProperty(rowId,"Fecha de solicitud").getValue();
 					String aprobado = (String)tablaSolicitudes.getContainerProperty(rowId,"Estado de solicitud").getValue();
 					

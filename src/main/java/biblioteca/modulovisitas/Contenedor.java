@@ -52,7 +52,7 @@ public class Contenedor {
 		c.addContainerProperty("TipoBusquedaSolicitud", String.class, "");
 		c.addItem("Signatura");
 		c.addItem("Título");
-		c.addItem("Solicitante");
+		c.addItem("Cédula de solicitante");
 		c.addItem("Fecha de solicitud");
 		return c;
 	}
