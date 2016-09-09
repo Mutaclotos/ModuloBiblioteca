@@ -184,12 +184,6 @@ public class formularioNuevaConsulta extends CustomComponent {
 		inputNombre.addFocusListener(fl);
 		botonGuardar.addFocusListener(fl);
 		
-		/*this.button_reporte.addClickListener(new ClickListener(){
-			@Override
-			public void buttonClick(ClickEvent event) {
-				dbc.reporte();
-			}
-		});*/
 		
 		inputSoy.setContainerDataSource(Contenedor.obtenerContenedorTipoUsuario("tipoSoy"));
 		
