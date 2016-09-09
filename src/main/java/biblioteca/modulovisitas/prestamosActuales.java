@@ -35,27 +35,52 @@ public class prestamosActuales extends CustomComponent {
 	
 	private MyUI ui;
 
-	public prestamosActuales() {
-		
-		dbc = new DBConnector("localhost","moises","315600");
-		ui = new MyUI();
-		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaEntrada, p.fechaSalida"
-								+" from Prestamo p , Usuario u"
-								+" where p.usuario=u.cedula");
-		
+	public prestamosActuales()  {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		tablaDePrestamos.addContainerProperty("fecha", String.class, null);
+		dbc = new DBConnector("localhost","moises","315600");
+		ui = new MyUI();
+		
+		
+		tablaDePrestamos.addContainerProperty("fecha de retiro", String.class, null);
 		tablaDePrestamos.addContainerProperty("nombre de libro", String.class, null);
 		tablaDePrestamos.addContainerProperty("fecha devolucion", String.class, null);
-		tablaDePrestamos.addItem(new Object[]{"17/8/95","cocori","17/12/17"}, 2);
+		int i=2;
+		
+		
+		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaEntrega, p.fechaSalida from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
+		
+		
+		
+		
+		
+		try{	
+		//TODO: datasource de resultSet, tableQuery	
+			while(rs.next())
+			{
+				Integer itemId = new Integer(i);
+				
+				String fechaRetiro = rs.getString("fechaSalida"); 
+				String nombreDocu = rs.getString("Documento");
+				String fechaDevolucion = rs.getString("fechaEntrega");
+
+				tablaDePrestamos.addItem(new Object[]{fechaRetiro,nombreDocu,fechaDevolucion}, itemId);
+				
+				i++;
+				System.out.println(nombreDocu);
+				System.out.println(fechaRetiro);
+			}
+					
+		
+		}catch(Exception sqe){
+			System.out.println("faillllll");
+		}
+		
+
 		tablaDePrestamos.setPageLength(tablaDePrestamos.size());
 		
-		/*table_1.setSelectable(true);
-		table_1.setImmediate(true);
-		table_1.setColumnCollapsingAllowed(true);
-		table_1.setVisibleColumns("ID");*/
+		
 		
 		// TODO add user code here
 	}
@@ -75,7 +100,7 @@ public class prestamosActuales extends CustomComponent {
 		// etiquetaNombreBiblio
 		etiquetaNombreBiblio = new Label();
 		etiquetaNombreBiblio.setImmediate(false);
-		etiquetaNombreBiblio.setWidth("220px");
+		etiquetaNombreBiblio.setWidth("280px");
 		etiquetaNombreBiblio.setHeight("40px");
 		etiquetaNombreBiblio.setValue("Bibioteca Francisco Echeverria Garcìa");
 		mainLayout.addComponent(etiquetaNombreBiblio, "top:20.0px;left:100.0px;");
@@ -83,7 +108,7 @@ public class prestamosActuales extends CustomComponent {
 		// tablaDePrestamos
 		tablaDePrestamos = new Table();
 		tablaDePrestamos.setImmediate(false);
-		tablaDePrestamos.setWidth("480px");
+		tablaDePrestamos.setWidth("500px");
 		tablaDePrestamos.setHeight("-1px");
 		mainLayout.addComponent(tablaDePrestamos, "top:120.0px;left:260.0px;");
 		
@@ -93,16 +118,16 @@ public class prestamosActuales extends CustomComponent {
 		dropPantallas.setImmediate(false);
 		dropPantallas.setDescription("prestamos actuales");
 		dropPantallas.setWidth("-1px");
-		dropPantallas.setHeight("30px");
-		mainLayout.addComponent(dropPantallas, "bottom:444.0px;left:740.0px;");
+		dropPantallas.setHeight("20px");
+		mainLayout.addComponent(dropPantallas, "bottom:476.0px;left:760.0px;");
 		
 		// label_2
 		label_2 = new Label();
 		label_2.setImmediate(false);
-		label_2.setWidth("320px");
+		label_2.setWidth("160px");
 		label_2.setHeight("38px");
 		label_2.setValue("Prestamos Actuales");
-		mainLayout.addComponent(label_2, "top:62.0px;left:300.0px;");
+		mainLayout.addComponent(label_2, "top:60.0px;left:420.0px;");
 		
 		return mainLayout;
 	}
