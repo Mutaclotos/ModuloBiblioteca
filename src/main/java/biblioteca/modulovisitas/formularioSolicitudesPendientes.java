@@ -182,7 +182,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 																				+ "p.usuario, u.nombre, u.apellidos, t.numero as telefono, p.fechaSolicitud, IFNULL(p.fechaCaducidad, 'FALTANTE') as fechaCaducidad, IFNULL(p.estado, 'PENDIENTE') as estado "
 							   + "FROM prestamo p, usuario u, documento d, telefono t "
 							   + "WHERE p.documento = d.signatura "
-							   + "AND (p.estado != 'RECHAZADO' OR p.estado IS NULL) "
+							   + "AND (p.estado != 'DENEGADO' OR p.estado IS NULL) "
 							   + "AND p.usuario = u.cedula "
 							   + "AND t.cedula = p.usuario");
 		try{
