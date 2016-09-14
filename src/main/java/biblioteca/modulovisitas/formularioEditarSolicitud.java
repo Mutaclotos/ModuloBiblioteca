@@ -24,6 +24,7 @@ import com.vaadin.ui.UI;
 
 import biblioteca.modulovisitas.validadores.IsApellido;
 import biblioteca.modulovisitas.validadores.IsFecha;
+import biblioteca.modulovisitas.validadores.IsFechaCaducidad;
 
 public class formularioEditarSolicitud extends CustomComponent implements View
 {
@@ -299,7 +300,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 			public void buttonClick(ClickEvent event)
 			{
 				
-				inputFechaCaducidad.addValidator(new IsFecha());
+				inputFechaCaducidad.addValidator(new IsFechaCaducidad());
 				inputTipoPrestamo.addValidator(new IsApellido());
 				
 				String fechaEntrega;
@@ -331,7 +332,8 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 									
 									fechaEntrega = (new SimpleDateFormat("YYYY-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
 									
-									fechaCaducidad = (new SimpleDateFormat("YYYY-MM-dd ").format(Calendar.getInstance().getTime())) + inputFechaCaducidad.getValue();
+									//fechaCaducidad = (new SimpleDateFormat("YYYY-MM-dd ").format(Calendar.getInstance().getTime())) + inputFechaCaducidad.getValue();
+									fechaCaducidad = inputFechaCaducidad.getValue();
 									
 									dbc.update("Prestamo", "estado='"+nuevoEstado+"', fechaEntrega='"+fechaEntrega+"', fechaCaducidad='"+fechaCaducidad+"', tipo='"+tipoPrestamo+"'","id='"+IDSolicitud+"'");
 									
@@ -351,7 +353,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 									dbc.update("Prestamo", "estado='"+nuevoEstado+"', fechaDevolucion='"+fechaDevolucion+"'","id='"+IDSolicitud+"'");	
 									
 									System.out.println("Fila modificada.");
-									inputFechaCaducidad.setValue("");
+									setValue(inputFechaCaducidad,"");
 									checkBoxACEPTAR.setValue(false);
 									checkBoxRECHAZAR.setValue(false);
 									

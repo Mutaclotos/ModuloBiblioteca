@@ -10,7 +10,7 @@ public class IsFechaCaducidad implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("([0-9]{1,2}:[0-9]{1,2})");
+		Pattern p = Pattern.compile("[0-9]{4}-[0-9]{1,2}-[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2})?");
 		Matcher m = p.matcher(value.toString());
 		if(!m.matches()){
 			throw new InvalidValueException("No es una fecha de caducidad valida");
