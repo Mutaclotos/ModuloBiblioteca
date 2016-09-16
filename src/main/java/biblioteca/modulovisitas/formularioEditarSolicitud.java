@@ -278,6 +278,15 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 				checkBoxACEPTAR.setValue(true);
 				checkBoxACEPTAR.setEnabled(false);
 				checkBoxRECHAZAR.setEnabled(false);
+				try
+				{
+					fechaCaduca = formatter.parse(fechaCaducidad);
+					setValueDateField(inputFechaCaducidad, fechaCaduca);
+					
+				}catch(Exception e){
+					e.printStackTrace();
+				}
+				inputFechaCaducidad.setReadOnly(true);
 				break;
 		}
 		
