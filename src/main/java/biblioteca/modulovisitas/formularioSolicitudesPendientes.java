@@ -225,7 +225,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 			public void buttonClick(ClickEvent event) 
 			{
 				//IndexedContainer ic = new IndexedContainer();
-				buscarMorosos();
+				//buscarMorosos();
 				
 				Object rowId = tablaSolicitudes.getValue(); 
 				if(rowId != null)
