@@ -1,5 +1,6 @@
 package biblioteca.modulovisitas.validadores;
 
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,8 +11,10 @@ public class IsFechaCaducidad implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("[0-9]{4}-[0-9]{1,2}-[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}(:[0-9]{1,2})?");
-		Matcher m = p.matcher(value.toString());
+		Pattern p = Pattern.compile("[0-9]{4}-[0-9]{1,2}-[0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}");
+		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+		String newValue = formatter.format(value);
+		Matcher m = p.matcher(newValue);
 		if(!m.matches()){
 			throw new InvalidValueException("No es una fecha de caducidad valida");
 		}

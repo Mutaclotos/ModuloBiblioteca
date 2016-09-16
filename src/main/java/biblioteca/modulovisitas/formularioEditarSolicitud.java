@@ -189,9 +189,9 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 		labelFechaHora.setValue(timeStamp);
 		
 		IDSolicitud = idSolicitud;
-		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+		final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 		inputFechaCaducidad.setResolution(inputFechaCaducidad.RESOLUTION_MIN);
-		
+		inputFechaCaducidad.setDateFormat("yyyy-MM-dd HH:mm");
 		Date fechaCaduca;
 		
 		//FocusListener para verificar validez de campo modificado
@@ -345,8 +345,9 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 									
 									//fechaCaducidad = (new SimpleDateFormat("YYYY-MM-dd ").format(Calendar.getInstance().getTime())) + inputFechaCaducidad.getValue();
 									fechaCaducidad = inputFechaCaducidad.getValue();
+									String fechaCaduca = formatter.format(fechaCaducidad);
 									
-									dbc.update("Prestamo", "estado='"+nuevoEstado+"', fechaEntrega='"+fechaEntrega+"', fechaCaducidad='"+fechaCaducidad+"', tipo='"+tipoPrestamo+"'","id='"+IDSolicitud+"'");
+									dbc.update("Prestamo", "estado='"+nuevoEstado+"', fechaEntrega='"+fechaEntrega+"', fechaCaducidad='"+fechaCaduca+"', tipo='"+tipoPrestamo+"'","id='"+IDSolicitud+"'");
 									
 									System.out.println("Fila modificada.");
 									setValueDateField(inputFechaCaducidad, null);
