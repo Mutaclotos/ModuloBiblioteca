@@ -186,7 +186,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 																				+ "p.usuario, u.nombre, u.apellidos, t.numero as telefono, p.fechaSolicitud, IFNULL(p.fechaCaducidad, 'FALTANTE') as fechaCaducidad, IFNULL(p.estado, 'PENDIENTE') as estado "
 							   + "FROM prestamo p, usuario u, documento d, telefono t "
 							   + "WHERE p.documento = d.signatura "
-							   + "AND (p.estado IS NULL OR p.estado = 'PRESTADO') "
+							   + "AND (p.estado IS NULL OR p.estado = 'PRESTADO' OR p.estado = 'MOROSO') "
 							   + "AND p.usuario = u.cedula "
 							   + "AND t.cedula = p.usuario");
 		try{
@@ -225,7 +225,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 			public void buttonClick(ClickEvent event) 
 			{
 				//IndexedContainer ic = new IndexedContainer();
-				buscarMorosos();
+				//buscarMorosos();
 				
 				Object rowId = tablaSolicitudes.getValue(); 
 				if(rowId != null)
