@@ -434,7 +434,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		labelNumero.setWidth("-1px");
 		labelNumero.setHeight("-1px");
 		labelNumero.setValue("Número:");
-		mainLayout.addComponent(labelNumero, "top:441.0px;left:34.0px;");
+		mainLayout.addComponent(labelNumero, "top:381.0px;left:33.0px;");
 		
 		// labelSignatura
 		labelSignatura = new Label();
@@ -456,7 +456,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		inputNumero.setImmediate(false);
 		inputNumero.setWidth("80px");
 		inputNumero.setHeight("-1px");
-		mainLayout.addComponent(inputNumero, "top:439.0px;left:120.0px;");
+		mainLayout.addComponent(inputNumero, "top:381.0px;left:120.0px;");
 		
 		// inputTipoDocumento
 		inputTipoDocumento = new ComboBox();
@@ -526,14 +526,14 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		labelAnio.setWidth("-1px");
 		labelAnio.setHeight("-1px");
 		labelAnio.setValue("Año:");
-		mainLayout.addComponent(labelAnio, "top:503.0px;left:54.0px;");
+		mainLayout.addComponent(labelAnio, "top:441.0px;left:54.0px;");
 		
 		// inputAnio
 		inputAnio = new TextField();
 		inputAnio.setImmediate(false);
 		inputAnio.setWidth("60px");
 		inputAnio.setHeight("-1px");
-		mainLayout.addComponent(inputAnio, "top:499.0px;left:120.0px;");
+		mainLayout.addComponent(inputAnio, "top:441.0px;left:120.0px;");
 		
 		// labelVolumen
 		labelVolumen = new Label();
@@ -541,14 +541,14 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		labelVolumen.setWidth("-1px");
 		labelVolumen.setHeight("-1px");
 		labelVolumen.setValue("Volumen:");
-		mainLayout.addComponent(labelVolumen, "top:385.0px;left:29.0px;");
+		mainLayout.addComponent(labelVolumen, "top:324.0px;left:31.0px;");
 		
 		// inputVolumen
 		inputVolumen = new TextField();
 		inputVolumen.setImmediate(false);
 		inputVolumen.setWidth("140px");
 		inputVolumen.setHeight("-1px");
-		mainLayout.addComponent(inputVolumen, "top:376.0px;left:120.0px;");
+		mainLayout.addComponent(inputVolumen, "top:319.0px;left:120.0px;");
 		
 		// inputEditorial
 		inputEditorial = new TextField();

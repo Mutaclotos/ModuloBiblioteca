@@ -1,6 +1,8 @@
 package biblioteca.modulovisitas;
 
 import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -130,7 +132,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 				}
 				else if(inputTipoBusqueda.getValue().toString().equals("Fecha de solicitud"))
 				{
-					tablaSolicitudes.setVisibleColumns("Fecha de solicitud", "Fecha de caducidad", "Signatura", "Título", "Autor", "Cédula de solicitante", "Nombre", "Apellidos", "Teléfono", "Estado de solicitud");
+					tablaSolicitudes.setVisibleColumns("Estado de solicitud", "Fecha de solicitud", "Fecha de caducidad", "Signatura", "Título", "Autor", "Cédula de solicitante", "Nombre", "Apellidos", "Teléfono");
 					
 					filterable = (Container.Filterable) tablaSolicitudes.getContainerDataSource();
 					
@@ -140,7 +142,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 						filterable.removeContainerFilter(filter);
 					}
 					//Nuevo filtro es creado para la columna "Fecha emisión"
-					filter = new SimpleStringFilter("Fecha de solicitud", inputBusqueda.getValue(),true,false);
+					filter = new SimpleStringFilter("Estado de solicitud", inputBusqueda.getValue(),true,false);
 					filterable.addContainerFilter(filter);
 				}
 				
@@ -225,9 +227,11 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 			public void buttonClick(ClickEvent event) 
 			{
 				//IndexedContainer ic = new IndexedContainer();
-				//buscarMorosos();
+				
 				
 				Object rowId = tablaSolicitudes.getValue(); 
+				buscarMorosos();
+				
 				if(rowId != null)
 				{
 					labelAdvertencia.setVisible(false);
@@ -267,7 +271,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 	{
 		
 		Iterator iter = tablaSolicitudes.getItemIds().iterator();
-		SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		
 		while(iter.hasNext())
 		{
@@ -276,19 +280,20 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 			Object rowId = tablaSolicitudes.getValue(); 
 			String idSolicitud = (String)tablaSolicitudes.getContainerProperty(rowId,"ID").getValue();
 			String fechaCaducidad = (String)tablaSolicitudes.getContainerProperty(rowId,"Fecha de caducidad").getValue();
-			String fechaActual = (new SimpleDateFormat("YYYY-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
+			String estado = (String)tablaSolicitudes.getContainerProperty(rowId,"Estado de solicitud").getValue();
+			String fechaActual = (new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
 			Date fechaCaduca;
 			Date fechaAct;
 			String nuevoEstado = "MOROSO";
 			
 			try
 			{
-				if(!fechaCaducidad.equals("FALTANTE"))
+				if(!fechaCaducidad.equals("FALTANTE") && !estado.equals("MOROSO"))
 				{
 					fechaCaduca = formatter.parse(fechaCaducidad);
 					fechaAct = formatter.parse(fechaActual);
 					
-					if(fechaCaduca.after(fechaAct))
+					if(fechaCaduca.before(fechaAct))
 					{
 						System.out.println("Moroso detectado.");
 						dbc.update("Prestamo", "estado='"+nuevoEstado+"'","id='"+idSolicitud+"'");
