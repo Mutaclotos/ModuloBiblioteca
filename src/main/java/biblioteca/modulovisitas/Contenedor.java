@@ -53,7 +53,7 @@ public class Contenedor {
 		c.addItem("Signatura");
 		c.addItem("Título");
 		c.addItem("Cédula de solicitante");
-		c.addItem("Fecha de solicitud");
+		c.addItem("Estado de solicitud");
 		return c;
 	}
 	
