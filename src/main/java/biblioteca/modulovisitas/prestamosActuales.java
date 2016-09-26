@@ -36,7 +36,7 @@ public class prestamosActuales extends CustomComponent {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		ui = new MyUI();
 		
 		

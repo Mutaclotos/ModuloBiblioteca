@@ -130,7 +130,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 					filter = new SimpleStringFilter("Cédula de solicitante", inputBusqueda.getValue(),true,false);
 					filterable.addContainerFilter(filter);
 				}
-				else if(inputTipoBusqueda.getValue().toString().equals("Fecha de solicitud"))
+				else if(inputTipoBusqueda.getValue().toString().equals("Estado de solicitud"))
 				{
 					tablaSolicitudes.setVisibleColumns("Estado de solicitud", "Fecha de solicitud", "Fecha de caducidad", "Signatura", "Título", "Autor", "Cédula de solicitante", "Nombre", "Apellidos", "Teléfono");
 					
