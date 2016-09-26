@@ -43,7 +43,7 @@ public class prestamosActuales extends CustomComponent {
 		tablaDePrestamos.addContainerProperty("fecha de retiro", String.class, null);
 		tablaDePrestamos.addContainerProperty("nombre de libro", String.class, null);
 		tablaDePrestamos.addContainerProperty("fecha devolucion", String.class, null);
-		int i=2;
+		int i=2;///////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		
 		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaEntrega, p.fechaSalida from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
