@@ -34,7 +34,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 	public formularioHistorialPrestamos() {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector("localhost","Mutaclotos","we105769");
 		ui = new MyUI();
 		
 
@@ -56,7 +56,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 		from Documento d, prestamo p, usuario u,documentoautor da,autor a 
 		where p.usuario=u.cedula
 		and p.documento= d.signatura
-        and da.documento= d.signatura
+        and da.documento= d.signatura++++++++++++++
         and da.autor = a.id
 		group by p.Documento
 		
@@ -91,8 +91,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 			}
 			
 
-			tablaHistorial.setPageLength(tablaHistorial.size());
-		
+			tablaHistorial.setPageLength(tablaHistorial.size());		
 		
 		
 		
