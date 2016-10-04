@@ -36,14 +36,18 @@ public class prestamosActuales extends CustomComponent {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("localhost","moises","315600");
 		ui = new MyUI();
 		
 		
 		tablaDePrestamos.addContainerProperty("fecha de retiro", String.class, null);
 		tablaDePrestamos.addContainerProperty("nombre de libro", String.class, null);
 		tablaDePrestamos.addContainerProperty("fecha devolucion", String.class, null);
-		int i=2;///////////////////////////////////////////////////////////////////////////////////////////////////
+
+		tablaDePrestamos.setSelectable(true);
+		tablaDePrestamos.setImmediate(true);
+		tablaDePrestamos.setColumnCollapsingAllowed(true);
+		int i=0;///////////////////////////////////////////////////////////////////////////////////////////////////it was 2 when working 
 		
 		
 		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaEntrega, p.fechaSalida from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"

@@ -47,6 +47,11 @@ public class formularioHistorialPrestamos extends CustomComponent {
 		tablaHistorial.addContainerProperty("tipo", String.class, null);
 		tablaHistorial.addContainerProperty("año ", String.class, null);
 		tablaHistorial.addContainerProperty("editorial", String.class, null);
+		
+		
+		tablaHistorial.setSelectable(true);
+		tablaHistorial.setImmediate(true);
+		tablaHistorial.setColumnCollapsingAllowed(true);
 		int i=0;
 		
 		//añadir condicion de la cedula del usuario actual"
