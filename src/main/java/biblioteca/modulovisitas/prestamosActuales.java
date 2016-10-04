@@ -40,17 +40,20 @@ public class prestamosActuales extends CustomComponent {
 		ui = new MyUI();
 		
 		
-		tablaDePrestamos.addContainerProperty("fecha de retiro", String.class, null);
-		tablaDePrestamos.addContainerProperty("nombre de libro", String.class, null);
-		tablaDePrestamos.addContainerProperty("fecha devolucion", String.class, null);
+
+		tablaDePrestamos.addContainerProperty("Documento", String.class, null);
+		tablaDePrestamos.addContainerProperty("Fecha de solicitud", String.class, null);
+		tablaDePrestamos.addContainerProperty("Fecha de caducidad", String.class, null);
+		tablaDePrestamos.addContainerProperty("Estado de solicitud", String.class, null);
+		int i=0;///////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 		tablaDePrestamos.setSelectable(true);
 		tablaDePrestamos.setImmediate(true);
 		tablaDePrestamos.setColumnCollapsingAllowed(true);
-		int i=0;///////////////////////////////////////////////////////////////////////////////////////////////////it was 2 when working 
 		
 		
-		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaEntrega, p.fechaSalida from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
+		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
 		
 		
 		
@@ -62,15 +65,16 @@ public class prestamosActuales extends CustomComponent {
 			{
 				Integer itemId = new Integer(i);
 				
-				String fechaRetiro = rs.getString("fechaSalida"); 
-				String nombreDocu = rs.getString("Documento");
-				String fechaDevolucion = rs.getString("fechaEntrega");
+				String documento = rs.getString("Documento"); 
+				String fechaSolicitud = rs.getString("fechaSolicitud");
+				String fechaCaducidad = rs.getString("fechaCaducidad");
+				String estado = rs.getString("estado");
 
-				tablaDePrestamos.addItem(new Object[]{fechaRetiro,nombreDocu,fechaDevolucion}, itemId);
+				tablaDePrestamos.addItem(new Object[]{documento,fechaSolicitud,fechaCaducidad,estado}, itemId);
 				
 				i++;
-				System.out.println(nombreDocu);
-				System.out.println(fechaRetiro);
+				//System.out.println(nombreDocu);
+				//System.out.println(fechaRetiro);
 			}
 					
 		
@@ -80,7 +84,9 @@ public class prestamosActuales extends CustomComponent {
 		
 
 		tablaDePrestamos.setPageLength(tablaDePrestamos.size());
-		
+		tablaDePrestamos.setSelectable(true);
+		tablaDePrestamos.setImmediate(true);
+		tablaDePrestamos.setColumnCollapsingAllowed(true);
 		
 		
 		// TODO add user code here

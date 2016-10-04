@@ -52,27 +52,19 @@ public class MyUI extends UI
     	
     	//setContent(new graficosConsultas());
     	//setContent( new graficosVisitas() ); 
-        //setContent(new formularioConsultaNoCompletada());
+        setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
         //setContent(new formularioNuevaConsulta());
         //setContent(new formularioSolicitudesPendientes());
         //setContent(new formularioConsultaCompletada());
     	//setContent(new formularioNuevoPrestamo());
 
-    	setContent(new formularioHistorialPrestamos());
+    	//setContent(new formularioHistorialPrestamos());
 
     	//setContent(new prestamosActuales());
 
 
        
-    }
-    
-    public void changeLayout(CustomComponent c)
-    {
-    	
-    	layout.replaceComponent(layout.getComponent(1), c);
-    	//layout.removeComponent();
-    	//layout.addComponent(c);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

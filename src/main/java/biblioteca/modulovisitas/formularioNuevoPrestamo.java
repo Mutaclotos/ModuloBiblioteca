@@ -17,8 +17,10 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.UI;
 
 import biblioteca.modulovisitas.validadores.IsCarne;
+import biblioteca.modulovisitas.validadores.IsSignatura;
 
 public class formularioNuevoPrestamo extends CustomComponent {
 
@@ -100,6 +102,8 @@ public class formularioNuevoPrestamo extends CustomComponent {
 	private final DBConnector dbc;
 	
 	public static String usuario = "395476844";
+	
+	boolean bandera = false;
 	/**
 	 * The constructor should first build the main layout, set the
 	 * composition root and then do any custom initialization.
@@ -268,6 +272,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 				String volumen;
 				String numero;
 				String anio;
+				String institucion;
 				
 				ResultSet rs = dbc.query("SELECT 1 FROM Documento WHERE signatura='"+signatura+"' AND tipoDocumento='"+tipoDocumento+"'");
 				ResultSet rs2;
@@ -276,10 +281,12 @@ public class formularioNuevoPrestamo extends CustomComponent {
 					if(!rs.next()){//Si no exiten regitros con esta signatura y tipoDocumento
 						System.out.println("Documento no encontrado en la base de datos.");
 						labelAdvertencia.setVisible(true);
+						bandera = true;
 					}
 					else
 					{
 						labelAdvertencia.setVisible(false);
+						bandera = false;
 						if(tipoDocumento.equals("Libro"))
 						{
 							rs2 = dbc.query("SELECT d.titulo, (SELECT GROUP_CONCAT(a.nombre) FROM autor a, documentoautor da "
@@ -318,7 +325,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 						else if(tipoDocumento.equals("Tesis"))
 						{
 							rs2 = dbc.query("SELECT d.titulo, (SELECT GROUP_CONCAT(a.nombre) FROM autor a, documentoautor da "
-									+ "WHERE d.signatura = da.documento AND da.autor = a.id ) AS autor,d.anio FROM documento d "
+									+ "WHERE d.signatura = da.documento AND da.autor = a.id ) AS autor,d.anio, d.institucion FROM documento d "
 									+ "WHERE d.signatura = '"+ signatura +"' GROUP BY d.signatura ");
 							
 							if(rs2.next())
@@ -326,10 +333,12 @@ public class formularioNuevoPrestamo extends CustomComponent {
 								titulo = rs2.getString(1);
 								autor = rs2.getString(2);
 								anio = rs2.getString(3);
+								institucion = rs2.getString(4);
 										
 								setValue(inputTitulo,titulo);
 								setValue(inputAutor,autor);
 								setValue(inputAnio,anio);
+								setValue(inputInstitucion,institucion);
 							}
 						}
 					}
@@ -345,38 +354,42 @@ public class formularioNuevoPrestamo extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				
-				inputSignatura.addValidator(new IsCarne());
+				inputSignatura.addValidator(new IsSignatura());
 				
 				String signatura;
-				String fechaSolicitud = (new SimpleDateFormat("YYYY-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
-
-				if(inputSignatura.isValid()){
-					
-					signatura = inputSignatura.getValue();
-
-					ResultSet rs = dbc.query("SELECT 1 FROM Documento WHERE signatura='"+signatura+"'");
-					try{
-						if(!rs.next()){//Si no exiten regitros con esta signatura
-							System.out.println("Documento no encontrado en la base de datos.");
-							
+				String fechaSolicitud = (new SimpleDateFormat("yyyy-MM-dd HH:mm").format(Calendar.getInstance().getTime()));
+				if(!bandera)
+				{
+					if(inputSignatura.isValid()){
+						
+						signatura = inputSignatura.getValue();
+	
+						ResultSet rs = dbc.query("SELECT 1 FROM Documento WHERE signatura='"+signatura+"'");
+						try{
+							if(!rs.next()){//Si no exiten regitros con esta signatura
+								System.out.println("Documento no encontrado en la base de datos.");
+								
+							}
+							else
+							{
+								//TODO: insertar usuario en Prestamo
+								dbc.insert("Prestamo",null,signatura,usuario,null,fechaSolicitud,null,null,null,null);
+							}
+						}catch(Exception sqe){
+							sqe.printStackTrace();
 						}
-						else
-						{
-							//TODO: insertar usuario en Prestamo
-							dbc.insert("Prestamo",null,signatura,usuario,null,null,null,fechaSolicitud);
-						}
-					}catch(Exception sqe){
-						sqe.printStackTrace();
+						
+						setValue(inputTitulo,"");
+						setValue(inputSignatura,"");
+						setValue(inputAutor,"");
+						setValue(inputNumero,"");
+						setValue(inputVolumen,"");
+						setValue(inputAnio,"");
+						setValue(inputInstitucion,"");
+						setValue(inputEditorial,"");
+						
+						UI.getCurrent().setContent(new prestamosActuales());
 					}
-					
-					setValue(inputTitulo,"");
-					setValue(inputSignatura,"");
-					setValue(inputAutor,"");
-					setValue(inputNumero,"");
-					setValue(inputVolumen,"");
-					setValue(inputAnio,"");
-					setValue(inputInstitucion,"");
-					setValue(inputEditorial,"");
 				}
 			}
 		});
