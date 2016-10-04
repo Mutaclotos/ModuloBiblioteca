@@ -36,15 +36,21 @@ public class prestamosActuales extends CustomComponent {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("localhost","moises","315600");
 		ui = new MyUI();
 		
 		
+
 		tablaDePrestamos.addContainerProperty("Documento", String.class, null);
 		tablaDePrestamos.addContainerProperty("Fecha de solicitud", String.class, null);
 		tablaDePrestamos.addContainerProperty("Fecha de caducidad", String.class, null);
 		tablaDePrestamos.addContainerProperty("Estado de solicitud", String.class, null);
 		int i=0;///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+		tablaDePrestamos.setSelectable(true);
+		tablaDePrestamos.setImmediate(true);
+		tablaDePrestamos.setColumnCollapsingAllowed(true);
 		
 		
 		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
