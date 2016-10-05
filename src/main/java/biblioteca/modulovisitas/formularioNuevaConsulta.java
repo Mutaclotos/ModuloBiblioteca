@@ -224,6 +224,21 @@ public class formularioNuevaConsulta extends CustomComponent {
 					if(!rs.next())
 					{//Si no exiten regitros con esta signatura y tipoDocumento
 						System.out.println("Usuario no encontrado en la base de datos.");
+						inputCarne.setReadOnly(false);
+						inputApellidos.setReadOnly(false);
+						inputNombre.setReadOnly(false);
+						inputEmail.setReadOnly(false);
+						inputTelefono.setReadOnly(false);
+						inputInstitucion.setReadOnly(false);
+						inputSoy.setReadOnly(false);
+						
+						inputCarne.setValue("");
+						inputApellidos.setValue("");
+						inputNombre.setValue("");
+						inputEmail.setValue("");
+						inputInstitucion.setValue("");
+						inputTelefono.setValue("");
+						inputSoy.select(null);
 					}
 					else
 					{
@@ -250,6 +265,13 @@ public class formularioNuevaConsulta extends CustomComponent {
 							inputTelefono.setValue(telefono);
 							inputSoy.select(tipo);
 							
+							inputCarne.setReadOnly(true);
+							inputApellidos.setReadOnly(true);
+							inputNombre.setReadOnly(true);
+							inputEmail.setReadOnly(true);
+							inputTelefono.setReadOnly(true);
+							inputInstitucion.setReadOnly(true);
+							inputSoy.setReadOnly(true);
 						}
 						
 					}
