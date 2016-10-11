@@ -46,6 +46,24 @@ public class Contenedor {
 		c.addItem("Fecha de entrega");
 		return c;
 	}
+	
+	public static Container obtenerContenedorTipoBusquedaSolicitud(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoBusquedaSolicitud", String.class, "");
+		c.addItem("Signatura");
+		c.addItem("Título");
+		c.addItem("Cédula de solicitante");
+		c.addItem("Estado de solicitud");
+		return c;
+	}
+	
+	public static Container obtenerContenedorTipoPrestamo(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoPrestamo", String.class, "");
+		c.addItem("En Sala");
+		return c;
+	}
+	
 	public static Container obtenerContenedorGraficoPor(){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("values", String.class, null);

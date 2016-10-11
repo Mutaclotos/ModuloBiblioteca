@@ -49,7 +49,7 @@ public class MyUI extends UI
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         
-    	setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
+    	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
     	
     	//setContent(new formularioBVirtualBusqueda());
     	//setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
@@ -58,17 +58,14 @@ public class MyUI extends UI
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
         //setContent(new formularioNuevaConsulta());
-        //setContent(new formularioConsultaNoCompletada());
+        //setContent(new formularioSolicitudesPendientes());
         //setContent(new formularioConsultaCompletada());
+
+    	//setContent(new formularioNuevoPrestamo());
+    	//setContent(new formularioHistorialPrestamos());
+    	//setContent(new prestamosActuales());
+
        
-    }
-    
-    public void changeLayout(CustomComponent c)
-    {
-    	
-    	layout.replaceComponent(layout.getComponent(1), c);
-    	//layout.removeComponent();
-    	//layout.addComponent(c);
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

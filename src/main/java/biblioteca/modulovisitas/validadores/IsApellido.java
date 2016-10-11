@@ -11,7 +11,7 @@ public class IsApellido implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("^[A-Z][a-z]+\\s[A-Z][a-z]+$");
+		Pattern p = Pattern.compile("^[A-Z][a-z]+(\\s[A-Z][a-z]+$)?");
 		Matcher m = p.matcher(value.toString());
 		if(!m.matches()){
 			throw new InvalidValueException("No es un apellido valido");
