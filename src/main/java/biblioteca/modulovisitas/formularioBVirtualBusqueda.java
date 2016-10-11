@@ -151,10 +151,10 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		// labelBusqueda
 		labelBusqueda = new Label();
 		labelBusqueda.setImmediate(false);
-		labelBusqueda.setWidth("195px");
-		labelBusqueda.setHeight("-1px");
-		labelBusqueda.setValue("Busqueda de Documentos");
-		mainLayout.addComponent(labelBusqueda, "top:40.0px;left:220.0px;");
+		labelBusqueda.setWidth("215px");
+		labelBusqueda.setHeight("38px");
+		labelBusqueda.setValue("BUSQUEDA DE DOCUMENTOS");
+		mainLayout.addComponent(labelBusqueda, "top:20.0px;left:200.0px;");
 		
 		// inputSignatura
 		inputSignatura = new TextField();
