@@ -31,6 +31,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
@@ -42,27 +43,35 @@ import com.vaadin.ui.VerticalLayout;
 public class MyUI extends UI 
 {
 	
-	final VerticalLayout layout = new VerticalLayout();
-	
 	
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        
     	
-    	setContent(new graficosConsultas());
-    	//setContent( new graficosVisitas() ); 
+    	TabSheet tabsheet = new TabSheet();
+    	setContent(tabsheet);
+    	
+    	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
+    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda");
+    	tabsheet.addTab(new graficosVisitas(),"Graficos");
+    	tabsheet.addTab(new graficosConsultas(),"Gráfico Consulta");
+    	//tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta No");
+    	
+    	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
+    	
+    	//setContent(new formularioBVirtualBusqueda());
+    	//setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
+    	//setContent(new graficosConsultas());
+    	//setContent( new graficosVisitas()); 
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
         //setContent(new formularioNuevaConsulta());
         //setContent(new formularioSolicitudesPendientes());
         //setContent(new formularioConsultaCompletada());
+
     	//setContent(new formularioNuevoPrestamo());
-
     	//setContent(new formularioHistorialPrestamos());
-
     	//setContent(new prestamosActuales());
-
 
        
     }

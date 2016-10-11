@@ -64,7 +64,7 @@ public class graficosVisitas extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("192.168.56.101","root","GESAVA954");
 		
 
 		this.input_tipo.setNullSelectionAllowed(false);
