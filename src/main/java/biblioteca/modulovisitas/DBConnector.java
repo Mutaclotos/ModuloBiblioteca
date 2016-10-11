@@ -25,7 +25,6 @@ public class DBConnector {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			conn = DriverManager.getConnection("jdbc:mysql://" + ip + ":3306/Proyecto", usuario, pass);
-
 			System.out.println("Connection successful");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());

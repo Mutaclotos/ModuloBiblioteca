@@ -77,8 +77,8 @@ public class Contenedor {
 		Container c = new IndexedContainer();
 		c.addContainerProperty("values", String.class,null);
 		ResultSet rs = null;
-		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(fechaEmision),'/',month(fechaEmision)) as value FROM `Consulta` group by year(fechaEmision),month(fechaEmision)");
-		else rs = dbc.query("SELECT year(fechaEmision) as value FROM `Consulta` group by year(fechaEmision)");
+		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(fechaEmision),'/',month(fechaEmision)) as value FROM `consulta` group by year(fechaEmision),month(fechaEmision)");
+		else rs = dbc.query("SELECT year(fechaEmision) as value FROM `consulta` group by year(fechaEmision)");
 		try {
 			while(rs.next()){
 				c.addItem(rs.getString("value"));
@@ -93,8 +93,8 @@ public class Contenedor {
 		Container c = new IndexedContainer();
 		c.addContainerProperty("values", String.class,null);
 		ResultSet rs = null;
-		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(horaLlegada),'/',month(horaLlegada)) as value FROM `Visitas` group by year(horaLlegada),month(horaLlegada)");
-		else rs = dbc.query("SELECT year(horaLlegada) as value FROM `Visitas` group by year(horaLlegada)");
+		if(tipo=="Mensual")rs = dbc.query("SELECT CONCAT(year(horaLlegada),'/',month(horaLlegada)) as value FROM `visitas` group by year(horaLlegada),month(horaLlegada)");
+		else rs = dbc.query("SELECT year(horaLlegada) as value FROM `visitas` group by year(horaLlegada)");
 		try {
 			while(rs.next()){
 				c.addItem(rs.getString("value"));
@@ -112,10 +112,10 @@ public class Contenedor {
         if(tipo=="Mensual") fecha = fecha+"/00' and '"+fecha+"/31";
         else fecha = fecha+"/00/00' and '"+fecha+"/12/31";
         ResultSet rs = null;
-        if(por=="Tema") rs = dbc.query("SELECT count(c.tema) as value, c.tema as name FROM Consulta c WHERE c.tipo = '"+tipoConsulta+"' and fechaEmision between '"+fecha+"' GROUP BY c.tema"); 
-      	if(por=="Tipo Usuario") rs = dbc.query("SELECT count(u.tipo) as value, u.tipo as name FROM Consulta c, Usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.tipo"); 
-      	if(por=="Institucion")rs = dbc.query("SELECT count(u.institucion) as value, u.institucion as name FROM Consulta c, Usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.institucion");
-      	if(por=="Base de datos") rs = dbc.query("SELECT count(bd.nombre) as value, bd.nombre as name FROM Consulta c,BasesDatos bd, ConsultaBase cb WHERE c.tipo = '"+tipoConsulta+"' and c.id = cb.consulta and cb.basedatos = bd.id and fechaEmision between '"+fecha+"' GROUP BY bd.nombre ");
+        if(por=="Tema") rs = dbc.query("SELECT count(c.tema) as value, c.tema as name FROM consulta c WHERE c.tipo = '"+tipoConsulta+"' and fechaEmision between '"+fecha+"' GROUP BY c.tema"); 
+      	if(por=="Tipo Usuario") rs = dbc.query("SELECT count(u.tipo) as value, u.tipo as name FROM consulta c, usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.tipo"); 
+      	if(por=="Institucion")rs = dbc.query("SELECT count(u.institucion) as value, u.institucion as name FROM consulta c, usuario u WHERE c.tipo = '"+tipoConsulta+"' and c.usuario = u.cedula and fechaEmision between '"+fecha+"' GROUP BY u.institucion");
+      	if(por=="Base de datos") rs = dbc.query("SELECT count(bd.nombre) as value, bd.nombre as name FROM consulta c,basesdatos bd, consultabase cb WHERE c.tipo = '"+tipoConsulta+"' and c.id = cb.consulta and cb.basedatos = bd.id and fechaEmision between '"+fecha+"' GROUP BY bd.nombre ");
         if(rs!=null){
 	        try {
 	        	int i=0;
@@ -138,13 +138,13 @@ public class Contenedor {
         
         ResultSet rs = null;
         if(tipo=="Mensual"){
-        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.tipo");
-        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.institucion");
-        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by v.tema");
+        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.tipo");
+        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by u.institucion");
+        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00' and '"+fecha+"/31' group by v.tema");
         }else{
-        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.tipo");
-        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.institucion");
-        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM Usuario u, Visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by v.tema");
+        	if(por=="Tipo Usuario") rs = dbc.query("SELECT u.tipo as name,count(u.tipo) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.tipo");
+        	if(por=="Institucion") rs = dbc.query("SELECT u.institucion as name,count(u.institucion) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by u.institucion");
+        	if(por=="Tema") rs = dbc.query("SELECT v.tema as name,count(v.tema) as value FROM usuario u, visitas v where u.cedula=v.usuario AND v.horaLlegada between '"+fecha+"/00/00' and '"+fecha+"/12/31' group by v.tema");
         }
         if(rs!=null){
 	        try {
@@ -160,7 +160,7 @@ public class Contenedor {
         }
 		return vaadinContainer;
 	}
-	public static Container obtenerContenedorTipoDocumento(String datos){
+	public static Container obtenerContenedorTipoDocumento(){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoDocumento", String.class, "");
 		c.addItem("Libro");
@@ -168,4 +168,13 @@ public class Contenedor {
 		c.addItem("Tesis");
 		return c;
 	}
+	
+	public static Container obtenerContenedorTipoArchivo(){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoDocumento", String.class, "");
+		c.addItem("Enlace");
+		c.addItem("Archivo");
+		return c;
+	}
+	
 }

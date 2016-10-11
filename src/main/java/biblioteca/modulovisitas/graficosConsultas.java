@@ -56,7 +56,7 @@ public class graficosConsultas extends CustomComponent {
 	public static final long serialVersionUID = 12764;
 	/*- VaadinEditorProperties={"grid":"RegularGrid,20","showGrid":true,"snapToGrid":true,"snapToObject":true,"movingGuides":false,"snappingDistance":10} */
 
-	private  DBConnector dbc;
+	private final DBConnector dbc;
 	
 	/**
 	 * The constructor should first build the main layout, set the
@@ -70,7 +70,7 @@ public class graficosConsultas extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector("192.168.56.101","root","GESAVA954");
 		
 		this.input_tipoConsulta.setNullSelectionAllowed(false);
 		this.input_tipoConsulta.setContainerDataSource(Contenedor.obtenerContenedorTipoConsulta(null));
@@ -106,7 +106,7 @@ public class graficosConsultas extends CustomComponent {
 
 	    final Configuration configuration = chart.getConfiguration();
         configuration.getChart().setType(ChartType.PIE);
-        configuration.getTitle().setText("Gráfico control de consultas	");
+        configuration.getTitle().setText(" ");
 
         ContainerDataSeries container = 
         		new ContainerDataSeries(
@@ -116,7 +116,9 @@ public class graficosConsultas extends CustomComponent {
         container.setYPropertyId("y");
         container.setNamePropertyId("name");
         configuration.setSeries(container);
+        configuration.setExporting(true);
         chart.drawChart(configuration);
+        
 	    espacioGrafico.addComponent(chart);	   
 
 	}
@@ -138,7 +140,7 @@ public class graficosConsultas extends CustomComponent {
 		labelTitulo.setImmediate(false);
 		labelTitulo.setWidth("-1px");
 		labelTitulo.setHeight("-1px");
-		labelTitulo.setValue("CONTROL VISITAS");
+		labelTitulo.setValue("CONTROL CONSULTAS");
 		mainLayout.addComponent(labelTitulo, "top:0.0px;left:256.0px;");
 		
 		// input_tipo
