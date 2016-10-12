@@ -2,7 +2,6 @@ package biblioteca.modulovisitas;
 
 import java.sql.ResultSet;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -265,6 +264,8 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		};
 		
 		this.button_editar.addClickListener(clickEditarSolicitud);
+		
+		
 	}
 	
 	public void buscarMorosos()
@@ -320,11 +321,11 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setImmediate(false);
 		mainLayout.setWidth("100%");
-		mainLayout.setHeight("440px");
+		mainLayout.setHeight("450px");
 		
 		// top-level component properties
 		setWidth("100.0%");
-		setHeight("440px");
+		setHeight("450px");
 		
 		// labelTitulo
 		labelTitulo = new Label();
@@ -348,7 +349,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		button_editar.setImmediate(true);
 		button_editar.setWidth("180px");
 		button_editar.setHeight("40px");
-		mainLayout.addComponent(button_editar, "top:395.0px;left:280.0px;");
+		mainLayout.addComponent(button_editar, "top:395.0px;left:320.0px;");
 		
 		// tablaSolicitudes
 		tablaSolicitudes = new Table();

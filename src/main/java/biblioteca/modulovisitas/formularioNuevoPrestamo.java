@@ -132,7 +132,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 		botonGuardar.addFocusListener(fl);
 		
 		
-		inputTipoDocumento.setContainerDataSource(Contenedor.obtenerContenedorTipoDocumento("tipoDocumento"));
+		inputTipoDocumento.setContainerDataSource(Contenedor.obtenerContenedorTipoDocumento());
 		inputSignatura.setEnabled(true);
 		inputAutor.setReadOnly(true);
 		inputTitulo.setReadOnly(true);

@@ -255,6 +255,16 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 				UI.getCurrent().setContent(new formularioNuevaConsulta());
 			}
 	 	});
+		
+		button_verCompletadas.addClickListener(new ClickListener()
+		{
+			private static final long serialVersionUID = 47254532L;
+			@Override
+			public void buttonClick(ClickEvent event)
+			{
+				UI.getCurrent().setContent(new formularioConsultaCompletada());
+			}
+	 	});
 	}
 	
 	@Override
