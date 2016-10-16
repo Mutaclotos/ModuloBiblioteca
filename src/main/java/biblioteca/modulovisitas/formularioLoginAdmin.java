@@ -180,6 +180,7 @@ public class formularioLoginAdmin extends CustomComponent {
 		labelTitulo.setValue("INGRESAR");
 		mainLayout.addComponent(labelTitulo, "top:20.0px;left:317.0px;");
 		
+		
 		// inputClave
 		inputClave = new PasswordField();
 		inputClave.setImmediate(false);
