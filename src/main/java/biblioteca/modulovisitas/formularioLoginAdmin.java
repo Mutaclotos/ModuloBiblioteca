@@ -112,7 +112,6 @@ public class formularioLoginAdmin extends CustomComponent {
 				
 				String clave;
 				
-				int idConsulta = 0;
 				boolean noError = (inputCedula.isValid() && inputClave.isValid());
 				if(noError)
 				{

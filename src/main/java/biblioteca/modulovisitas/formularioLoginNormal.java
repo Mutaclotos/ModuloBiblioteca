@@ -124,11 +124,41 @@ public class formularioLoginNormal extends CustomComponent {
 					
 					cedula = inputCedula.getValue();
 					
-					clave = inputClave.getValue();
-					
-					//if(clave.equals(null))
+					if(inputClave.isEmpty())
 					{
-						ResultSet rs = dbc.query("SELECT 1 FROM Usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "'");
+						clave = null;
+					}
+					else
+					{
+						clave = inputClave.getValue();
+					}
+					
+					ResultSet rs;
+					
+					if(clave.equals(null))
+					{
+						rs = dbc.query("SELECT 1 FROM Usuario WHERE cedula='"+cedula+"'");
+						try{
+							if(!rs.next())
+							{//Si no exiten regitros con esta cedula
+								System.out.println("Usuario invalido.");
+								labelError.setVisible(true);
+								labelNota.setVisible(false);
+								inputClave.setValue("");
+							}
+							else
+							{
+								//TODO: setContent editUser
+								//UI.getCurrent().setContent(new prestamosActuales());
+							}
+						}catch(Exception sqe)
+						{
+							sqe.printStackTrace();
+						}
+					}
+					else
+					{
+						rs = dbc.query("SELECT 1 FROM Usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "'");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
@@ -161,7 +191,6 @@ public class formularioLoginNormal extends CustomComponent {
 			{	
 				//TODO: setContent to register new user
 				//UI.getCurrent().setContent(new prestamosActuales());
-
 			}
 			
 		});
@@ -173,7 +202,6 @@ public class formularioLoginNormal extends CustomComponent {
 			public void buttonClick(ClickEvent event) 
 			{	
 				UI.getCurrent().setContent(new formularioLoginAdmin());
-
 			}
 			
 		});
