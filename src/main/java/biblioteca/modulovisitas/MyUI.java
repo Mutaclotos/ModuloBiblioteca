@@ -48,13 +48,13 @@ public class MyUI extends UI
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
-    	TabSheet tabsheet = new TabSheet();
-    	setContent(tabsheet);
+    	//TabSheet tabsheet = new TabSheet();
+    	//setContent(tabsheet);
     	
-    	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
-    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda");
-    	tabsheet.addTab(new graficosVisitas(),"Graficos");
-    	tabsheet.addTab(new graficosConsultas(),"Gráfico Consulta");
+    	//tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
+    	//tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda");
+    	//tabsheet.addTab(new graficosVisitas(),"Graficos");
+    	//tabsheet.addTab(new graficosConsultas(),"Gráfico Consulta");
     	//tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta No");
     	
     	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
@@ -70,7 +70,7 @@ public class MyUI extends UI
         //setContent(new formularioConsultaCompletada());
 
     	//setContent(new formularioNuevoPrestamo());
-    	//setContent(new formularioHistorialPrestamos());
+    	setContent(new formularioHistorialPrestamos());
     	//setContent(new prestamosActuales());
 
        

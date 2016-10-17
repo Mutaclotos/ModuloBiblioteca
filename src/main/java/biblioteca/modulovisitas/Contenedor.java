@@ -47,6 +47,29 @@ public class Contenedor {
 		return c;
 	}
 	
+	public static Container obtenerContenedorTipoBusquedaPrestamoActual(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoBusquedaPrestamoActual", String.class, "");
+		c.addItem("Documento");
+		c.addItem("Fecha de solicitud");
+		c.addItem("Fecha de caducidad");
+		c.addItem("Estado de solicitud");
+		return c;
+	}
+	
+	public static Container obtenerContenedorTipoBusquedaHistorial(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoBusquedaHistorial", String.class, "");
+		c.addItem("Fecha");
+		c.addItem("Nombre de libro");
+		c.addItem("Autor");
+		c.addItem("Asignatura");
+		c.addItem("Tipo");
+		c.addItem("Año");
+		c.addItem("Editorial");
+		return c;
+	}
+	
 	public static Container obtenerContenedorTipoBusquedaSolicitud(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusquedaSolicitud", String.class, "");
