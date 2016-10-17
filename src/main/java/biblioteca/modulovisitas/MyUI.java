@@ -43,19 +43,19 @@ import com.vaadin.ui.VerticalLayout;
 public class MyUI extends UI 
 {
 	
-	
+	public static TabSheet tabsheet;
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	
-    	TabSheet tabsheet = new TabSheet();
-    	setContent(tabsheet);
+    	tabsheet = new TabSheet();
+    	//setContent(tabsheet);
     	
-    	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
-    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda");
-    	tabsheet.addTab(new graficosVisitas(),"Graficos");
-    	tabsheet.addTab(new graficosConsultas(),"Gráfico Consulta");
-    	//tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta No");
+    	//tabsheet.addTab(new formularioentrada(),"Formulario Entrada");
+    	//tabsheet.addTab(new formularioBVirtualBusqueda(),"Búsqueda B");
+    	//tabsheet.addTab(new graficosVisitas(),"Gráficos Visitas");
+    	//tabsheet.addTab(new graficosConsultas(),"Gráficos Consultas");
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
     	
     	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
     	
@@ -66,14 +66,14 @@ public class MyUI extends UI
         //setContent(new formularioConsultaNoCompletada());
         //setContent(new formularioentrada());
         //setContent(new formularioNuevaConsulta());
-        //setContent(new formularioSolicitudesPendientes());
+    	tabsheet.addTab(new formularioSolicitudesPendientes(), "Solicitudes pendientes");
         //setContent(new formularioConsultaCompletada());
 
     	//setContent(new formularioNuevoPrestamo());
     	//setContent(new formularioHistorialPrestamos());
     	//setContent(new prestamosActuales());
 
-       
+       setContent(new formularioLoginNormal());
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
