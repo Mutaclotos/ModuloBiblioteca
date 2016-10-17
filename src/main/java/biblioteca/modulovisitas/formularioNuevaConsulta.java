@@ -18,6 +18,7 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Layout;
 import com.vaadin.ui.PopupDateField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
@@ -421,7 +422,10 @@ public class formularioNuevaConsulta extends CustomComponent {
 					checkBoxDIALNET.setValue(false);
 					checkBoxOTRAS.setValue(false);
 					
-					UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+					//UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+					Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
+					tab.removeAllComponents();
+					tab.addComponent(new formularioConsultaNoCompletada());
 				}
 			}
 		});
@@ -451,6 +455,9 @@ public class formularioNuevaConsulta extends CustomComponent {
 				checkBoxOTRAS.setValue(false);
 				
 				UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+				//Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
+				//tab.removeAllComponents();
+				//tab.addComponent(new formularioConsultaNoCompletada());
 			}
 	 	});
 		

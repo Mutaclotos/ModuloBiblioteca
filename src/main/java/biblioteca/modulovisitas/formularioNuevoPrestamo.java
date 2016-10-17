@@ -101,8 +101,6 @@ public class formularioNuevoPrestamo extends CustomComponent {
 
 	private final DBConnector dbc;
 	
-	public static String usuario = "395476844";
-	
 	boolean bandera = false;
 	/**
 	 * The constructor should first build the main layout, set the
@@ -373,7 +371,7 @@ public class formularioNuevoPrestamo extends CustomComponent {
 							else
 							{
 								//TODO: insertar usuario en Prestamo
-								dbc.insert("Prestamo",null,signatura,usuario,null,fechaSolicitud,null,null,null,null);
+								dbc.insert("Prestamo",null,signatura,formularioLoginNormal.usuario,null,fechaSolicitud,null,null,null,null);
 							}
 						}catch(Exception sqe){
 							sqe.printStackTrace();

@@ -12,8 +12,10 @@ import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Layout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
@@ -233,8 +235,10 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					String basesDatos = (String)tablaConsultas.getContainerProperty(rowId,"Bases de datos").getValue();
 					
 					
-					UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
-					
+					//UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
+					Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
+					tab.removeAllComponents();
+					tab.addComponent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
 				}
 				else
 				{
@@ -253,6 +257,9 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 			public void buttonClick(ClickEvent event)
 			{
 				UI.getCurrent().setContent(new formularioNuevaConsulta());
+				//Component tab = MyUI.tabsheet.getSelectedTab();
+				//tab.getUI().setContent(new formularioNuevaConsulta());
+				//tab.addComponent(new formularioNuevaConsulta());
 			}
 	 	});
 		
@@ -262,7 +269,10 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new formularioConsultaCompletada());
+				//UI.getCurrent().setContent(new formularioConsultaCompletada());
+				Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
+				tab.removeAllComponents();
+				tab.addComponent(new formularioConsultaCompletada());
 			}
 	 	});
 	}
