@@ -60,7 +60,7 @@ public class formularioConsultaCompletada extends CustomComponent
 		setCompositionRoot(mainLayout);
 		inputTipoBusqueda.setNullSelectionAllowed(false);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 		
 		inputBusqueda.focus();
 		

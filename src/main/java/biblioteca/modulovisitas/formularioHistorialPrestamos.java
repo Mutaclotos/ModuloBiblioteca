@@ -34,7 +34,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 	public formularioHistorialPrestamos() {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 		ui = new MyUI();
 		
 

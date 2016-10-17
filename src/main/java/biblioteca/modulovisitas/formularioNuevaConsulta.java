@@ -163,7 +163,7 @@ public class formularioNuevaConsulta extends CustomComponent {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 
 		final SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 		inputFechaEntrega.setResolution(inputFechaEntrega.RESOLUTION_MIN);

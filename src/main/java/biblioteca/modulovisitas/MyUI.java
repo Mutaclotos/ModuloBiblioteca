@@ -45,6 +45,13 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	
+	//Credenciales para todas las clases
+	public static String user = "Mutaclotos";
+	
+	public static String password = "we105769";
+	
+	public static String address = "localhost";
+	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
     	

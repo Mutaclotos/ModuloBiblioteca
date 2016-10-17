@@ -163,7 +163,7 @@ public class formularioEditarConsulta extends CustomComponent implements View
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		
-		dbc = new DBConnector("localhost","Mutaclotos","we105769");
+		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 
 		timeStamp = new SimpleDateFormat("dd/MM/YYYY HH:mm").format(Calendar.getInstance().getTime());
 		labelFechaHora.setValue(timeStamp);
