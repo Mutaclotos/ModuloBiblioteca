@@ -175,11 +175,11 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		
 		ResultSet rs = dbc.query("SELECT c.id, u.nombre, u.apellidos, u.cedula, u.carne, u.email, t.numero, u.institucion, u.tipo as tipoUsuario, "
 				+ "c.tema, c.tipo, c.fechaEmision, c.observaciones, IFNULL((SELECT GROUP_CONCAT(b.nombre) "
-				+ "FROM ConsultaBase cb, BasesDatos b "
-				+ "WHERE cb.Consulta = c.id "
+				+ "FROM consultabase cb, basesdatos b "
+				+ "WHERE cb.consulta = c.id "
 				+ "AND b.id = cb.basedatos), 'N/A') AS basesDatos "
-				+ "FROM Consulta c, Usuario u, Telefono t "
-				+ "WHERE c.fechaEntrega IS NULL "
+				+ "FROM consulta c, usuario u, telefono t "
+				+ "WHERE c.fechaentrega IS NULL "
 				+ "AND c.usuario = u.cedula "
 				+ "AND t.cedula = u.cedula "
 				+ "GROUP BY c.id");
