@@ -44,48 +44,48 @@ public class MyUI extends UI
 {
 	
 	public static TabSheet tabsheet;
-	
 	//Credenciales para todas las clases
-	public static String user = "Mutaclotos";
+	public static String user = "root";
 	
-	public static String password = "we105769";
+	public static String password = "V@rg@5!4q0";
 	
 	public static String address = "localhost";
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-    	
+       setContent(new formularioLoginNormal(this));
+    }
 
+    void usuarioNormal(){
     	tabsheet = new TabSheet();
 
     	//setContent(tabsheet);
+    	//BIBLIOTECA VIRTUAL
+    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
     	
-
-    	//tabsheet.addTab(new formularioentrada(),"Formulario Entrada");
-    	//tabsheet.addTab(new formularioBVirtualBusqueda(),"Búsqueda B");
-    	//tabsheet.addTab(new graficosVisitas(),"Gráficos Visitas");
-    	//tabsheet.addTab(new graficosConsultas(),"Gráficos Consultas");
-    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
+    	// CONTROL DE VISITAS
+    	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
     	
-    	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
-    	
-    	//setContent(new formularioBVirtualBusqueda());
-    	//setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
-    	//setContent(new graficosConsultas());
-    	//setContent( new graficosVisitas()); 
-        //setContent(new formularioConsultaNoCompletada());
-        //setContent(new formularioentrada());
-        //setContent(new formularioNuevaConsulta());
-    	tabsheet.addTab(new formularioSolicitudesPendientes(), "Solicitudes pendientes");
-        //setContent(new formularioConsultaCompletada());
-
-    	//setContent(new formularioNuevoPrestamo());
-    	setContent(new formularioHistorialPrestamos());
-    	//setContent(new prestamosActuales());
-
-       setContent(new formularioLoginNormal());
+    	//PRESTAMOS DE LIBRO
+    	tabsheet.addTab(new formularioNuevoPrestamo(),"Nuevo Prestamo");
+    	tabsheet.addTab(new formularioHistorialPrestamos(),"Historial de Préstamos");
+    	tabsheet.addTab(new prestamosActuales(),"Prestamos Actuales");
+    	setContent(tabsheet);
     }
-
+    void usuarioAdministrativo(){
+    	tabsheet = new TabSheet();
+    	//BIBLIOTECA VIRTUAL
+    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
+    	// CONTROL DE VISITAS
+    	tabsheet.addTab(new graficosVisitas(),"Gráfico de Visitas");
+    	tabsheet.addTab(new graficosConsultas(),"Gráfico de Consultas");
+    	//CONSULTAS
+    	tabsheet.addTab(new formularioNuevaConsulta(),"Nueva Consulta");
+    	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
+    	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+    }
+    
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
