@@ -47,9 +47,9 @@ public class MyUI extends UI
 	//Credenciales para todas las clases
 	public static String user = "root";
 	
-	public static String password = "V@rg@5!4q0";
+	public static String password = "GESAVA954";
 	
-	public static String address = "localhost";
+	public static String address = "192.168.56.101";
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -83,7 +83,8 @@ public class MyUI extends UI
     	tabsheet.addTab(new formularioNuevaConsulta(),"Nueva Consulta");
     	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
     	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
-    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+    	//tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+    	setContent(tabsheet);
     }
     
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

@@ -124,7 +124,7 @@ public class formularioLoginAdmin extends CustomComponent {
 					
 					//if(clave.equals(null))
 					{
-						ResultSet rs = dbc.query("SELECT 1 FROM Usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' AND rol = 'admin'");
+						ResultSet rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' AND rol = 'admin'");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
