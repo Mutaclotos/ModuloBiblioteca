@@ -10,13 +10,13 @@ import com.vaadin.event.FieldEvents.FocusEvent;
 import com.vaadin.event.FieldEvents.FocusListener;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 
 import biblioteca.modulovisitas.validadores.IsCedula;
 import biblioteca.modulovisitas.validadores.IsClaveAdmin;
@@ -181,7 +181,6 @@ public class formularioLoginAdmin extends CustomComponent {
 		labelTitulo.setValue("INGRESAR");
 		mainLayout.addComponent(labelTitulo, "top:20.0px;left:317.0px;");
 		
-		
 		// inputClave
 		inputClave = new PasswordField();
 		inputClave.setImmediate(false);
@@ -195,7 +194,7 @@ public class formularioLoginAdmin extends CustomComponent {
 		labelClave.setWidth("-1px");
 		labelClave.setHeight("-1px");
 		labelClave.setValue("Contraseña:");
-		mainLayout.addComponent(labelClave, "top:222.0px;left:175.0px;");
+		mainLayout.addComponent(labelClave, "top:222.0px;left:155.0px;");
 		
 		// labelCedula
 		labelCedula = new Label();
@@ -203,7 +202,7 @@ public class formularioLoginAdmin extends CustomComponent {
 		labelCedula.setWidth("-1px");
 		labelCedula.setHeight("-1px");
 		labelCedula.setValue("Cédula de administrador:");
-		mainLayout.addComponent(labelCedula, "top:160.0px;left:106.0px;");
+		mainLayout.addComponent(labelCedula, "top:160.0px;left:86.0px;");
 		
 		// inputCedula
 		inputCedula = new TextField();

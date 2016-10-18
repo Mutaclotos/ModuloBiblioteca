@@ -45,9 +45,9 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
-	public static String user = "root";
+	public static String user = "Mutaclotos";
 	
-	public static String password = "V@rg@5!4q0";
+	public static String password = "we105769";
 	
 	public static String address = "localhost";
 	
@@ -61,29 +61,28 @@ public class MyUI extends UI
 
     	//setContent(tabsheet);
     	//BIBLIOTECA VIRTUAL
-    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
+    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Biblioteca Virtual");
     	
     	// CONTROL DE VISITAS
-    	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
+    	tabsheet.addTab(new formularioentrada(),"Formulario de Entrada");
     	
     	//PRESTAMOS DE LIBRO
-    	tabsheet.addTab(new formularioNuevoPrestamo(),"Nuevo Prestamo");
-    	tabsheet.addTab(new formularioHistorialPrestamos(),"Historial de Préstamos");
-    	tabsheet.addTab(new prestamosActuales(),"Prestamos Actuales");
+    	tabsheet.addTab(new prestamosActuales(),"Préstamos");
+    	
     	setContent(tabsheet);
     }
     void usuarioAdministrativo(){
     	tabsheet = new TabSheet();
     	//BIBLIOTECA VIRTUAL
-    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
+    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Biblioteca Virtual");
     	// CONTROL DE VISITAS
-    	tabsheet.addTab(new graficosVisitas(),"Gráfico de Visitas");
-    	tabsheet.addTab(new graficosConsultas(),"Gráfico de Consultas");
+    	tabsheet.addTab(new graficosVisitas(),"Visitas");
     	//CONSULTAS
-    	tabsheet.addTab(new formularioNuevaConsulta(),"Nueva Consulta");
-    	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
-    	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
-    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas");
+    	//PRESTAMOS
+    	tabsheet.addTab(new formularioSolicitudesPendientes(),"Préstamos");
+    	
+    	setContent(tabsheet);
     }
     
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

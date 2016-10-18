@@ -238,10 +238,8 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 					String basesDatos = (String)tablaConsultas.getContainerProperty(rowId,"Bases de datos").getValue();
 					
 					
-					//UI.getCurrent().setContent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
-					Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
-					tab.removeAllComponents();
-					tab.addComponent(new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
+					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioEditarConsulta(idConsulta,fechaEmision,nombre, apellidos, cedula, carne, email, telefono, institucion, tipoUsuario, tema, tipoConsulta, observaciones, basesDatos));
+					
 				}
 				else
 				{
@@ -259,10 +257,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new formularioNuevaConsulta());
-				//Component tab = MyUI.tabsheet.getSelectedTab();
-				//tab.getUI().setContent(new formularioNuevaConsulta());
-				//tab.addComponent(new formularioNuevaConsulta());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevaConsulta());
 			}
 	 	});
 		
@@ -272,10 +267,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				//UI.getCurrent().setContent(new formularioConsultaCompletada());
-				Layout tab = (Layout) MyUI.tabsheet.getSelectedTab();
-				tab.removeAllComponents();
-				tab.addComponent(new formularioConsultaCompletada());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioConsultaCompletada());
 			}
 	 	});
 	}

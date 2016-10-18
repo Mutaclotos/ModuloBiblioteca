@@ -251,8 +251,8 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 					String fechaCaducidad = (String)tablaSolicitudes.getContainerProperty(rowId,"Fecha de caducidad").getValue();
 					String aprobado = (String)tablaSolicitudes.getContainerProperty(rowId,"Estado de solicitud").getValue();
 					
+					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioEditarSolicitud(idSolicitud, signatura, titulo, autor, volumen, numero, anio, institucion, usuario, nombre, apellidos, telefono, fechaSolicitud, fechaCaducidad, aprobado));
 					
-					UI.getCurrent().setContent(new formularioEditarSolicitud(idSolicitud, signatura, titulo, autor, volumen, numero, anio, institucion, usuario, nombre, apellidos, telefono, fechaSolicitud, fechaCaducidad, aprobado));
 					
 				}
 				else

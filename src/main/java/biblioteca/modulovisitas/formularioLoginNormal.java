@@ -9,13 +9,13 @@ import com.vaadin.event.FieldEvents.FocusEvent;
 import com.vaadin.event.FieldEvents.FocusListener;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 
 import biblioteca.modulovisitas.validadores.IsCedula;
 import biblioteca.modulovisitas.validadores.IsClave;
@@ -151,7 +151,7 @@ public class formularioLoginNormal extends CustomComponent {
 							else
 							{
 								//TODO: setContent editUser
-								//UI.getCurrent().setContent(new prestamosActuales());
+								m.usuarioNormal();
 							}
 						}catch(Exception sqe)
 						{
@@ -279,9 +279,9 @@ public class formularioLoginNormal extends CustomComponent {
 		botonLoginAdmin = new Button();
 		botonLoginAdmin.setCaption("Login Administrativo");
 		botonLoginAdmin.setImmediate(true);
-		botonLoginAdmin.setWidth("159px");
+		botonLoginAdmin.setWidth("199px");
 		botonLoginAdmin.setHeight("40px");
-		mainLayout.addComponent(botonLoginAdmin, "top:60.0px;left:120.0px;");
+		mainLayout.addComponent(botonLoginAdmin, "top:60.0px;left:80.0px;");
 		
 		// buttonRegistrar
 		buttonRegistrar = new Button();

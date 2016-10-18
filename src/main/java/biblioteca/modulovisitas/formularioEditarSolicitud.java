@@ -363,7 +363,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 									checkBoxACEPTAR.setValue(false);
 									checkBoxRECHAZAR.setValue(false);
 									
-									UI.getCurrent().setContent(new formularioSolicitudesPendientes());
+									MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioSolicitudesPendientes());
 								}
 								else if(checkBoxDEVUELTO.getValue() && (estadoAnterior.equals("PRESTADO") || estadoAnterior.equals("MOROSO")))
 								{
@@ -378,7 +378,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 									checkBoxACEPTAR.setValue(false);
 									checkBoxRECHAZAR.setValue(false);
 									
-									UI.getCurrent().setContent(new formularioSolicitudesPendientes());
+									MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioSolicitudesPendientes());
 								}
 							}
 							else
@@ -398,7 +398,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 							checkBoxACEPTAR.setValue(false);
 							checkBoxRECHAZAR.setValue(false);
 							
-							UI.getCurrent().setContent(new formularioSolicitudesPendientes());
+							MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioSolicitudesPendientes());
 						}
 						else
 						{
@@ -489,7 +489,7 @@ public class formularioEditarSolicitud extends CustomComponent implements View
 				checkBoxACEPTAR.setValue(false);
 				checkBoxRECHAZAR.setValue(false);
 				checkBoxDEVUELTO.setValue(false);
-				UI.getCurrent().setContent(new formularioSolicitudesPendientes());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioSolicitudesPendientes());
 			}
 	 	});
 	}

@@ -200,7 +200,7 @@ public class formularioConsultaCompletada extends CustomComponent
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioConsultaNoCompletada());
 			}
 	 	});
 		
@@ -210,7 +210,7 @@ public class formularioConsultaCompletada extends CustomComponent
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new formularioNuevaConsulta());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevaConsulta());
 			}
 	 	});
 		
@@ -220,7 +220,7 @@ public class formularioConsultaCompletada extends CustomComponent
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new graficosConsultas());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new graficosConsultas());
 			}
 	 	});
 	}

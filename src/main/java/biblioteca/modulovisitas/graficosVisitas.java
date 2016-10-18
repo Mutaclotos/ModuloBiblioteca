@@ -131,7 +131,7 @@ public class graficosVisitas extends CustomComponent {
 		labelTitulo.setImmediate(false);
 		labelTitulo.setWidth("-1px");
 		labelTitulo.setHeight("-1px");
-		labelTitulo.setValue("CONTROL VISITAS");
+		labelTitulo.setValue("GRAFICO DE VISITAS");
 		mainLayout.addComponent(labelTitulo, "top:0.0px;left:256.0px;");
 		
 		// input_tipo

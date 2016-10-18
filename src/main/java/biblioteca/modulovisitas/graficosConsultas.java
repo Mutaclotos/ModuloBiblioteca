@@ -105,7 +105,7 @@ public class graficosConsultas extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				UI.getCurrent().setContent(new formularioConsultaCompletada());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioConsultaCompletada());
 			}
 	 	});
 	}

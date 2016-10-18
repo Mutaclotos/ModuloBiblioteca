@@ -323,7 +323,7 @@ public class formularioEditarConsulta extends CustomComponent implements View
 					}
 					
 					System.out.println("Fila modificada.");
-					UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioConsultaNoCompletada());
 				}
 			}
 		});
@@ -334,11 +334,7 @@ public class formularioEditarConsulta extends CustomComponent implements View
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				//setValueDateField(inputFechaCaducidad, null);
-				//checkBoxACEPTAR.setValue(false);
-				//checkBoxRECHAZAR.setValue(false);
-				//checkBoxDEVUELTO.setValue(false);
-				UI.getCurrent().setContent(new formularioConsultaNoCompletada());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioConsultaCompletada());
 			}
 	 	});
 	}
