@@ -59,7 +59,7 @@ public class formularioLoginAdmin extends CustomComponent {
 	
 	private String timeStamp;
 	
-	public static String usuario;
+	//public static String usuario;
 
 	private final DBConnector dbc;
 	/**
@@ -134,8 +134,8 @@ public class formularioLoginAdmin extends CustomComponent {
 							}
 							else
 							{
-								usuario = cedula;
-								m.usuarioAdministrativo();
+								//usuario = cedula;
+								m.usuarioAdministrativo(cedula);
 							}
 						}catch(Exception sqe)
 						{

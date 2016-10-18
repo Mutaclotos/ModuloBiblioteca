@@ -51,14 +51,15 @@ public class prestamosActuales extends CustomComponent {
 
 	
 	private MyUI ui;
-
-	public prestamosActuales()  {
+	String user;
+	
+	public prestamosActuales(String usuario)  {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 		ui = new MyUI();
-		
+		this.user = usuario;
 
 		ClickListener click = new ClickListener(){
 			SimpleStringFilter filter = null;
@@ -150,7 +151,7 @@ public class prestamosActuales extends CustomComponent {
 		tablaDePrestamos.setColumnCollapsingAllowed(true);
 		
 		
-		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula and u.cedula ="+ MyUI.user+" group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
+		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula and u.cedula ="+ user+" group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
 		
 		try{	
 		//TODO: datasource de resultSet, tableQuery	
@@ -190,7 +191,7 @@ public class prestamosActuales extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevoPrestamo());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevoPrestamo(user));
 			}
 	 	});
 		
@@ -200,7 +201,7 @@ public class prestamosActuales extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event)
 			{
-				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioHistorialPrestamos());
+				MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioHistorialPrestamos(user));
 			}
 	 	});
 	}

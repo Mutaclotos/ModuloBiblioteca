@@ -56,7 +56,8 @@ public class MyUI extends UI
        setContent(new formularioLoginNormal(this));
     }
 
-    void usuarioNormal(){
+    void usuarioNormal(String usuario)
+    {
     	tabsheet = new TabSheet();
 
     	//setContent(tabsheet);
@@ -67,11 +68,12 @@ public class MyUI extends UI
     	tabsheet.addTab(new formularioentrada(),"Formulario de Entrada");
     	
     	//PRESTAMOS DE LIBRO
-    	tabsheet.addTab(new prestamosActuales(),"Préstamos");
+    	tabsheet.addTab(new prestamosActuales(usuario),"Préstamos");
     	
     	setContent(tabsheet);
     }
-    void usuarioAdministrativo(){
+    void usuarioAdministrativo(String usuario)
+    {
     	tabsheet = new TabSheet();
     	//BIBLIOTECA VIRTUAL
     	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Biblioteca Virtual");

@@ -64,7 +64,7 @@ public class formularioLoginNormal extends CustomComponent {
 	
 	private String timeStamp;
 	
-	public static String usuario;
+	//public static String usuario;
 
 	private final DBConnector dbc;
 	/**
@@ -150,9 +150,25 @@ public class formularioLoginNormal extends CustomComponent {
 							}
 							else
 							{
-								//TODO: setContent editUser
-								//m.usuarioNormal();
-								UI.getCurrent().setContent(new formularioEditarUsuario(m));
+								try
+								{
+									rs = dbc.query("SELECT u.cedula, u.carne, u.apellidos, u.nombre, u.email, u.institucion, u.tipo, t.numero FROM usuario u, telefono t WHERE u.cedula='"+cedula+"' AND t.cedula = u.cedula");
+									
+									if(rs.next())
+									{
+										String nombre = rs.getString(4);
+										String apellidos = rs.getString(3);
+										String carne = rs.getString(2);
+										String email = rs.getString(5);
+										String telefono = rs.getString(8);
+										String institucion = rs.getString(6);
+										String tipoUsuario = rs.getString(7);
+										UI.getCurrent().setContent(new formularioEditarUsuario(m,cedula,carne,nombre,apellidos,email,telefono,institucion,tipoUsuario));
+									}
+								}catch(Exception sqe)
+								{
+									sqe.printStackTrace();
+								}	
 							}
 						}catch(Exception sqe)
 						{
@@ -172,8 +188,8 @@ public class formularioLoginNormal extends CustomComponent {
 							}
 							else
 							{
-								usuario = cedula;
-								m.usuarioNormal();
+								//usuario = cedula;
+								m.usuarioNormal(cedula);
 							}
 						}catch(Exception sqe)
 						{
@@ -193,7 +209,7 @@ public class formularioLoginNormal extends CustomComponent {
 			public void buttonClick(ClickEvent event) 
 			{	
 				//TODO: setContent to register new user
-				//UI.getCurrent().setContent(new prestamosActuales());
+				UI.getCurrent().setContent(new formularioEditarUsuario(m,"","","","","","","",""));
 			}
 			
 		});
