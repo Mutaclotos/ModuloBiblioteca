@@ -204,7 +204,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 		int i=0;
 		
 		//añadir condicion de la cedula del usuario actual"
-		ResultSet rs = dbc.query("select p.fechaEntrega, d.titulo , a.nombre , d.signatura , d.tipoDocumento, d.anio, d.editorial from Documento d, prestamo p, usuario u,documentoautor da,autor a	where p.usuario=u.cedula and "+MyUI.user+" and p.documento= d.signatura and da.documento= d.signatura and da.autor = a.id	group by p.Documento;" );
+		ResultSet rs = dbc.query("select p.fechaEntrega, d.titulo , a.nombre , d.signatura , d.tipoDocumento, d.anio, d.editorial from Documento d, prestamo p, usuario u,documentoautor da,autor a	where p.usuario=u.cedula and u.cedula= "+user+" and p.documento= d.signatura and da.documento= d.signatura and da.autor = a.id	group by p.Documento;" );
 		
 	
 		

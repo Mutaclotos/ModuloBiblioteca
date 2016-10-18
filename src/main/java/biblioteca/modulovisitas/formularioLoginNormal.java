@@ -139,7 +139,7 @@ public class formularioLoginNormal extends CustomComponent {
 					
 					if(clave == null)
 					{
-						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"'");
+						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND rol IS NULL");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
@@ -177,7 +177,7 @@ public class formularioLoginNormal extends CustomComponent {
 					}
 					else
 					{
-						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' ");
+						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' AND rol IS NULL");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
