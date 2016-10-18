@@ -50,13 +50,14 @@ public class formularioHistorialPrestamos extends CustomComponent {
 	private final DBConnector dbc;
 	
 	private MyUI ui;
+	String user;
 	
-	public formularioHistorialPrestamos() {
+	public formularioHistorialPrestamos(String usuario) {
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
 		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 		ui = new MyUI();
-		
+		this.user = usuario;
 
 		// TODO add user code here
 		ClickListener click = new ClickListener(){
@@ -246,7 +247,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 				@Override
 				public void buttonClick(ClickEvent event)
 				{
-					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new prestamosActuales());
+					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new prestamosActuales(user));
 				}
 		 	});
 		
@@ -256,7 +257,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 				@Override
 				public void buttonClick(ClickEvent event)
 				{
-					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevoPrestamo());
+					MyUI.tabsheet.replaceComponent(MyUI.tabsheet.getSelectedTab(), new formularioNuevoPrestamo(user));
 				}
 		 	});
 	}
