@@ -44,33 +44,58 @@ public class MyUI extends UI
 {
 	
 	
+<<<<<<< HEAD
+=======
+	//Credenciales para todas las clases
+	public static String user = "root";
+	
+	public static String password = "V@rg@5!4q0";
+	
+	public static String address = "localhost";
+>>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
+	
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+<<<<<<< HEAD
     	
     	TabSheet tabsheet = new TabSheet();
     	setContent(tabsheet);
     	
+=======
+       setContent(new formularioLoginNormal(this));
+    }
+
+    void usuarioNormal(){
+    	tabsheet = new TabSheet();
+
+    	//setContent(tabsheet);
+>>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
     	//BIBLIOTECA VIRTUAL
-    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
     	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
-    	tabsheet.addTab(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"),"Resultados B.Virtual");
     	
     	// CONTROL DE VISITAS
     	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
-    	tabsheet.addTab(new graficosVisitas(),"Gráfico de Visitas");
-    	tabsheet.addTab(new graficosConsultas(),"Gráfico de Consultas");
     	
     	//PRESTAMOS DE LIBRO
     	tabsheet.addTab(new formularioNuevoPrestamo(),"Nuevo Prestamo");
     	tabsheet.addTab(new formularioHistorialPrestamos(),"Historial de Préstamos");
     	tabsheet.addTab(new prestamosActuales(),"Prestamos Actuales");
-    	
+    	setContent(tabsheet);
+    }
+    void usuarioAdministrativo(){
+    	tabsheet = new TabSheet();
+    	//BIBLIOTECA VIRTUAL
+    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
+    	// CONTROL DE VISITAS
+    	tabsheet.addTab(new graficosVisitas(),"Gráfico de Visitas");
+    	tabsheet.addTab(new graficosConsultas(),"Gráfico de Consultas");
     	//CONSULTAS
     	tabsheet.addTab(new formularioNuevaConsulta(),"Nueva Consulta");
     	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
     	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
     	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+<<<<<<< HEAD
     	
     	
     	
@@ -93,8 +118,14 @@ public class MyUI extends UI
     	//*setContent(new prestamosActuales());
 
        
+=======
+    	tabsheet.addTab(new graficosConsultas(),"Gráficos Consultas");
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
+    	tabsheet.addTab(new formularioSolicitudesPendientes(), "Solicitudes pendientes");
+    	setContent(tabsheet);
+>>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
     }
-
+    
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
