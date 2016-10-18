@@ -151,7 +151,8 @@ public class formularioLoginNormal extends CustomComponent {
 							else
 							{
 								//TODO: setContent editUser
-								m.usuarioNormal();
+								//m.usuarioNormal();
+								UI.getCurrent().setContent(new formularioEditarUsuario(m));
 							}
 						}catch(Exception sqe)
 						{

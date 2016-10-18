@@ -18,10 +18,8 @@ import com.vaadin.ui.CheckBox;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
 import com.vaadin.ui.PopupDateField;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 
 import biblioteca.modulovisitas.validadores.IsApellido;
 import biblioteca.modulovisitas.validadores.IsCarne;
