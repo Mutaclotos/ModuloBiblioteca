@@ -44,13 +44,15 @@ public class prestamosActuales extends CustomComponent {
 
 	private final DBConnector dbc;
 	
+
+	
 	private MyUI ui;
 
 	public prestamosActuales()  {
 		
 		buildMainLayout();
 		setCompositionRoot(mainLayout);
-		dbc = new DBConnector("localhost","moises","315600");
+		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 		ui = new MyUI();
 		
 
@@ -144,7 +146,7 @@ public class prestamosActuales extends CustomComponent {
 		tablaDePrestamos.setColumnCollapsingAllowed(true);
 		
 		
-		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
+		ResultSet rs = dbc.query("SELECT p.Documento, p.fechaSolicitud, p.fechaCaducidad, p.estado from Prestamo p , Usuario u where p.usuario=u.cedula and u.cedula ="+ MyUI.user+" group by  p.Documento ;" );//añadir condicion de la cedula del usuario actual"
 		
 		
 		

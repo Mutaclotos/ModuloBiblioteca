@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 biblioteca\modulovisitas\graficosVisitas.class
 biblioteca\modulovisitas\validadores\IsInstitucion.class
 biblioteca\modulovisitas\MyUI$MyUIServlet.class
@@ -26,10 +27,29 @@ biblioteca\modulovisitas\formularioConsultaCompletada$4.class
 biblioteca\modulovisitas\formularioEditarSolicitud$1.class
 biblioteca\modulovisitas\formularioConsultaNoCompletada$4.class
 biblioteca\modulovisitas\formularioentrada$2.class
+=======
+biblioteca\modulovisitas\formularioConsultaCompletada$4.class
+biblioteca\modulovisitas\formularioEditarConsulta$1.class
+biblioteca\modulovisitas\validadores\IsInstitucion.class
+biblioteca\modulovisitas\formularioLoginNormal$4.class
+biblioteca\modulovisitas\formularioSolicitudesPendientes$1.class
+biblioteca\modulovisitas\MyUI$MyUIServlet.class
+biblioteca\modulovisitas\formularioConsultaCompletada$2.class
+biblioteca\modulovisitas\formularioConsultaNoCompletada$1.class
+biblioteca\modulovisitas\formularioConsultaCompletada$1.class
+biblioteca\modulovisitas\formularioLoginAdmin.class
+biblioteca\modulovisitas\formularioEditarSolicitud.class
+biblioteca\modulovisitas\formularioNuevoPrestamo$1.class
+biblioteca\modulovisitas\formularioConsultaNoCompletada$3.class
+biblioteca\modulovisitas\prestamosActuales.class
+biblioteca\modulovisitas\formularioNuevaConsulta$3.class
+biblioteca\modulovisitas\graficosConsultas.class
+>>>>>>> refs/remotes/origin/master
 biblioteca\modulovisitas\formularioNuevoPrestamo$2.class
 biblioteca\modulovisitas\graficosConsultas$1.class
 biblioteca\modulovisitas\formularioBVirtual$1.class
 biblioteca\modulovisitas\formularioNuevaConsulta.class
+<<<<<<< HEAD
 biblioteca\modulovisitas\formularioNuevaConsulta$4.class
 biblioteca\modulovisitas\validadores\IsFechaEntrega.class
 biblioteca\modulovisitas\MyUI.class
@@ -38,8 +58,36 @@ biblioteca\modulovisitas\formularioConsultaNoCompletada$2.class
 biblioteca\modulovisitas\formularioNuevaConsulta$2.class
 biblioteca\modulovisitas\formularioEditarConsulta.class
 biblioteca\modulovisitas\graficosVisitas$1.class
+=======
+biblioteca\modulovisitas\formularioConsultaCompletada$3.class
+biblioteca\modulovisitas\graficosVisitas$2.class
+biblioteca\modulovisitas\formularioLoginAdmin$3.class
+biblioteca\modulovisitas\validadores\IsNombre.class
+biblioteca\modulovisitas\formularioBVirtual$1.class
+biblioteca\modulovisitas\graficosVisitas.class
+biblioteca\modulovisitas\validadores\IsClave.class
+biblioteca\modulovisitas\validadores\IsCedula.class
+biblioteca\modulovisitas\formularioBVirtualResultados.class
+biblioteca\modulovisitas\formularioEditarConsulta.class
+biblioteca\modulovisitas\formularioNuevaConsulta$1.class
+biblioteca\modulovisitas\graficosConsultas$2.class
+biblioteca\modulovisitas\MyUI.class
+biblioteca\modulovisitas\graficosConsultas$3.class
+biblioteca\modulovisitas\formularioLoginAdmin$2.class
+biblioteca\modulovisitas\formularioBVirtualBusqueda$1.class
+biblioteca\modulovisitas\formularioentrada$2.class
+biblioteca\modulovisitas\formularioEditarConsulta$2.class
+biblioteca\modulovisitas\formularioEditarSolicitud$1.class
+biblioteca\modulovisitas\formularioConsultaCompletada.class
+biblioteca\modulovisitas\formularioBVirtual$2.class
+>>>>>>> refs/remotes/origin/master
 biblioteca\modulovisitas\validadores\IsSignatura.class
+biblioteca\modulovisitas\DBConnector.class
+biblioteca\modulovisitas\formularioNuevaConsulta$4.class
+biblioteca\modulovisitas\formularioBVirtual.class
+biblioteca\modulovisitas\formularioBVirtual$Uploader.class
 biblioteca\modulovisitas\Contenedor.class
+<<<<<<< HEAD
 biblioteca\modulovisitas\formularioSolicitudesPendientes$1.class
 biblioteca\modulovisitas\formularioEditarSolicitud$5.class
 biblioteca\modulovisitas\formularioEditarSolicitud$2.class
@@ -52,15 +100,55 @@ biblioteca\modulovisitas\formularioConsultaCompletada$3.class
 biblioteca\modulovisitas\formularioNuevoPrestamo.class
 biblioteca\modulovisitas\validadores\IsTelefono.class
 biblioteca\modulovisitas\formularioBVirtual.class
+=======
+biblioteca\modulovisitas\formularioLoginNormal$1.class
+biblioteca\modulovisitas\formularioEditarSolicitud$4.class
+testModuloVisitas\TestVisita.class
+biblioteca\modulovisitas\validadores\IsEmail.class
+biblioteca\modulovisitas\formularioNuevaConsulta$2.class
+>>>>>>> refs/remotes/origin/master
 biblioteca\modulovisitas\formularioNuevoPrestamo$4.class
+<<<<<<< HEAD
 biblioteca\modulovisitas\formularioConsultaCompletada.class
 biblioteca\modulovisitas\formularioConsultaNoCompletada.class
 biblioteca\modulovisitas\formularioHistorialPrestamos.class
 biblioteca\modulovisitas\graficosConsultas$3.class
 biblioteca\modulovisitas\formularioSolicitudesPendientes.class
 biblioteca\modulovisitas\validadores\IsFechaCaducidad.class
+=======
+biblioteca\modulovisitas\formularioentrada$1.class
+>>>>>>> refs/remotes/origin/master
 biblioteca\modulovisitas\formularioSolicitudesPendientes$2.class
+<<<<<<< HEAD
 biblioteca\modulovisitas\validadores\IsCedula.class
 biblioteca\modulovisitas\formularioEditarSolicitud$3.class
 biblioteca\modulovisitas\formularioConsultaCompletada$2.class
 biblioteca\modulovisitas\formularioEditarConsulta$1.class
+=======
+biblioteca\modulovisitas\validadores\IsFechaCaducidad.class
+biblioteca\modulovisitas\formularioHistorialPrestamos.class
+biblioteca\modulovisitas\graficosConsultas$1.class
+biblioteca\modulovisitas\formularioSolicitudesPendientes.class
+biblioteca\modulovisitas\validadores\IsTelefono.class
+biblioteca\modulovisitas\validadores\IsApellido.class
+biblioteca\modulovisitas\formularioLoginNormal$3.class
+biblioteca\modulovisitas\validadores\IsFecha.class
+biblioteca\modulovisitas\formularioLoginNormal$2.class
+biblioteca\modulovisitas\graficosVisitas$1.class
+biblioteca\modulovisitas\formularioNuevoPrestamo$3.class
+biblioteca\modulovisitas\validadores\IsClaveAdmin.class
+biblioteca\modulovisitas\validadores\IsHora.class
+biblioteca\modulovisitas\formularioNuevoPrestamo.class
+biblioteca\modulovisitas\formularioEditarSolicitud$2.class
+biblioteca\modulovisitas\formularioConsultaNoCompletada$4.class
+biblioteca\modulovisitas\formularioLoginAdmin$1.class
+biblioteca\modulovisitas\formularioBVirtualBusqueda.class
+biblioteca\modulovisitas\formularioEditarSolicitud$5.class
+biblioteca\modulovisitas\formularioConsultaNoCompletada$2.class
+biblioteca\modulovisitas\formularioEditarSolicitud$3.class
+biblioteca\modulovisitas\formularioConsultaNoCompletada.class
+biblioteca\modulovisitas\validadores\IsFechaEntrega.class
+biblioteca\modulovisitas\validadores\IsCarne.class
+biblioteca\modulovisitas\formularioentrada.class
+biblioteca\modulovisitas\formularioLoginNormal.class
+>>>>>>> refs/remotes/origin/master
