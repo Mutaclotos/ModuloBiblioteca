@@ -174,6 +174,7 @@ public class formularioLoginNormal extends CustomComponent {
 						{
 							sqe.printStackTrace();
 						}
+						
 					}
 					else
 					{
