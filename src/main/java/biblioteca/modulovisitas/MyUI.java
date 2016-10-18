@@ -43,26 +43,16 @@ import com.vaadin.ui.VerticalLayout;
 public class MyUI extends UI 
 {
 	
-	
-<<<<<<< HEAD
-=======
+	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
 	public static String user = "root";
 	
 	public static String password = "V@rg@5!4q0";
 	
 	public static String address = "localhost";
->>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
-	
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-<<<<<<< HEAD
-    	
-    	TabSheet tabsheet = new TabSheet();
-    	setContent(tabsheet);
-    	
-=======
        setContent(new formularioLoginNormal(this));
     }
 
@@ -70,7 +60,6 @@ public class MyUI extends UI
     	tabsheet = new TabSheet();
 
     	//setContent(tabsheet);
->>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
     	//BIBLIOTECA VIRTUAL
     	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
     	
@@ -95,35 +84,6 @@ public class MyUI extends UI
     	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
     	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
     	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
-<<<<<<< HEAD
-    	
-    	
-    	
-    	//*setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
-    	//*setContent(new formularioBVirtualBusqueda());
-    	//*setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
-    	
-    	
-    	//*setContent(new formularioentrada());
-    	//*setContent(new graficosConsultas());
-    	//*setContent( new graficosVisitas()); 
-    	
-        //*setContent(new formularioConsultaNoCompletada());
-        //*setContent(new formularioNuevaConsulta());
-        //*setContent(new formularioSolicitudesPendientes());
-        //*setContent(new formularioConsultaCompletada());
-
-    	//*setContent(new formularioNuevoPrestamo());
-    	//*setContent(new formularioHistorialPrestamos());
-    	//*setContent(new prestamosActuales());
-
-       
-=======
-    	tabsheet.addTab(new graficosConsultas(),"Gráficos Consultas");
-    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
-    	tabsheet.addTab(new formularioSolicitudesPendientes(), "Solicitudes pendientes");
-    	setContent(tabsheet);
->>>>>>> 9bf271fbe8f56bd6c71ed83e33fefe43609a9aa3
     }
     
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
