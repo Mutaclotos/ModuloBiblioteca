@@ -209,7 +209,7 @@ public class formularioLoginNormal extends CustomComponent {
 			public void buttonClick(ClickEvent event) 
 			{	
 				//TODO: setContent to register new user
-				UI.getCurrent().setContent(new formularioEditarUsuario(m,"","","","","","","",""));
+				UI.getCurrent().setContent(new formularioNuevoUsuario(m));
 			}
 			
 		});

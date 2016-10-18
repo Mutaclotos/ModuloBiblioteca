@@ -342,7 +342,7 @@ public class formularioNuevaConsulta extends CustomComponent {
 					try{
 						if(!rs.next()){//Si no exiten regitros con esta cedula
 							System.out.println("Insertando nuevo usuario.");
-							dbc.insert("Usuario",cedula,carne,apellidos,nombre,email,institucion,tipoUsuario);
+							dbc.insert("Usuario",cedula,carne,apellidos,nombre,email,institucion,tipoUsuario,null,null);
 							dbc.insert("Telefono",cedula,telefono);
 						}
 					}catch(Exception sqe){
