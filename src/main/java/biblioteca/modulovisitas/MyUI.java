@@ -59,8 +59,6 @@ public class MyUI extends UI
     	tabsheet = new TabSheet();
 
     	//setContent(tabsheet);
-    	
-<<<<<<< HEAD
     	//BIBLIOTECA VIRTUAL
     	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
     	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
@@ -81,36 +79,10 @@ public class MyUI extends UI
     	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
     	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
     	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
-    	
-    	
-    	
-    	//*setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
-    	//*setContent(new formularioBVirtualBusqueda());
-    	//*setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
-    	
-=======
-
-    	//tabsheet.addTab(new formularioentrada(),"Formulario Entrada");
-    	//tabsheet.addTab(new formularioBVirtualBusqueda(),"Búsqueda B");
-    	//tabsheet.addTab(new graficosVisitas(),"Gráficos Visitas");
     	//tabsheet.addTab(new graficosConsultas(),"Gráficos Consultas");
-    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
->>>>>>> 262d8f1d0bbd5b5c0ecddab60acb5101e97d41df
-    	
-    	//*setContent(new formularioentrada());
-    	//*setContent(new graficosConsultas());
-    	//*setContent( new graficosVisitas()); 
-    	
-<<<<<<< HEAD
-        //*setContent(new formularioConsultaNoCompletada());
-        //*setContent(new formularioNuevaConsulta());
-        //*setContent(new formularioSolicitudesPendientes());
-        //*setContent(new formularioConsultaCompletada());
 
-    	//*setContent(new formularioNuevoPrestamo());
-    	//*setContent(new formularioHistorialPrestamos());
-    	//*setContent(new prestamosActuales());
-=======
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas Pendientes");
+
     	//setContent(new formularioBVirtualBusqueda());
     	//setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
     	//setContent(new graficosConsultas());
@@ -122,9 +94,8 @@ public class MyUI extends UI
         //setContent(new formularioConsultaCompletada());
 
     	//setContent(new formularioNuevoPrestamo());
-    	setContent(new formularioHistorialPrestamos());
+    	//setContent(new formularioHistorialPrestamos());
     	//setContent(new prestamosActuales());
->>>>>>> 262d8f1d0bbd5b5c0ecddab60acb5101e97d41df
 
        setContent(new formularioLoginNormal());
     }
