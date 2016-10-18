@@ -51,27 +51,46 @@ public class MyUI extends UI
     	TabSheet tabsheet = new TabSheet();
     	setContent(tabsheet);
     	
+    	//BIBLIOTECA VIRTUAL
+    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Ingresar Libro");
+    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda Libro");
+    	tabsheet.addTab(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"),"Resultados B.Virtual");
+    	
+    	// CONTROL DE VISITAS
     	tabsheet.addTab(new formularioentrada(),"FormularioEntrada");
-    	tabsheet.addTab(new formularioBVirtualBusqueda(),"Busqueda");
-    	tabsheet.addTab(new graficosVisitas(),"Graficos");
-    	tabsheet.addTab(new graficosConsultas(),"Gráfico Consulta");
-    	//tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta No");
+    	tabsheet.addTab(new graficosVisitas(),"Gráfico de Visitas");
+    	tabsheet.addTab(new graficosConsultas(),"Gráfico de Consultas");
     	
-    	//setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
+    	//PRESTAMOS DE LIBRO
+    	tabsheet.addTab(new formularioNuevoPrestamo(),"Nuevo Prestamo");
+    	tabsheet.addTab(new formularioHistorialPrestamos(),"Historial de Préstamos");
+    	tabsheet.addTab(new prestamosActuales(),"Prestamos Actuales");
     	
-    	//setContent(new formularioBVirtualBusqueda());
-    	//setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
-    	//setContent(new graficosConsultas());
-    	//setContent( new graficosVisitas()); 
-        //setContent(new formularioConsultaNoCompletada());
-        //setContent(new formularioentrada());
-        //setContent(new formularioNuevaConsulta());
-        //setContent(new formularioSolicitudesPendientes());
-        //setContent(new formularioConsultaCompletada());
+    	//CONSULTAS
+    	tabsheet.addTab(new formularioNuevaConsulta(),"Nueva Consulta");
+    	tabsheet.addTab(new formularioNuevaConsulta(),"Solicitudes Pendientes");
+    	tabsheet.addTab(new formularioConsultaCompletada(),"Consulta Completa");
+    	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consulta Errónea");
+    	
+    	
+    	
+    	//*setContent(new formularioBVirtual("/home/geo/Documentos/Inge_Biblioteca/uploads"));
+    	//*setContent(new formularioBVirtualBusqueda());
+    	//*setContent(new formularioBVirtualResultados("select GROUP_CONCAT( concat(',', a.nombre )) as Autores,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1 GROUP BY d.signatura"));
+    	
+    	
+    	//*setContent(new formularioentrada());
+    	//*setContent(new graficosConsultas());
+    	//*setContent( new graficosVisitas()); 
+    	
+        //*setContent(new formularioConsultaNoCompletada());
+        //*setContent(new formularioNuevaConsulta());
+        //*setContent(new formularioSolicitudesPendientes());
+        //*setContent(new formularioConsultaCompletada());
 
-    	//setContent(new formularioNuevoPrestamo());
-    	//setContent(new formularioHistorialPrestamos());
-    	//setContent(new prestamosActuales());
+    	//*setContent(new formularioNuevoPrestamo());
+    	//*setContent(new formularioHistorialPrestamos());
+    	//*setContent(new prestamosActuales());
 
        
     }
