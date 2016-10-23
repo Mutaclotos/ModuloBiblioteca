@@ -139,7 +139,7 @@ public class formularioLoginNormal extends CustomComponent {
 					
 					if(clave == null)
 					{
-						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"'");
+						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND rol IS NULL");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
@@ -174,10 +174,11 @@ public class formularioLoginNormal extends CustomComponent {
 						{
 							sqe.printStackTrace();
 						}
+						
 					}
 					else
 					{
-						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' ");
+						rs = dbc.query("SELECT 1 FROM usuario WHERE cedula='"+cedula+"' AND clave = '" + clave + "' AND rol IS NULL");
 						try{
 							if(!rs.next())
 							{//Si no exiten regitros con esta cedula
@@ -209,7 +210,7 @@ public class formularioLoginNormal extends CustomComponent {
 			public void buttonClick(ClickEvent event) 
 			{	
 				//TODO: setContent to register new user
-				UI.getCurrent().setContent(new formularioEditarUsuario(m,"","","","","","","",""));
+				UI.getCurrent().setContent(new formularioNuevoUsuario(m));
 			}
 			
 		});

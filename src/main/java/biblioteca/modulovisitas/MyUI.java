@@ -78,7 +78,7 @@ public class MyUI extends UI
     {
     	tabsheet = new TabSheet();
     	//BIBLIOTECA VIRTUAL
-    	tabsheet.addTab(new formularioBVirtual ("/home/geo/Documentos/Inge_Biblioteca/uploads"),"Biblioteca Virtual");
+    	tabsheet.addTab(new formularioBVirtual ("C:/Users/USUARIO/git/ModuloBiblioteca"),"Biblioteca Virtual");
     	// CONTROL DE VISITAS
     	tabsheet.addTab(new graficosVisitas(),"Visitas");
     	//CONSULTAS

@@ -25,7 +25,7 @@ import biblioteca.modulovisitas.validadores.IsInstitucion;
 import biblioteca.modulovisitas.validadores.IsNombre;
 import biblioteca.modulovisitas.validadores.IsTelefono;
 
-public class formularioEditarUsuario extends CustomComponent {
+public class formularioNuevoUsuario extends CustomComponent {
 
 	/*- VaadinEditorProperties={"grid":"RegularGrid,20","showGrid":true,"snapToGrid":true,"snapToObject":true,"movingGuides":false,"snappingDistance":10} */
 	
@@ -124,7 +124,7 @@ public class formularioEditarUsuario extends CustomComponent {
 	 */
 	MyUI m;
 	
-	public formularioEditarUsuario(MyUI main, String cedula, String carne, String nombre, String apellidos, String email, String telefono, String institucion, String tipo) 
+	public formularioNuevoUsuario(MyUI main) 
 	{
 		this.m = main;
 		buildMainLayout();
@@ -165,7 +165,7 @@ public class formularioEditarUsuario extends CustomComponent {
 		
 		inputSoy.setContainerDataSource(Contenedor.obtenerContenedorTipoUsuario("tipoSoy"));
 		
-		inputNombre.setValue(nombre);
+		/*inputNombre.setValue(nombre);
 		inputApellidos.setValue(apellidos);
 		inputCarne.setValue(carne);
 		inputCedula.setValue(cedula);
@@ -178,7 +178,7 @@ public class formularioEditarUsuario extends CustomComponent {
 		{
 			inputCarne.setReadOnly(true);
 			inputCedula.setReadOnly(true);
-		}
+		}*/
 		
 		
 		labelErrorDistinto.setVisible(false);
@@ -198,6 +198,7 @@ public class formularioEditarUsuario extends CustomComponent {
 				textFieldClave2.addValidator(new IsClaveAdmin());
 				
 				String cedula;
+				String carne;
 				String apellidos;
 				String email;
 				String telefono;
@@ -212,6 +213,15 @@ public class formularioEditarUsuario extends CustomComponent {
 						&& inputInstitucion.isValid() && inputNombre.isValid() && textFieldClave1.isValid() && textFieldClave2.isValid());
 				if(noError){
 					cedula = inputCedula.getValue();
+					if(inputCarne.isEmpty())
+					{
+						carne = null;
+					}
+					else
+					{
+						carne = inputCarne.getValue();
+					}
+					
 					apellidos = inputApellidos.getValue();
 					email = inputEmail.getValue();
 					telefono = inputTelefono.getValue();
@@ -227,8 +237,8 @@ public class formularioEditarUsuario extends CustomComponent {
 						try{
 							if(!rs.next()){//Si no exiten regitros con esta clave
 								System.out.println("Clave disponible.");
-								dbc.update("Usuario","nombre='"+nombre+"', apellidos='"+apellidos+"', email='"+email+"', tipo='"+tipoUsuario+"', institucion='"+institucion+"', clave='"+clave1+"'","cedula='"+cedula+"'");
-								dbc.update("Telefono", "numero='"+telefono+"'", "cedula='"+cedula+"'");
+								dbc.insert("Usuario",cedula,carne,apellidos,nombre,email,institucion,tipoUsuario,clave1,null);
+								dbc.insert("Telefono",cedula,telefono);
 							}
 							else
 							{
@@ -247,7 +257,8 @@ public class formularioEditarUsuario extends CustomComponent {
 						inputInstitucion.setValue("");
 						inputNombre.setValue("");
 						
-						m.usuarioNormal(cedula);
+						
+						UI.getCurrent().setContent(new formularioLoginNormal(m));
 					}
 					else
 					{
@@ -308,7 +319,7 @@ public class formularioEditarUsuario extends CustomComponent {
 		labelTitulo.setImmediate(false);
 		labelTitulo.setWidth("-1px");
 		labelTitulo.setHeight("-1px");
-		labelTitulo.setValue("EDITAR USUARIO");
+		labelTitulo.setValue("NUEVO USUARIO");
 		mainLayout.addComponent(labelTitulo, "top:0.0px;left:290.0px;");
 		
 		// inputNombre
@@ -475,7 +486,7 @@ public class formularioEditarUsuario extends CustomComponent {
 		labelClave1.setWidth("-1px");
 		labelClave1.setHeight("-1px");
 		labelClave1.setValue("Nueva contraseña:");
-		mainLayout.addComponent(labelClave1, "top:320.0px;left:99.0px;");
+		mainLayout.addComponent(labelClave1, "top:320.0px;left:100.0px;");
 		
 		// labelClave2
 		labelClave2 = new Label();
