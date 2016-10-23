@@ -70,6 +70,8 @@ public class MyUI extends UI
     	//PRESTAMOS DE LIBRO
     	tabsheet.addTab(new prestamosActuales(usuario),"Préstamos");
     	
+    	//Deslogeo, salir usuario
+    	tabsheet.addTab(new formularioDeslogeo(this,usuario),"Salir de cuenta");
     	setContent(tabsheet);
     }
     void usuarioAdministrativo(String usuario)
@@ -83,6 +85,9 @@ public class MyUI extends UI
     	tabsheet.addTab(new formularioConsultaNoCompletada(),"Consultas");
     	//PRESTAMOS
     	tabsheet.addTab(new formularioSolicitudesPendientes(),"Préstamos");
+    	
+    	//Deslogeo, salir usuario
+    	tabsheet.addTab(new formularioDeslogeo(this,usuario),"Salir de cuenta");
     	
     	setContent(tabsheet);
     }
