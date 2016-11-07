@@ -45,15 +45,16 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
-	public static String user = "moises";
+	public static String user = "Mutaclotos";
 	
-	public static String password = "315600";
+	public static String password = "we105769";
 	
 	public static String address = "localhost";
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
        setContent(new formularioLoginNormal(this));
+       
     }
 
     void usuarioNormal(String usuario)
