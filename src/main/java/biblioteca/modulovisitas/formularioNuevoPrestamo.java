@@ -17,7 +17,6 @@ import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 
 import biblioteca.modulovisitas.validadores.IsSignatura;
 

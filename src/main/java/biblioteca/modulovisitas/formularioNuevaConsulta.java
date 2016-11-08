@@ -503,7 +503,7 @@ public class formularioNuevaConsulta extends CustomComponent {
 		labelTelefono.setImmediate(false);
 		labelTelefono.setWidth("-1px");
 		labelTelefono.setHeight("-1px");
-		labelTelefono.setValue("Telefono:");
+		labelTelefono.setValue("Teléfono:");
 		mainLayout.addComponent(labelTelefono, "top:240.0px;left:370.0px;");
 		
 		// inputApellidos
@@ -577,7 +577,7 @@ public class formularioNuevaConsulta extends CustomComponent {
 		labelInstitucion.setImmediate(false);
 		labelInstitucion.setWidth("-1px");
 		labelInstitucion.setHeight("-1px");
-		labelInstitucion.setValue("Institucion:");
+		labelInstitucion.setValue("Institución:");
 		mainLayout.addComponent(labelInstitucion, "top:180.0px;left:363.0px;");
 		
 		// inputInstitucion

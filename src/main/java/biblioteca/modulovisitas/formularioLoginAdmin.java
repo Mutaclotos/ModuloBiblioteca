@@ -16,7 +16,6 @@ import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 
 import biblioteca.modulovisitas.validadores.IsCedula;
 import biblioteca.modulovisitas.validadores.IsClaveAdmin;
@@ -240,7 +239,7 @@ public class formularioLoginAdmin extends CustomComponent {
 		labelError.setImmediate(false);
 		labelError.setWidth("-1px");
 		labelError.setHeight("-1px");
-		labelError.setValue("Usuario o contraseña no validos.");
+		labelError.setValue("Usuario o contraseña no válidos.");
 		mainLayout.addComponent(labelError, "top:262.0px;left:279.0px;");
 		
 		return mainLayout;
