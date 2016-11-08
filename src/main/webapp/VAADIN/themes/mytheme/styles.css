@@ -1557,6 +1557,14 @@ div.v-layout.v-horizontal.v-widget {
 	vertical-align: top;
 }
 
+.cosoCentro:parent {
+	width: 100% !important;
+}
+
+.cosoCentro {
+	margin-left: -50% !important;
+}
+
 .mytheme.v-app, .mytheme.v-app-loading {
 	font: 300 16px/1.55 "Open Sans", sans-serif;
 	color: #464646;

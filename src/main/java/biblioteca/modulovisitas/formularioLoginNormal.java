@@ -66,6 +66,7 @@ public class formularioLoginNormal extends CustomComponent {
 	
 	//public static String usuario;
 
+	
 	private final DBConnector dbc;
 	/**
 	 * The constructor should first build the main layout, set the
@@ -78,8 +79,9 @@ public class formularioLoginNormal extends CustomComponent {
 	public formularioLoginNormal(MyUI main) 
 	{
 		this.m = main;
+		
 		buildMainLayout();
-		setCompositionRoot(mainLayout);
+		setCompositionRoot(this.mainLayout);
 		
 		dbc = new DBConnector(MyUI.address,MyUI.user,MyUI.password);
 
@@ -163,7 +165,7 @@ public class formularioLoginNormal extends CustomComponent {
 										String telefono = rs.getString(8);
 										String institucion = rs.getString(6);
 										String tipoUsuario = rs.getString(7);
-										UI.getCurrent().setContent(new formularioEditarUsuario(m,cedula,carne,nombre,apellidos,email,telefono,institucion,tipoUsuario));
+										m.set(new formularioEditarUsuario(m,cedula,carne,nombre,apellidos,email,telefono,institucion,tipoUsuario));
 									}
 								}catch(Exception sqe)
 								{
@@ -210,7 +212,7 @@ public class formularioLoginNormal extends CustomComponent {
 			public void buttonClick(ClickEvent event) 
 			{	
 				//TODO: setContent to register new user
-				UI.getCurrent().setContent(new formularioNuevoUsuario(m));
+				m.set(new formularioNuevoUsuario(m));
 			}
 			
 		});
@@ -221,7 +223,7 @@ public class formularioLoginNormal extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) 
 			{	
-				UI.getCurrent().setContent(new formularioLoginAdmin(m));
+				m.set(new formularioLoginAdmin(m));
 			}
 			
 		});

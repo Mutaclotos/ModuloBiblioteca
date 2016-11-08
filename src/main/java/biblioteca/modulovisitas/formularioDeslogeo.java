@@ -62,7 +62,7 @@ public class formularioDeslogeo extends CustomComponent {
 		
 			{
 				
-				MyUI.getCurrent().setContent(new formularioLoginNormal(m));
+				m.set(new formularioLoginNormal(m));
 				
 			}
 	 	});
@@ -132,12 +132,12 @@ public class formularioDeslogeo extends CustomComponent {
 		labelTitulo.setImmediate(false);
 		labelTitulo.setWidth("100.0%");
 		labelTitulo.setHeight("18px");
-		labelTitulo.setValue("Teminar sesion?");
+		labelTitulo.setValue("¿Teminar sesión?");
 		mainLayout.addComponent(labelTitulo, "top:62.0px;right:209.0px;left:440.0px;");
 		
 		// buttonDeslogear
 		buttonDeslogear = new Button();
-		buttonDeslogear.setCaption("Deslogear");
+		buttonDeslogear.setCaption("Desloguear");
 		buttonDeslogear.setImmediate(true);
 		buttonDeslogear.setWidth("-1px");
 		buttonDeslogear.setHeight("-1px");
