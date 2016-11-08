@@ -258,7 +258,7 @@ public class prestamosActuales extends CustomComponent {
 		
 		// inputTipoBusqueda
 		inputTipoBusqueda = new ComboBox();
-		inputTipoBusqueda.setCaption("Tipo de búsqueda");
+		inputTipoBusqueda.setCaption("Tipo de búsqueda:");
 		inputTipoBusqueda.setImmediate(false);
 		inputTipoBusqueda.setWidth("240px");
 		inputTipoBusqueda.setHeight("-1px");

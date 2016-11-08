@@ -24,7 +24,6 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
 
 public class formularioSolicitudesPendientes extends CustomComponent implements View
 {
@@ -360,7 +359,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		
 		// inputTipoBusqueda
 		inputTipoBusqueda = new ComboBox();
-		inputTipoBusqueda.setCaption("Tipo de búsqueda");
+		inputTipoBusqueda.setCaption("Tipo de búsqueda:");
 		inputTipoBusqueda.setImmediate(false);
 		inputTipoBusqueda.setWidth("240px");
 		inputTipoBusqueda.setHeight("-1px");

@@ -167,7 +167,7 @@ public class graficosVisitas extends CustomComponent {
 		label_tipo.setImmediate(false);
 		label_tipo.setWidth("-1px");
 		label_tipo.setHeight("-1px");
-		label_tipo.setValue("Tipo");
+		label_tipo.setValue("Tipo:");
 		mainLayout.addComponent(label_tipo, "top:42.0px;left:20.0px;");
 		
 		// label_Fecha
@@ -175,7 +175,7 @@ public class graficosVisitas extends CustomComponent {
 		label_Fecha.setImmediate(false);
 		label_Fecha.setWidth("-1px");
 		label_Fecha.setHeight("-1px");
-		label_Fecha.setValue("Fecha");
+		label_Fecha.setValue("Fecha:");
 		mainLayout.addComponent(label_Fecha, "top:42.0px;left:220.0px;");
 		
 		// label_tipo2
