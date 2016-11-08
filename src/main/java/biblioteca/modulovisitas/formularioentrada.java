@@ -299,7 +299,7 @@ public class formularioentrada extends CustomComponent {
 		labelInstitucion.setImmediate(false);
 		labelInstitucion.setWidth("-1px");
 		labelInstitucion.setHeight("-1px");
-		labelInstitucion.setValue("Institucion:");
+		labelInstitucion.setValue("Institución:");
 		mainLayout.addComponent(labelInstitucion, "top:180.0px;left:323.0px;");
 		
 		// inputInstitucion
