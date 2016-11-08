@@ -168,7 +168,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		labelSignatura.setImmediate(false);
 		labelSignatura.setWidth("-1px");
 		labelSignatura.setHeight("-1px");
-		labelSignatura.setValue("Signatura");
+		labelSignatura.setValue("Signatura:");
 		mainLayout.addComponent(labelSignatura, "top:102.0px;left:21.0px;");
 		
 		// labelAutor
@@ -176,7 +176,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		labelAutor.setImmediate(false);
 		labelAutor.setWidth("-1px");
 		labelAutor.setHeight("-1px");
-		labelAutor.setValue("Autor");
+		labelAutor.setValue("Autor:");
 		mainLayout.addComponent(labelAutor, "top:142.0px;left:26.0px;");
 		
 		// label_Titu
@@ -184,7 +184,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		label_Titu.setImmediate(false);
 		label_Titu.setWidth("-1px");
 		label_Titu.setHeight("-1px");
-		label_Titu.setValue("Titulo");
+		label_Titu.setValue("Titulo:");
 		mainLayout.addComponent(label_Titu, "top:182.0px;left:26.0px;");
 		
 		// inputAutor
@@ -213,7 +213,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		labelDescriptores.setImmediate(false);
 		labelDescriptores.setWidth("-1px");
 		labelDescriptores.setHeight("-1px");
-		labelDescriptores.setValue("Descriptores");
+		labelDescriptores.setValue("Descriptores:");
 		mainLayout.addComponent(labelDescriptores, "top:222.0px;left:20.0px;");
 		
 		// labelFechaHora
@@ -253,7 +253,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 		label_tipo.setImmediate(false);
 		label_tipo.setWidth("-1px");
 		label_tipo.setHeight("-1px");
-		label_tipo.setValue("Tipo");
+		label_tipo.setValue("Tipo:");
 		mainLayout.addComponent(label_tipo, "top:102.0px;left:401.0px;");
 		
 		// resultado

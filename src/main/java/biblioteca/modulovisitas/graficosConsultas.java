@@ -14,7 +14,6 @@ import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.ComboBox;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.UI;
 
 
 public class graficosConsultas extends CustomComponent {
@@ -189,7 +188,7 @@ public class graficosConsultas extends CustomComponent {
 		label_tipo.setImmediate(false);
 		label_tipo.setWidth("-1px");
 		label_tipo.setHeight("-1px");
-		label_tipo.setValue("Tipo");
+		label_tipo.setValue("Tipo:");
 		mainLayout.addComponent(label_tipo, "top:122.0px;left:35.0px;");
 		
 		// label_Fecha
@@ -197,7 +196,7 @@ public class graficosConsultas extends CustomComponent {
 		label_Fecha.setImmediate(false);
 		label_Fecha.setWidth("-1px");
 		label_Fecha.setHeight("-1px");
-		label_Fecha.setValue("Fecha");
+		label_Fecha.setValue("Fecha:");
 		mainLayout.addComponent(label_Fecha, "top:122.0px;left:244.0px;");
 		
 		// label_tipo2

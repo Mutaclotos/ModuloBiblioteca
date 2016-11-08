@@ -11,17 +11,14 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
 import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Button.ClickListener;
 import com.vaadin.ui.ComboBox;
-import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
-import com.vaadin.ui.Layout;
 import com.vaadin.ui.Notification;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.Button.ClickEvent;
-import com.vaadin.ui.Button.ClickListener;
 
 public class formularioConsultaNoCompletada extends CustomComponent implements View
 {
@@ -339,7 +336,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		
 		// inputTipoBusqueda
 		inputTipoBusqueda = new ComboBox();
-		inputTipoBusqueda.setCaption("Tipo de búsqueda");
+		inputTipoBusqueda.setCaption("Tipo de búsqueda:");
 		inputTipoBusqueda.setImmediate(false);
 		inputTipoBusqueda.setWidth("240px");
 		inputTipoBusqueda.setHeight("-1px");
