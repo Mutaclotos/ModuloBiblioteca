@@ -154,7 +154,7 @@ public class formularioLoginAdmin extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) 
 			{	
-				UI.getCurrent().setContent(new formularioLoginNormal(m));
+				m.set(new formularioLoginNormal(m));
 
 			}
 			

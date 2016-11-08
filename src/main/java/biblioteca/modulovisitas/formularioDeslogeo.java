@@ -62,7 +62,7 @@ public class formularioDeslogeo extends CustomComponent {
 		
 			{
 				
-				MyUI.getCurrent().setContent(new formularioLoginNormal(m));
+				m.set(new formularioLoginNormal(m));
 				
 			}
 	 	});

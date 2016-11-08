@@ -27,8 +27,10 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
+import com.vaadin.ui.Component;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TabSheet;
@@ -45,19 +47,30 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
-	public static String user = "Mutaclotos";
+	public static String user = "root";
 	
-	public static String password = "we105769";
+	public static String password = "GESAVA954";
 	
-	public static String address = "localhost";
+	public static String address = "192.168.56.101";
+	
+	private AbsoluteLayout main;
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-       setContent(new formularioLoginNormal(this));
-       
+    	this.set(new formularioLoginNormal(this));
     }
 
-    void usuarioNormal(String usuario)
+    public void set(Component c){
+    	if(this.main!=null) this.main.removeAllComponents();
+    	
+    	this.main = new AbsoluteLayout();
+    	setContent(this.main);
+    	this.main.setWidth("100%");
+    	this.main.addComponent(c, "left: 50%; top: 0px;" );
+    	c.setStyleName("cosoCentro");
+    }
+    
+    public void usuarioNormal(String usuario)
     {
     	tabsheet = new TabSheet();
 
@@ -73,9 +86,9 @@ public class MyUI extends UI
     	
     	//Deslogeo, salir usuario
     	tabsheet.addTab(new formularioDeslogeo(this,usuario),"Salir de cuenta");
-    	setContent(tabsheet);
+    	set(tabsheet);
     }
-    void usuarioAdministrativo(String usuario)
+    public void usuarioAdministrativo(String usuario)
     {
     	tabsheet = new TabSheet();
     	//BIBLIOTECA VIRTUAL
@@ -90,7 +103,7 @@ public class MyUI extends UI
     	//Deslogeo, salir usuario
     	tabsheet.addTab(new formularioDeslogeo(this,usuario),"Salir de cuenta");
     	
-    	setContent(tabsheet);
+    	set(tabsheet);
     }
     
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

@@ -274,7 +274,7 @@ public class formularioEditarUsuario extends CustomComponent {
 				inputInstitucion.setValue("");
 				inputNombre.setValue("");
 				
-				UI.getCurrent().setContent(new formularioLoginNormal(m));
+				m.set(new formularioLoginNormal(m));
 			}
 	 	});
 		
