@@ -339,6 +339,7 @@ public class formularioLoginNormal extends CustomComponent {
 		embeddedLogo.setSource(new ExternalResource(
 				"https://yt3.ggpht.com/-WJSojm2hbrE/AAAAAAAAAAI/AAAAAAAAAAA/yRwtdStkNJ8/s900-c-k-no-mo-rj-c0xffffff/photo.jpg"));
 		embeddedLogo.setType(1);
+		embeddedLogo.setArchive("C:\\Users\\USUARIO\\Documents\\workspace-sts\\modulovisitas\\logoColegio");
 		embeddedLogo.setMimeType("image/png");
 		mainLayout.addComponent(embeddedLogo, "top:80.0px;left:500.0px;");
 		
