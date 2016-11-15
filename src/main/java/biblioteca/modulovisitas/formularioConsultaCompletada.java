@@ -230,11 +230,12 @@ public class formularioConsultaCompletada extends CustomComponent
 		// common part: create layout
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setImmediate(false);
-		mainLayout.setWidth("905px");
-		mainLayout.setHeight("440px");
+		//mainLayout.setWidth("905px");
+		//mainLayout.setHeight("440px");
+		mainLayout.setSizeFull();
 		
 		// top-level component properties
-		setWidth("905px");
+		setWidth("100.0%");
 		setHeight("440px");
 		
 		// labelTitulo
@@ -264,7 +265,7 @@ public class formularioConsultaCompletada extends CustomComponent
 		// tablaConsultas
 		tablaConsultas = new Table();
 		tablaConsultas.setImmediate(false);
-		tablaConsultas.setWidth("90.0%");
+		tablaConsultas.setWidth("100.0%");
 		tablaConsultas.setHeight("280px");
 		mainLayout.addComponent(tablaConsultas, "top:100.0px;left:40.0px;");
 		

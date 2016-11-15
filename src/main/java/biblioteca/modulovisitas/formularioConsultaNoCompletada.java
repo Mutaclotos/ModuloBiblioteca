@@ -293,7 +293,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		labelTitulo.setWidth("-1px");
 		labelTitulo.setHeight("-1px");
 		labelTitulo.setValue("CONSULTAS PENDIENTES");
-		mainLayout.addComponent(labelTitulo, "top:2.0px;left:651.0px;");
+		mainLayout.addComponent(labelTitulo, "top:0.0px;left:367.0px;");
 		
 		// button_buscar
 		button_buscar = new Button();
@@ -322,7 +322,7 @@ public class formularioConsultaNoCompletada extends CustomComponent implements V
 		// tablaConsultas
 		tablaConsultas = new Table();
 		tablaConsultas.setImmediate(false);
-		tablaConsultas.setWidth("90.0%");
+		tablaConsultas.setWidth("100.0%");
 		tablaConsultas.setHeight("280px");
 		mainLayout.addComponent(tablaConsultas, "top:100.0px;left:40.0px;");
 		
