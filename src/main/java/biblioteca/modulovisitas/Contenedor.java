@@ -47,6 +47,14 @@ public class Contenedor {
 		return c;
 	}
 	
+	public static Container obtenerContenedorTipoBusquedaDoc(String datos){
+		Container c = new IndexedContainer();
+		c.addContainerProperty("TipoBusqueda", String.class, "");
+		c.addItem("Signatura");
+		c.addItem("Número Inscripción");
+		return c;
+	}
+	
 	public static Container obtenerContenedorTipoBusquedaPrestamoActual(String datos){
 		Container c = new IndexedContainer();
 		c.addContainerProperty("TipoBusquedaPrestamoActual", String.class, "");
