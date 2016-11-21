@@ -14,7 +14,7 @@ public class Contenedor {
 		c.addContainerProperty("TipoUsuario", String.class, "");
 		c.addItem("Estudiante");
 		c.addItem("Funcionario");
-		c.addItem("Asociado");
+		c.addItem("Abogado");
 		c.addItem("Publico");
 		return c;
 	}
