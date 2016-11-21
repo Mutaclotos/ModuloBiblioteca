@@ -11,7 +11,7 @@ public class IsClaveAdmin implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("[A-Za-z0-9\\!\\@\\#\\$\\&\\*\\-\\+\\?\\_]{6}");
+		Pattern p = Pattern.compile("[A-Za-z0-9\\!\\@\\#\\$\\&\\*\\-\\+\\?\\_\\%]{6,}");
 		Matcher m = p.matcher(value.toString());
 		if(!m.matches()){
 			throw new InvalidValueException("No es una clave valida");

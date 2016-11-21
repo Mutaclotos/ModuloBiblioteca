@@ -47,11 +47,11 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
-	public static String user = "root";
+	public static String user = "Mutaclotos";
 	
-	public static String password = "GESAVA954";
+	public static String password = "we105769";
 	
-	public static String address = "192.168.56.101";
+	public static String address = "localhost";
 	
 	private AbsoluteLayout main;
 	
