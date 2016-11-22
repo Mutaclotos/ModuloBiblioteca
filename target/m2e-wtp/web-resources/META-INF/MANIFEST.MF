@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: geo
 Build-Jdk: 1.8.0_111
-=======
-Built-By: USUARIO
-Build-Jdk: 1.8.0_73
->>>>>>> ab82c66967d60067dc5703e258e54c46f8fa7f1d
 Created-By: Maven Integration for Eclipse
 
