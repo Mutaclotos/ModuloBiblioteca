@@ -56,19 +56,19 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-core</artifactId>
-		    <version>2.8.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.8.1</version>
 		</dependency>
 		<dependency>
-		    <groupId>com.fasterxml.jackson.core</groupId>
-		    <artifactId>jackson-databind</artifactId>
-		    <version>2.8.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.1</version>
 		</dependency>
 		<dependency>
-		   <groupId>com.vaadin.addon</groupId>
-		   <artifactId>vaadin-charts</artifactId>
-		   <version>3.2.0-rc1</version>
+			<groupId>com.vaadin.addon</groupId>
+			<artifactId>vaadin-charts</artifactId>
+			<version>3.2.0-rc1</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -92,9 +92,12 @@
 			For widgetset compilation, vaadin-client-compiler is automatically added 
 			on the compilation classpath by vaadin-maven-plugin so normally there is 
 			no need for an explicit dependency. -->
-		 <dependency> <groupId>com.vaadin</groupId> <artifactId>vaadin-client-compiler</artifactId> 
-			<scope>provided</scope> </dependency>
-			
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-client-compiler</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-themes</artifactId>
@@ -103,11 +106,21 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.4</version>
-		</dependency> 
+		</dependency>
 		<dependency>
 			<groupId>net.sf.jasperreports</groupId>
 			<artifactId>jasperreports</artifactId>
 			<version>5.1.0</version>
+		</dependency>
+
+		<dependency>
+
+			<groupId>org.vaadin.addon</groupId>
+
+			<artifactId>tableexport-for-vaadin</artifactId>
+
+			<version>1.5.1.5</version>
+
 		</dependency>
 	</dependencies>
 

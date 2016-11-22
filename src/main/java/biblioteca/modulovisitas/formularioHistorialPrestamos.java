@@ -228,7 +228,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 					tablaHistorial.addItem(new Object[]{fechaDevolucion,titulo,nombreA,signatura,tipoDocumento,anio,editorial}, itemId);
 					
 					i++;
-					System.out.println(titulo);
+					System.out.println("jajajaja"+editorial+"jejeje");
 					System.out.println(fechaDevolucion);
 				}
 						

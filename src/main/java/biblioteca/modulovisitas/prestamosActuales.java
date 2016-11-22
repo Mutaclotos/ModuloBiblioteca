@@ -163,11 +163,11 @@ public class prestamosActuales extends CustomComponent {
 				String fechaSolicitud = rs.getString("fechaSolicitud");
 				String fechaCaducidad = rs.getString("fechaCaducidad");
 				String estado = rs.getString("estado");
-
+				
 				tablaDePrestamos.addItem(new Object[]{documento,fechaSolicitud,fechaCaducidad,estado}, itemId);
 				
 				i++;
-				//System.out.println(nombreDocu);
+				//System.out.println("jaja"+documento+"jaja");
 				//System.out.println(fechaRetiro);
 			}
 					
