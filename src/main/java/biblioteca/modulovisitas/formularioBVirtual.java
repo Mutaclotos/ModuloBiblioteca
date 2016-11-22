@@ -248,7 +248,7 @@ public class formularioBVirtual extends CustomComponent {
 				//TODO verificar campos
 				
 				if(!checkBoxSi.getValue() && !archivoRecibidoExitosamente){
-					new Notification("A seleccionado que es una entrada que no es referencia, debe indicar un archivo!",
+					new Notification("Ha seleccionado una entrada que no es referencia, debe subir un archivo!",
                             Notification.Type.ERROR_MESSAGE)
 					.show(Page.getCurrent());
 					return;// break;
