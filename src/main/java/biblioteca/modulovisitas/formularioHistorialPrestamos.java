@@ -267,7 +267,7 @@ public class formularioHistorialPrestamos extends CustomComponent {
 		// common part: create layout
 		mainLayout = new AbsoluteLayout();
 		mainLayout.setImmediate(false);
-		mainLayout.setWidth("848px");
+		mainLayout.setWidth("100.0%");
 		mainLayout.setHeight("460px");
 		
 		// top-level component properties

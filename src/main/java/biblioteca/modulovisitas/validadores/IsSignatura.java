@@ -11,10 +11,11 @@ public class IsSignatura implements Validator{
 
 	@Override
 	public void validate(Object value) throws InvalidValueException {
-		Pattern p = Pattern.compile("[A-Za-z0-9]+");
+		Pattern p = Pattern.compile("[A-Za-z0-9]+(\\-[A-Za-z0-9]+)?");
 		Matcher m = p.matcher(value.toString());
 		if(!m.matches()){
 			throw new InvalidValueException("No es una signatura valida");
+			
 		}
 	}
 	

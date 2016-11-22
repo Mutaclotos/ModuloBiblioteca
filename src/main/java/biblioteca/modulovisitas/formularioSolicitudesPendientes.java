@@ -353,7 +353,7 @@ public class formularioSolicitudesPendientes extends CustomComponent implements 
 		// tablaSolicitudes
 		tablaSolicitudes = new Table();
 		tablaSolicitudes.setImmediate(true);
-		tablaSolicitudes.setWidth("90.0%");
+		tablaSolicitudes.setWidth("100.0%");
 		tablaSolicitudes.setHeight("280px");
 		mainLayout.addComponent(tablaSolicitudes, "top:100.0px;left:40.0px;");
 		
