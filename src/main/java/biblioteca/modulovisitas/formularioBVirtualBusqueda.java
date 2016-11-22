@@ -105,7 +105,7 @@ public class formularioBVirtualBusqueda extends CustomComponent {
 				String sql = "select GROUP_CONCAT( concat(',', a.nombre )) as Autores ,d.titulo as Titulo, d.signatura as Signatura,d.tipoDocumento as Tipo, GROUP_CONCAT( concat(',', de.descriptor )) as Descriptores FROM documentoautor da right outer join documento d on d.signatura= da.documento left outer join  autor a on a.id=da.autor left outer join descriptor de on de.signatura=d.signatura WHERE 1=1";
 				sql += incluir; 
 				if(signatura!=null){
-					sql += " AND d.signatura='"+signatura+"'";
+					sql += " AND d.signatura LIKE '%"+signatura+"%'";
 				}
 				if(autores!=null && autores.length>0){
 					sql += " AND (  a.nombre LIKE '%"+autores[0]+"%'";
