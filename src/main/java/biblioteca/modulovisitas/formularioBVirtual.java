@@ -253,8 +253,19 @@ public class formularioBVirtual extends CustomComponent {
 					.show(Page.getCurrent());
 					return;// break;
 				}
-				
-				dbc.insert("documento",signatura,titulo,numero,anio,editorial,tipo,up.fileName);
+				/*dbc.query("INSERT INTO documento(signatura,titulo,volumen,numero,anio, institucion,editorial,tipoDocumento,archivo) VALUES ('"+
+						signatura+"','"+
+						titulo+"',"+
+						numero+","+
+						numero+","+
+						anio+",'"+
+						editorial+"','"+
+						editorial+"','"+
+						tipo+"','"+
+						up.fileName+
+						
+				"')");*/
+				dbc.insert("documento",signatura,titulo,numero,numero,anio,editorial,editorial,tipo,up.fileName);
 				String[] autores = autor.split(",");
 				for(int i=0;i<autores.length;++i){
 					System.out.println(autores[i]);
@@ -302,7 +313,7 @@ public class formularioBVirtual extends CustomComponent {
 	            file = new File(pathArchivos +"/"+ filename);
 	            fos = new FileOutputStream(file);
 	        } catch (final java.io.FileNotFoundException e) {
-	            new Notification("El archivo no se pudo subir! <br/>",
+	            new Notification("El archivo no se pudo subir! ",
 	                             e.getMessage(),
 	                             Notification.Type.ERROR_MESSAGE)
 	                .show(Page.getCurrent());

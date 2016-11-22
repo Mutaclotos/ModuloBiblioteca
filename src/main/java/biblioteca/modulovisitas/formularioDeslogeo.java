@@ -77,7 +77,7 @@ public class formularioDeslogeo extends CustomComponent {
 
 		
 		
-		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos  from Usuario u where  u.cedula ="+user +";");//añadir condicion de la cedula del usuario actual"
+		ResultSet rs = dbc.query("SELECT u.nombre, u.apellidos  from usuario u where  u.cedula ="+user +";");//añadir condicion de la cedula del usuario actual"
 		
 		try{	
 		//TODO: datasource de resultSet, tableQuery	

@@ -1,5 +1,6 @@
 package biblioteca.modulovisitas;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,11 +48,13 @@ public class MyUI extends UI
 	
 	public static TabSheet tabsheet;
 	//Credenciales para todas las clases
-	public static String user = "geo";
+	public static String user = "root";
 	
 	public static String password = "GESAVA954";
 	
-	public static String address = "localhost";
+	public static String address = "192.168.56.101";
+	
+	public static String uploadsPath = "/home/geo/Documentos/Inge_Biblioteca/uploads";
 	
 	private AbsoluteLayout main;
 	
@@ -92,7 +95,8 @@ public class MyUI extends UI
     {
     	tabsheet = new TabSheet();
     	//BIBLIOTECA VIRTUAL
-    	tabsheet.addTab(new formularioBVirtual ("C:/Users/USUARIO/git/ModuloBiblioteca"),"Biblioteca Virtual");
+    	tabsheet.addTab(new formularioBVirtual (this.uploadsPath),"Biblioteca Virtual");
+    	
     	// CONTROL DE VISITAS
     	tabsheet.addTab(new graficosVisitas(),"Visitas");
     	//CONSULTAS
