@@ -229,6 +229,14 @@ public class formularioBVirtual extends CustomComponent {
 			@Override
 			public void buttonClick(ClickEvent event) {
 				String signatura = inputSignatura.getValue();
+				if(inputSoy.getValue().toString().equals("Libro"))
+				{
+					signatura = inputSignatura.getValue() + "-" + inputInscripcion.getValue();
+				}
+				else
+				{
+					signatura = inputSignatura.getValue();
+				}
 				String titulo = inputTitulo.getValue();
 				String numero = inputEdicion.getValue();
 				String anio = inputAnio.getValue();
@@ -271,6 +279,7 @@ public class formularioBVirtual extends CustomComponent {
 				inputEditorial.setValue("");
 				inputAutor.setValue("");
 				inputDescriptores.setValue("");
+				inputInscripcion.setValue("");
 				upload_1.setVisible(true);
 				nombreArchivo.setValue("");
 				up.fileName = null;
